@@ -1,0 +1,25 @@
+:root {
+    --color-gradient: linear-gradient(#030303, #2E1D1F, #030303);
+    --color-dark: #2E1D1F;
+    --color-dark-transparent: rgba(5, 4, 4, 0.2);
+    --color-light: #FFFFFF;
+    --color-accent: #EACAA1;
+    --color-bg-button: #EACAA1;
+
+    --border-button: 1px solid var(--color-light);
+    --border-button-hover: 1px solid var(--color-accent);
+    --border-radio-button: 1px solid var(--color-accent);
+    --border-raduis-button: 10px;
+
+    --font-family-base: 'Montserrat';
+
+    --container-width: 1110px;
+    --container-padding-x: 20px;
+
+    --section-padding-y: 70px;
+
+    --input-height: 40px;
+    --button-height: 47px;
+
+    --transition-duration: 0.2s;
+}
