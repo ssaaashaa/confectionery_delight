@@ -11,24 +11,24 @@
             >        </div>
 
         <a>
-            <button class="button">Купить за {{$price*6*$product->ratio}} BYN</button>
+            <button class="button">Купить за &nbsp<span id="count">{{ $price*$product->ratio}}</span>&nbsp BYN</button>
         </a>
         <form>
         <div>Количество</div>
         <div>
             <div class="radio_btn">
-                <input id="radio-6" type="radio" name="count" checked class="selected_count">
-                <label class="selected_count selected_category" value='6' for="radio-6">6
+                <input id="radio-6" value="6" type="radio" name="count" checked class="selected_count">
+                <label class="selected_count"  for="radio-6">6
                     шт.</label>
             </div>
             <div class="radio_btn">
-                <input id="radio-9" type="radio" name="count" class="selected_count">
-                <label class="selected_count selected_category" value='9' for="radio-9">9
+                <input id="radio-9" value="9" type="radio" name="count" class="selected_count">
+                <label class="selected_count"  for="radio-9">9
                     шт.</label>
             </div>
             <div class="radio_btn">
-                <input id="radio-12" type="radio" name="count" class="selected_count">
-                <label class="selected_count selected_category" value='12' for="radio-12">12
+                <input id="radio-12" value="12" type="radio" name="count" class="selected_count">
+                <label class="selected_count"  for="radio-12">12
                     шт.</label>
             </div>
         </div>

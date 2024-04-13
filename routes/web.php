@@ -22,8 +22,6 @@ Route::post('/tasting_process', [\App\Http\Controllers\FeedbackRequestController
 
 Route::get('/catalog-{product_category_id}', [\App\Http\Controllers\CatalogController::class, 'index'])->name('catalog.index');
 Route::get('/catalog-{product_category_id}/{id}', [\App\Http\Controllers\CatalogController::class, 'show'])->name('catalog.show');
-
-//Route::post('/biscuits', [\App\Http\Controllers\CatalogController::class, 'getBiscuits'])->name('biscuits');
 Route::get('/catalog-{product_category_id}/getFills/{id}', [\App\Http\Controllers\CatalogController::class, 'getFills'])->name('fills');
 
 Route::middleware("auth")->group(function (){
