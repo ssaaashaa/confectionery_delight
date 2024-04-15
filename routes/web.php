@@ -23,6 +23,12 @@ Route::post('/tasting_process', [\App\Http\Controllers\FeedbackRequestController
 Route::get('/catalog-{product_category_id}', [\App\Http\Controllers\CatalogController::class, 'index'])->name('catalog.index');
 Route::get('/catalog-{product_category_id}/{id}', [\App\Http\Controllers\CatalogController::class, 'show'])->name('catalog.show');
 Route::get('/catalog-{product_category_id}/getFills/{id}', [\App\Http\Controllers\CatalogController::class, 'getFills'])->name('fills');
+Route::get('/catalog-{product_category_id}/addToCart/{id}', [\App\Http\Controllers\CatalogController::class, 'addToCart'])->name('addToCart');
+Route::get('/catalog-{product_category_id}/inCartOrNot/{id}', [\App\Http\Controllers\CatalogController::class, 'inCartOrNot'])->name('inCartOrNot');
+
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/delete', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
+Route::get('/cart/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
 
 Route::middleware("auth")->group(function (){
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

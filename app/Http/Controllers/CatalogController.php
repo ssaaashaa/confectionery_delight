@@ -55,6 +55,7 @@ class CatalogController extends Controller
 
     public function getFills(Request $request)
     {
+        //dd($request->biscuit_id);
         $fills = TasteCombination::where('biscuit_id', $request->biscuit_id)
             ->get();
         $fills = json_decode($fills);
@@ -62,7 +63,53 @@ class CatalogController extends Controller
         return response()->json($fills);
     }
 
+    public function inCartOrNot(Request $request)
+    {
 
+        $cart = $request->session()->get('cart');
+
+        $id = $request->id;
+
+        $flag = 0;
+        if (isset($cart[$id])) {
+            $flag = 1;
+        }
+      //  dd($flag);
+        return $flag;
+    }
+
+    public function addToCart(Request $request)
+    {
+        $design = Design::where('id', $request->design_id)
+            ->get('id');
+        $design = json_decode($design);
+        $design_id = $design[0]->id;
+        $pieces = $request->pieces;
+        $biscuit_id = $request->biscuit_id;
+        $fill_id = $request->fill_id;
+        $price = $request->price;
+
+        $id = $pieces . $biscuit_id . $fill_id . $design_id;
+//        \Session::getHandler()->destroy(session()->getId());
+
+        $cart = $request->session()->get('cart', []);
+        $cart[$id] = [
+            "id" => $id,
+            "pieces" => (int)$pieces,
+            "biscuit_id" => $biscuit_id,
+            "fill_id" => $fill_id,
+            "design_id" => $design_id,
+            "quantity" => 1,
+            "price" => (float)$price
+        ];
+
+        $request->session()->put('cart', $cart);
+//        dd($cart);
+
+        return response()->json(["biscuit_id" => $biscuit_id, "design_id" => $design]);
+
+
+    }
 
 
 }

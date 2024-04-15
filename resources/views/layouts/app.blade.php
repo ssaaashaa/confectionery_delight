@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{$title}}</title>
     @vite(['resources/css/app.css'])
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body class="page">
 <header class="header">
@@ -49,7 +50,7 @@
                     </p>
                 </li>
                 <li class="header__menu-item">
-                    <a href="" class="header__menu-link">
+                    <a href="{{route('cart.index')}}" class="header__menu-link">
                         <img src="/storage/img/basket.svg"
                              alt="DELIGHT"
                              class="menu-item__image"
@@ -109,8 +110,7 @@
         </div>
     </form>
 </dialog>
-@vite('resources/js/app.js')
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/js/app.js"></script>
 </body>
 </html>
 
