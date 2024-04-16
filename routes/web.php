@@ -29,6 +29,7 @@ Route::get('/catalog-{product_category_id}/inCartOrNot/{id}', [\App\Http\Control
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::get('/cart/delete', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
 Route::get('/cart/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+Route::get('/cart/order_process', [\App\Http\Controllers\CartController::class, 'order'])->name('order_process');
 
 Route::middleware("auth")->group(function (){
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

@@ -6,7 +6,7 @@
             <h1>
                 Корзина
             </h1>
-            <p id="cart_total">Итого: {{$cart_total}} BYN</p>
+            @if(count($cart_products))
         @foreach ($cart_products as $key => $product)
                 <div id="cart">
                     <img src="/storage/designs/{{$product['design']}}" alt="" class="hero__image"
@@ -27,7 +27,22 @@
                     <button class="button deleteFromCart" id="{{$product['id']}}">Удалить</button>
                     <hr style="height: 1px; fill: #EACAA1">
                 </div>
+                <form>
+                    <p>Выберите дату, когда вам будет удобно забрать заказ: </p>
+                    <input type="date"/>
+                    <br>
+                    <br>
+                    <p>Ваши пожелания</p>
+                    <textarea style="width: 400px" placeholder="Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить. Мы все учтем. ">Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить.</textarea>
+                    <p id="cart_total">Итого: {{$cart_total}} BYN</p>
+                    <button class="button">Оформить заказ</button>
+                    <br>
+                    <br>
+                </form>
             @endforeach
+                @else
+                <p>Корзина пуста</p>
+            @endif
 
         </div>
     </section>

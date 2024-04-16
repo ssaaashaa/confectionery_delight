@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Mail\ForgotPassword;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -26,15 +27,27 @@ class AuthController extends Controller
         );
 
         if (auth("web")->attempt($data)) {
+
+            //$carts=request()->session()->get('carts');
+            $cart = request()->session()->get('cart');
+            //dd(request()->session());
+            $id = Auth::user()->id;
+            $carts = [$id => $cart];
+            request()->session()->put('carts', $carts);
+
+           // request()->session()->forget('cart');
+          //  dd(request()->session());
+//            dd($carts);
             return redirect(route("home"));
         }
-        return redirect(route("login"))->withErrors(["email"=>'Проверьте введенные данные']);
+       // return redirect(route("login"))->withErrors(["email"=>'Проверьте введенные данные']);
     }
 
     public function logout()
     {
         auth("web")->logout();
-
+     //   \Session::getHandler()->destroy(session()->getId());
+        request()->session()->forget('cart');
         return redirect(route("home"));
     }
 
