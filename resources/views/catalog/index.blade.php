@@ -1,6 +1,7 @@
 @extends('layouts.app', ['title' => 'DELIGHT | Каталог'])
 
 @section('content')
+    <script src="/js/category.js"></script>
     <section class="section container">
         <div class="section__body">
             <h1>
@@ -27,7 +28,6 @@
             </div>
         </div>
     </section>
-    <script src="/js/category.js"></script>
 @endsection
 
 
