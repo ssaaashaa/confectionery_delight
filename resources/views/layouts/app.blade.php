@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{$title}}</title>
-    @vite(['resources/css/app.css'])
+    <link rel="stylesheet" href="/css/app.css"></link>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body class="page">
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="header__menu-item">
-                    <a href="{{route('login')}}" class="header__menu-link">
+                    <a href="{{route('account.index')}}" class="header__menu-link">
                         <img src="/storage/img/user.svg"
                              alt="DELIGHT"
                              class="menu-item__image"

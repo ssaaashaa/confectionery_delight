@@ -27,13 +27,13 @@
                         <button class="hero__button button">
                             Каталог
                         </button>
-                        @auth("web")
-                            <a href="{{route('logout')}}">
-                                <button class="hero__button button">
-                                    Выйти
-                                </button>
-                            </a>
-                        @endauth
+{{--                        @auth("web")--}}
+{{--                            <a href="{{route('logout')}}">--}}
+{{--                                <button class="hero__button button">--}}
+{{--                                    Выйти--}}
+{{--                                </button>--}}
+{{--                            </a>--}}
+{{--                        @endauth--}}
                         @guest("web")
                             <a href="{{route('login')}}">
                                 <button class="hero__button button">

@@ -3,16 +3,10 @@ $(document).ready(function () {
     //ставим первый вкус - checked
     $('.selected_biscuit').first().prop('checked', true);
     let one_product_price = document.getElementById('count').innerText;
-    //alert(one_product_price);
 
     //тут получаем количество и меняем цену
     $("input[name='count']").change(function () {
         inCartOrNot();
-        //  if(document.getElementById('addToCart').innerText != 'Перейти в корзину') {
-        //   let checked = document.querySelector('input[name="count"]:checked');
-        //       let price = one * checked.value;
-        //       document.getElementById('count').innerText = price.toString();
-        // //  }
     });
 
 

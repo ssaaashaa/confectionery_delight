@@ -1,4 +1,4 @@
-<div>
+<div class="catalog-product" id="product-{{$product->design_category_id}}">
     <img src="/storage/designs/{{$product->img}}" alt="" class="hero__image"
          width="200" height="200" loading="lazy"
     >

@@ -283,6 +283,39 @@ h2 {
   }
 }
 
+.radio_btn {
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.radio_btn input[type=radio] {
+  display: none;
+}
+
+.radio_btn label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 30px;
+  line-height: 45px;
+  border: 1px solid #EACAA1;
+  border-radius: 6px;
+  user-select: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.2s all;
+}
+
+.radio_btn input[type=radio]:checked + label {
+  background: #EACAA1;
+  color: rgb(0, 0, 0);
+}
+
+.radio_btn label:hover {
+  color: rgba(234, 202, 161, 0.6274509804);
+  transition: 0.2s all;
+}
+
 .header {
   padding-top: 25px;
 }

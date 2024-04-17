@@ -27,19 +27,24 @@
                     <button class="button deleteFromCart" id="{{$product['id']}}">Удалить</button>
                     <hr style="height: 1px; fill: #EACAA1">
                 </div>
-                <form>
-                    <p>Выберите дату, когда вам будет удобно забрать заказ: </p>
-                    <input type="date"/>
-                    <br>
-                    <br>
-                    <p>Ваши пожелания</p>
-                    <textarea style="width: 400px" placeholder="Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить. Мы все учтем. ">Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить.</textarea>
-                    <p id="cart_total">Итого: {{$cart_total}} BYN</p>
-                    <button class="button">Оформить заказ</button>
-                    <br>
-                    <br>
-                </form>
             @endforeach
+            <form method="POST" action="{{route("order_process")}}">
+                @csrf
+
+                <p>Выберите дату, когда вам будет удобно забрать заказ: </p>
+                <input name="date" type="date"/>
+                {{--                    @error('date')--}}
+                {{--                    <p class="text-red-500">{{ $message }}</p>--}}
+                {{--                    @enderror--}}
+                <br>
+                <br>
+                <p>Ваши пожелания</p>
+                <textarea name="comment" style="width: 400px" placeholder="Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить. Мы все учтем. ">Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить.</textarea>
+                <p id="cart_total" name="total_cost">Итого: <span>{{$cart_total}} BYN</span></p>
+                <button type="submit" class="button">Оформить заказ</button>
+                <br>
+                <br>
+            </form>
                 @else
                 <p>Корзина пуста</p>
             @endif

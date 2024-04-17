@@ -25,11 +25,14 @@ Route::get('/catalog-{product_category_id}/{id}', [\App\Http\Controllers\Catalog
 Route::get('/catalog-{product_category_id}/getFills/{id}', [\App\Http\Controllers\CatalogController::class, 'getFills'])->name('fills');
 Route::get('/catalog-{product_category_id}/addToCart/{id}', [\App\Http\Controllers\CatalogController::class, 'addToCart'])->name('addToCart');
 Route::get('/catalog-{product_category_id}/inCartOrNot/{id}', [\App\Http\Controllers\CatalogController::class, 'inCartOrNot'])->name('inCartOrNot');
+//Route::get('/getDesigns/{id}', [\App\Http\Controllers\CatalogController::class, 'getDesigns'])->name('designs');
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::get('/cart/delete', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
 Route::get('/cart/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
-Route::get('/cart/order_process', [\App\Http\Controllers\CartController::class, 'order'])->name('order_process');
+Route::post('/cart/order_process', [\App\Http\Controllers\CartController::class, 'order_process'])->name('order_process');
+
+Route::get('/account', [\App\Http\Controllers\AccountController::class, 'index'])->name('account.index');
 
 Route::middleware("auth")->group(function (){
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

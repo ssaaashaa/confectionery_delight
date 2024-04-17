@@ -10,12 +10,14 @@
                  width="200" height="200" loading="lazy"
             >        </div>
 
-
+<br>
      <button class="button" id="addToCart" value="{{$product->id}}">Купить за &nbsp<span id="count">{{ $price*$product->ratio}}</span>&nbsp BYN</button>
 
 
         <form>
-        <div>Количество</div>
+            <br>
+            <div>Количество</div>
+            <br>
         <div>
             <div class="radio_btn">
                 <input id="radio-6" value="6" type="radio" name="count" checked class="selected_count">
@@ -35,6 +37,7 @@
         </div>
 
         <div>Вкус</div>
+            <br>
         <div>
             @foreach($biscuits as $biscuit)
                 <div class="radio_btn">
@@ -45,6 +48,7 @@
         </div>
 
         <div>Начинка</div>
+            <br>
         <div>
             @foreach($fills as $fill)
                 <div class="radio_btn">
@@ -56,6 +60,6 @@
         </form>
         @include("tasting.index", ["product"=>$product])
     </section>
-    <script src="/js/catalog.js"></script>
+    <script src="/js/product.js"></script>
 @endsection
 
