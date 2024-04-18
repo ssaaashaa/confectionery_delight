@@ -6,6 +6,9 @@
             <h2>Торт на заказ</h2>
             <p>Хотите заказать по-настоящему уникальный торт? С помощью нашего конструктора Вы можете сделать его
                 самостоятельно — нам остается только приготовить его Вам!</p>
+            <h2>
+                ~<span id="cake_price">{{$price*2}}</span> BYN
+            </h2>
             <div style="display: flex; flex-direction: column; align-items: center">
                 <img style="opacity: 0.05" src="/storage/biscuits/snickers.png"
                      alt=""
@@ -50,7 +53,7 @@
                     </div>
                 </div>
                 <p>
-                    Вес торта ~<span id="cake_price"></span> кг
+                    Вес торта ~<span id="cake_weight">2</span> кг
                 </p>
 
                 <div>Вкус</div>
@@ -77,7 +80,7 @@
                     @endforeach
                 </div>
             </form>
-            <button class="button" id="addToCart" value="">Примеры тортов</span>&nbsp BYN</button>
+            <a href="{{route('designs')}}"><button class="button">Примеры тортов</button></a>
         @include("tasting.index")
     </section>
     <script src="/js/cake.js"></script>

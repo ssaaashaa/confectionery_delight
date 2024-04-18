@@ -24,30 +24,27 @@ class CakeController extends Controller
 //        $category = ProductCategory::findOrFail($product_category);
         $fills = Fill::all();
         $biscuits = $this->getBiscuits();
+        $price = ProductCategory::where('name', 'Торт')
+        ->get('price');
+        $price = $price[0]->price;
 
         return view('cake.index', [
             "biscuits" => $biscuits,
             "fills" => $fills,
+            "price" => $price
         ]);
     }
 
-    public function show($product_category_id, $id)
+    public function showDesigns()
     {
-        //сам продукт и его описание
-        $category = ProductCategory::findOrFail($product_category_id);
-        $product = Design::findOrFail($id);
-
-//        //а тут уже параметры (вкус, бисквит)
-//        $biscuits = Biscuit::all();
-        $fills = Fill::all();
-        $biscuits = $this->getBiscuits();
-
-        return view('catalog.show', [
-            "product" => $product,
-            "price" => $category->price,
-            "biscuits" => $biscuits,
-            "fills" => $fills,
-        ]);
+        $category_id = ProductCategory::where('name','Торт')
+        ->get('id');
+        $category_id = $category_id[0]->id;
+        //dd($category_id[0]->id);
+        $designs = Design::where('product_category_id', $category_id)
+        ->get();
+        //dd($designs);
+        return view('cake.design', ['designs'=> $designs]);
     }
 
     public function getBiscuits()
@@ -77,6 +74,7 @@ class CakeController extends Controller
             $taste = TasteCombination::where('biscuit_id', $request->biscuit_id)
                 ->where('fill_id', $request->fill_id)
                 ->get('img');
+       // dd($taste);
         return response($taste[0]->img);
 
     }

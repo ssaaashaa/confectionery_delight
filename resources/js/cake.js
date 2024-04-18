@@ -2,13 +2,13 @@ $(document).ready(function () {
 
     //ставим первый вкус - checked
     $('.selected_biscuit').first().prop('checked', true);
-    //let one_product_price = document.getElementById('count').innerText;
+
+    let price = document.getElementById('cake_price').innerText;
 
     //тут получаем количество и меняем цену
     $("input[name='count']").change(function () {
         //inCartOrNot();
         var tiers_count = $(this).val();
-        5
         document.querySelectorAll('.tier').forEach(function (img, index) {
             if (index >= 4 - tiers_count) {
                 img.style.opacity = 1;
@@ -18,6 +18,21 @@ $(document).ready(function () {
             }
         });
 
+        let weight;
+        if(tiers_count==='1') {
+            weight = 2;
+        }
+        else if (tiers_count==='2') {
+            weight = 4;
+        }
+        else if (tiers_count==='3') {
+            weight = 7;
+        }
+        else if (tiers_count==='4') {
+            weight = 13;
+        }
+        document.getElementById('cake_weight').innerText = weight;
+        document.getElementById('cake_price').innerText = (parseInt(price) * weight).toString();
 
     });
 
@@ -67,6 +82,32 @@ $(document).ready(function () {
             }
         })
 
+
+    });
+
+    $('.selected_fill').on('click', function () {
+        let fill_id = $(this).val();
+        //console.log(fill_id);
+        let biscuit_id = document.querySelector('input[name="biscuit"]:checked');
+        biscuit_id = biscuit_id.value;
+        if (fill_id == null) {
+            fill_id = 'null';
+        }
+        $.ajax({
+            url: 'getTasteImg/' + biscuit_id + fill_id,
+            type: 'get',
+            data: {
+                "biscuit_id": biscuit_id,
+                "fill_id": fill_id
+            },
+            success: function (response) {
+                const images = document.getElementsByClassName('tier');
+                const newSrc = '/storage/biscuits/'+response;
+                for (let i = 0; i < images.length; i++) {
+                    images[i].src = newSrc;
+                }
+            }
+        })
 
     });
 
