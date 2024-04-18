@@ -58,7 +58,7 @@
             @endforeach
         </div>
         </form>
-        @include("tasting.index", ["product"=>$product])
+        @include("tasting.index")
     </section>
     <script src="/js/product.js"></script>
 @endsection

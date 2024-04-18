@@ -14,6 +14,11 @@
                         Выбрать трайфлы
                     </button>
                 </a>
+                <a href="{{route('cake.index')}}">
+                    <button class="button">
+                        Собрать торт
+                    </button>
+                </a>
                 <div class="hero__main">
                     <div class="hero__body">
                         <div class="hero__description">
