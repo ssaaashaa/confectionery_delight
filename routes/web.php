@@ -30,9 +30,8 @@ Route::get('/cake', [\App\Http\Controllers\CakeController::class, 'index'])->nam
 Route::get('/getFills/{id}', [\App\Http\Controllers\CakeController::class, 'getFills'])->name('cake-fills');
 Route::get('/getTasteImg/{id}', [\App\Http\Controllers\CakeController::class, 'getTasteImg']);
 Route::get('/addToCart/{id}', [\App\Http\Controllers\CakeController::class, 'addToCart']);
-Route::get('/showDesigns', [\App\Http\Controllers\CakeController::class, 'showDesigns'])->name('designs');
 Route::get('/inCartOrNot/{id}', [\App\Http\Controllers\CakeController::class, 'inCartOrNot']);
-
+Route::post('/upload', [\App\Http\Controllers\CakeController::class, 'upload']);
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::get('/cart/delete', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');

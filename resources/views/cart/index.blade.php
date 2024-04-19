@@ -12,8 +12,12 @@
                         <img src="/storage/designs/{{$product['design']}}" alt="" class="hero__image"
                              width="200" height="200" loading="lazy"
                         >
-                        <p>Количество: {{$product['pieces']}} шт.</p>
-
+                        @if(array_key_exists('weight', $product))
+                            <p>Ярусы: {{$product['pieces']}}</p>
+                            <p>Вес: {{$product['weight']}} кг</p>
+                        @else
+                            <p>Количество: {{$product['pieces']}} шт.</p>
+                        @endif
                         <div>
                             <div id='counter'>
                                 <button class="removeQunatity" id="removeQunatity" value="{{$product['id']}}">-</button>
@@ -53,7 +57,9 @@
                         @enderror
                         <br>
                         <br>
-                        <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Ваш e-mail" />
+                        <input name="email" type="text"
+                               class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror"
+                               placeholder="Ваш e-mail"/>
 
                         @error('email')
                         <p class="text-red-500">{{ $message }}</p>

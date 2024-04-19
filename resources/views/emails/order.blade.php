@@ -5,7 +5,7 @@
 <h3>Заказ №: {{ $orderID }}</h3>
 @foreach($products as $product)
     <div>
-        <b><p>{{$product->name}}, {{$product->count}}</p></b>
+        <b><p>{{$product->name}} ({{$product->count}})</p></b>
         <p>Количество: {{$product->quantity}} шт.</p>
         <p>Вкус: {{$product->biscuit_name}}</p>
         @if($product->fill_name == null)

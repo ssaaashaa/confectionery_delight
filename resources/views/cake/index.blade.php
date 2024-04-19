@@ -79,8 +79,46 @@
                         </div>
                     @endforeach
                 </div>
-            </form>
-            <a href="{{route('designs')}}"><button class="button">Примеры тортов</button></a>
+                <h2>
+                    Примеры тортов
+                </h2>
+                <p>
+                    Выберете максимально подходящий дизайн торта, который вам
+                    понравился. Если вы не нашли ничего подходящего, вы можете прикрепить свой желаемый дизайн!
+                </p>
+                <h3>Загрузить свой дизайн</h3>
+                <form action="{{'upload'}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="form-group">
+                        <input type="file" name="image">
+
+                    </div>
+                    @isset($path)
+                        <img alt="" src="{{'/storage/designs/upload_designs'.$path}}"/>
+                    @endisset
+                    <br>
+                    <div style="display: flex; width: 100%; justify-content: space-between">
+                        @foreach($designs as $design)
+                            <div class="cake_design">
+                                <img width="250" height="auto" loading="lazy" src="/storage/designs/{{$design->img}}" alt="">
+                                <div class="radio_btn">
+                                    <input id="design-{{$design->id}}" type="radio" name="design" value="{{$design->id}}">
+                                    <label class="selected_design" for="design-{{$design->id}}">✔</label>
+                                </div>
+                                <p>
+                                    {{$design->name}} {{$design->id}}
+                                </p>
+                            </div>
+                        @endforeach
+                    </div>
+                <br>
+                <br>
+                <button id="addToCart" class="button" type="submit">Добавить в корзину</button>
+                </form>
+                <br>
+                <br>
+
         @include("tasting.index")
     </section>
     <script src="/js/cake.js"></script>

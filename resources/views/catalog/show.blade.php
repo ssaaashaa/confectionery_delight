@@ -13,7 +13,6 @@
 <br>
      <button class="button" id="addToCart" value="{{$product->id}}">Купить за &nbsp<span id="count">{{ $price*$product->ratio}}</span>&nbsp BYN</button>
 
-
         <form>
             <br>
             <div>Количество</div>

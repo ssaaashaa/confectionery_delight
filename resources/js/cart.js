@@ -16,7 +16,6 @@ $(document).ready(function () {
     });
 
 
-
     function updateCart() {
         $('.addQunatity').on('click', function () {
             let product_id = $(this).val();
@@ -39,7 +38,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (response) {
                     //console.log(response);
-                    document.getElementById('cart_total').innerText = 'Итого: ' + response.cart_total +'BYN';
+                    document.getElementById('cart_total').innerText = 'Итого: ' + response.cart_total +' BYN';
                     document.getElementById(product_id+'-price').innerText = response.update_amount_of_product;
 
                 }
@@ -68,7 +67,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (response) {
                     //console.log(response);
-                    document.getElementById('cart_total').innerText = 'Итого: ' + response.cart_total +'BYN';
+                    document.getElementById('cart_total').innerText = 'Итого: ' + response.cart_total +' BYN';
                     document.getElementById(product_id+'-price').innerText = response.update_amount_of_product;
 
                 }

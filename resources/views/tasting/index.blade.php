@@ -26,7 +26,8 @@
     @error('telephone')
     <p class="text-red-500">{{ $message }}</p>
     @enderror
-
+<br>
+    <br>
     <button type="submit"
             class="font-bold py-2 px-4 w-full bg-purple-400 text-lg text-white shadow-md rounded-lg button">
         Записатся на дегустацию
