@@ -14,9 +14,9 @@
                         >
                         @if(array_key_exists('weight', $product))
                             <p>Ярусы: {{$product['pieces']}}</p>
-                            <p>Вес: {{$product['weight']}} кг</p>
+                            <p>Вес: {{$product['weight']}}</p>
                         @else
-                            <p>Количество: {{$product['pieces']}} шт.</p>
+                            <p>Количество: {{$product['pieces']}}</p>
                         @endif
                         <div>
                             <div id='counter'>

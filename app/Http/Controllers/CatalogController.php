@@ -112,7 +112,7 @@ class CatalogController extends Controller
         $cart = $request->session()->get('cart', []);
         $cart[$id] = [
             "id" => $id,
-            "pieces" => (int)$pieces,
+            "pieces" => (int)$pieces.' шт',
             "biscuit_id" => $biscuit_id,
             "fill_id" => $fill_id,
             "design_id" => $design_id,

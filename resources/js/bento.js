@@ -1,20 +1,28 @@
 $(document).ready(function () {
-
-    //ставим первый вкус - checked
     $('.selected_biscuit').first().prop('checked', true);
-    let one_product_price = document.getElementById('count').innerText;
 
-    //тут получаем количество и меняем цену
+    inCartOrNot();
+    let price = document.getElementById('price').innerText;
+    let new_price;
+
     $("input[name='count']").change(function () {
+        var weight = $(this).val();
+
+        if(weight==='400') {
+            new_price = price*1;
+        }
+        else if (weight==='800') {
+            new_price = price*2;
+        }
         inCartOrNot();
+        //document.getElementById('price').innerText = new_price;
     });
 
 
-    //тут определяем, какие вкусовые сочетания доступны
     $('.selected_biscuit').on('click', function () {
         var biscuit_id = $(this).attr('id');
         $.ajax({
-            url: 'getFills/' + biscuit_id,
+            url: 'bentoGetFills/' + biscuit_id,
             type: 'get',
             data: {
                 "biscuit_id": biscuit_id,
@@ -46,52 +54,51 @@ $(document).ready(function () {
 
     function inCartOrNot() {
 
-        //тут чтобы сразу полная цена отображалась
-        //let one = document.getElementById('count').innerText;
-        let checked = document.querySelector('input[name="count"]:checked');
-        // alert(checked.value);
-        let price = one_product_price * checked.value;
-       // document.getElementById('count').innerText = price.toString();
 
+        let id;
+        let pieces = 1;
         let biscuit_id = null;
         let fill_id = null;
         let design_id = null;
-        let pieces;
-        // let price = 0;
-        let id;
+        // alert(biscuit_id + ',' + fill_id);
+        pieces = document.querySelector('input[name="count"]:checked');
         biscuit_id = document.querySelector('input[name="biscuit"]:checked');
         fill_id = document.querySelector('input[name="fill"]:checked');
-        console.log(fill_id);
-        pieces = document.querySelector('input[name="count"]:checked');
         design_id = document.getElementById('addToCart').value;
-        //price = document.getElementById('count').innerText;
-
-        biscuit_id = biscuit_id.value;
         pieces = pieces.value;
+        biscuit_id = biscuit_id.value;
 
         if (fill_id == null) {
             fill_id = 'null';
         } else
             fill_id = fill_id.value;
 
-        id = pieces + biscuit_id + fill_id + design_id;
-       // alert(id);
+        id = pieces + biscuit_id + fill_id + design_id + 'bento';
+        // alert(id);
 
         $.ajax({
-            url: 'inCartOrNot/' + id,
+            url: 'bentoInCartOrNot/' + id,
             type: 'get',
             data: {
                 "id": id,
             },
             dataType: 'json',
             success: function (response) {
-                 // alert(response);
+                // alert(response);
                 if (response) {
-                    document.getElementById('addToCart').innerHTML = 'Перейти в корзину';
+                    document.getElementById('addToCart').innerHTML = 'Перейти в корзину&nbsp<span id="price"></span>&nbsp';
                     $('#addToCart').addClass('goToCart');
                 } else {
-                    document.getElementById('addToCart').innerHTML = 'Купить за &nbsp<span id="count">{{ $price*$product->ratio}}</span>&nbsp BYN';
-                    document.getElementById('count').innerText = price.toString();
+                    document.getElementById('addToCart').innerHTML = 'Купить за &nbsp<span id="price">{{$price}}</span>&nbsp BYN';
+                    let new_weight = document.querySelector('input[name="count"]:checked').value;
+                    if(new_weight==='400') {
+                        new_price = price*1;
+                    }
+                    else if (new_weight==='800') {
+                        new_price = price*2;
+                    }
+                    console.log(new_price);
+                    document.getElementById('price').innerText = new_price;
                     $('#addToCart').removeClass('goToCart');
 
 
@@ -106,7 +113,6 @@ $(document).ready(function () {
     });
 
 
-    inCartOrNot();
 
     $('#addToCart').on('click', function (e) {
         e.preventDefault();
@@ -127,8 +133,8 @@ $(document).ready(function () {
             design_id = $(this).val();
             biscuit_id = biscuit_id.value;
             pieces = pieces.value;
-            price = document.getElementById('count').innerText;
-            console.log(price);
+            price = document.getElementById('price').innerText;
+            //console.log(price);
 
             if (fill_id == null) {
                 fill_id = 'null';
@@ -138,7 +144,7 @@ $(document).ready(function () {
             document.getElementById('addToCart').onclick = null;
             $('#addToCart').click = null;
             $.ajax({
-                url: 'addToCart/' + biscuit_id,
+                url: 'bentoAddToCart/' + biscuit_id,
                 type: 'get',
                 data: {
                     "biscuit_id": biscuit_id,
@@ -149,7 +155,7 @@ $(document).ready(function () {
                 },
                 dataType: 'json',
                 success: function (response) {
-                    document.getElementById('addToCart').innerHTML = 'Перейти в корзину&nbsp<span id="count"></span>&nbsp';
+                    document.getElementById('addToCart').innerHTML = 'Перейти в корзину&nbsp<span id="price"></span>&nbsp';
                 }
             })
 

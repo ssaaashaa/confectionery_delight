@@ -13,25 +13,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class CakeController extends Controller
+class BentoController extends Controller
 {
     public function index()
     {
-        $fills = Fill::all();
-        $biscuits = $this->getBiscuits();
-        $category = ProductCategory::where('name', 'Торт')
-        ->get();
-        $price = $category[0]->price;
-        $category_id = $category[0]->id;
-        $designs = Design::where('product_category_id', $category_id)
+        $category = ProductCategory::where('name', 'Бенто-бокс')
             ->get();
-        return view('cake.index', [
+        $price = $category[0]->price;
+        $biscuits = $this->getBiscuits();
+        $fills = Fill::all();
+        $image = Design::where('product_category_id', $category[0]->id)
+        ->get();
+//        dd($image);
+        $image = $image[0];
+
+        return view('bento.index', [
             "biscuits" => $biscuits,
             "fills" => $fills,
             "price" => $price,
-            'designs'=> $designs
-        ]);
+            "image" => $image,
+            ]);
+
     }
+
 
     public function getBiscuits()
     {
@@ -41,30 +45,14 @@ class CakeController extends Controller
 
     public function getFills(Request $request)
     {
+        //dd($request->biscuit_id);
         $fills = TasteCombination::where('biscuit_id', $request->biscuit_id)
             ->get();
         $fills = json_decode($fills);
+        //dd($fills);
         return response()->json($fills);
     }
 
-    public function getTasteImg(Request $request)
-    {
-        if ($request->fill_id == "null") {
-            $taste = DB::table('taste_combinations')
-                ->where('biscuit_id', $request->biscuit_id)
-                ->whereNull('fill_id')
-                ->get('img');
-        } else
-            $taste = TasteCombination::where('biscuit_id', $request->biscuit_id)
-                ->where('fill_id', $request->fill_id)
-                ->get('img');
-        return response($taste[0]->img);
-
-    }
-    public function upload(Request $request) {
-        $path = $request->file('iamge')->store('upload_designs', 'public');
-        return response($path);
-    }
     public function inCartOrNot(Request $request)
     {
 
@@ -79,28 +67,22 @@ class CakeController extends Controller
         //  dd($flag);
         return $flag;
     }
+
     public function addToCart(Request $request)
     {
-//        $design = Design::where('id', $request->design_id)
-//            ->get('id');
-//        $design = json_decode($design);
-//        $design_id = $design[0]->id;
+        $design_id = $request->design_id;
         $pieces = $request->pieces;
-        $weight = $request->weight;
         $biscuit_id = $request->biscuit_id;
         $fill_id = $request->fill_id;
-        $design_id = $request->design_id;
         $price = $request->price;
 
-
-        $id = $pieces . $biscuit_id . $fill_id . $design_id.'cake';
+        $id = $pieces . $biscuit_id . $fill_id . $design_id.'bento';
 //        \Session::getHandler()->destroy(session()->getId());
 
         $cart = $request->session()->get('cart', []);
         $cart[$id] = [
             "id" => $id,
-            "pieces" => (int)$pieces,
-            "weight" => $weight.' кг',
+            "pieces" => (int)$pieces.' гр',
             "biscuit_id" => $biscuit_id,
             "fill_id" => $fill_id,
             "design_id" => $design_id,
@@ -109,10 +91,9 @@ class CakeController extends Controller
         ];
 
         $request->session()->put('cart', $cart);
-        //\Session::getHandler()->destroy(session()->getId());
-        //dd($cart);
+//        dd($cart);
 
-        return response()->json(["biscuit_id" => $biscuit_id]);
+        return response()->json(["biscuit_id" => $biscuit_id, "design_id" => $design_id]);
 
 
     }

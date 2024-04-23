@@ -19,6 +19,11 @@
                         Собрать торт
                     </button>
                 </a>
+                <a href="{{route('bento.index')}}">
+                    <button class="button">
+                        Выбрать бокс
+                    </button>
+                </a>
                 <div class="hero__main">
                     <div class="hero__body">
                         <div class="hero__description">
@@ -51,6 +56,17 @@
                          width="595" height="450" loading="lazy"
                     >
                 </div>
+            </div>
+            <h2>Отзывы</h2>
+            <div class="reviews">
+                @foreach($reviews as $review)
+                    <div class="review">
+                        <div>{{$review->name}}<br>
+                       {{$review->review}}<br>
+                        {{date('d.m.Y', strtotime($review->created_at))}}</div>
+                    </div>
+                    <br>
+                @endforeach
             </div>
         </div>
     </section>

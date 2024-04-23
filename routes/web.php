@@ -33,12 +33,20 @@ Route::get('/addToCart/{id}', [\App\Http\Controllers\CakeController::class, 'add
 Route::get('/inCartOrNot/{id}', [\App\Http\Controllers\CakeController::class, 'inCartOrNot']);
 Route::post('/upload', [\App\Http\Controllers\CakeController::class, 'upload']);
 
+Route::get('/bento-box', [\App\Http\Controllers\BentoController::class, 'index'])->name('bento.index');
+Route::get('/bentoGetFills/{id}', [\App\Http\Controllers\BentoController::class, 'getFills'])->name('bento-fills');
+Route::get('/bentoAddToCart/{id}', [\App\Http\Controllers\BentoController::class, 'addToCart']);
+Route::get('/bentoInCartOrNot/{id}', [\App\Http\Controllers\BentoController::class, 'inCartOrNot']);
+
+
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::get('/cart/delete', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
 Route::get('/cart/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/order_process', [\App\Http\Controllers\CartController::class, 'order_process'])->name('order_process');
 
 Route::get('/account', [\App\Http\Controllers\AccountController::class, 'index'])->name('account.index');
+Route::post('/review_process', [\App\Http\Controllers\AccountController::class, 'review'])->name('review_process');
+//Route::get('/load_avatar/{id}', [\App\Http\Controllers\AccountController::class, 'load_avatar'])->name('load_avatar');
 
 Route::middleware("auth")->group(function (){
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

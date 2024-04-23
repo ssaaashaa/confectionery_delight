@@ -96,7 +96,8 @@ class AuthController extends Controller
             "name" => $data["name"],
             "email" => $data["email"],
             "telephone" => $data["telephone"],
-            "password" => bcrypt($data["password"])
+            "password" => bcrypt($data["password"]),
+            "avatar" => 'avatar.png'
         ]);
 
         if ($user) {

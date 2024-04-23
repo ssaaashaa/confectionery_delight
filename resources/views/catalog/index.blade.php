@@ -20,7 +20,7 @@
                         <label for="design_category-{{$design_category->id}}">{{$design_category->name}}</label>
                     </div>
                 @endforeach
-                <div class="products">
+                <div class="products" style="display: flex">
                     @foreach($products as $product)
                         @include("catalog.partials.product", ["product"=>$product, "category"=>$category])
                     @endforeach
