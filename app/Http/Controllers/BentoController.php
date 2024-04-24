@@ -53,6 +53,25 @@ class BentoController extends Controller
         return response()->json($fills);
     }
 
+    public function total_price(Request $request) {
+
+        if ($request->fill_id == "null") {
+            $taste = DB::table('taste_combinations')
+                ->where('biscuit_id',  $request -> biscuit_id)
+                ->whereNull('fill_id')
+                ->get();
+        } else if ($request->fill_id != "null") {
+            $taste = DB::table('taste_combinations')
+                ->where('biscuit_id', $request -> biscuit_id)
+                ->where('fill_id', $request->fill_id)
+                ->get();
+        }
+        $taste_ratio = $taste[0]->ratio;
+        return ["taste_ratio" => $taste_ratio];
+
+
+    }
+
     public function inCartOrNot(Request $request)
     {
 

@@ -28,9 +28,7 @@ class AuthController extends Controller
 
         if (auth("web")->attempt($data)) {
 
-            //$carts=request()->session()->get('carts');
             $cart = request()->session()->get('cart');
-            //dd(request()->session());
             $id = Auth::user()->id;
             $carts = [$id => $cart];
             request()->session()->put('carts', $carts);
@@ -39,8 +37,8 @@ class AuthController extends Controller
           //  dd(request()->session());
 //            dd($carts);
             return redirect(route("home"));
-        }
-       // return redirect(route("login"))->withErrors(["email"=>'Проверьте введенные данные']);
+        } else
+        return redirect(route("login"))->withErrors(["password"=>'Проверьте введенные данные']);
     }
 
     public function logout()

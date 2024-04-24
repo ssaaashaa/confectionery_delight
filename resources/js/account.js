@@ -1,66 +1,62 @@
 $(document).ready(function () {
 
-    // $("#load_avatar").change(function() {
-    //     let filename = this.files[0].name;
-    //     $.ajax({
-    //         url: 'load_avatar/' + filename,
-    //         type: 'get',
-    //         data: {
-    //             "avatar": filename,
-    //         },
-    //         // dataType: 'json',
-    //         success: function (response) {
-    //             document.getElementById('user_avatar').src = "/storage/img/"+response;
-    //         }
-    //     })
-    //     alert(filename);
-    // });
+    $("#load_avatar").on('change',function(ev) {
+        console.log('inside');
 
-    // function doAfterSelectImage(input) {
-    //     readURL(input);
-    //     uploadUserProfileImage();
-    // }
+        var filedata = this.files[0];
+        var imgtype = filedata.type;
 
-    // function readURL(input) {
-    //     if (input.files && input.files[0]) {
-    //         var reader = new FileReader();
-    //         reader.onload = function (e) {
-    //             document.getElementById('user_avatar').src =  e.target.result;
-    //         };
-    //         reader.readAsDataURL(input.files[0]);
-    //     }
-    // }
+        var match = ['image/jpeg', 'image/jpg', 'image/png'];
 
-    // function uploadUserProfileImage() {
-    //     let myForm = document.getElementById('user_save_profile_form');
-    //     let formData = new FormData(myForm);
-    //     $.ajax({
-    //         type: 'POST',
-    //         data: formData,
-    //         dataType: 'JSON',
-    //         contentType: false,
-    //         cache: false,
-    //         processData: false,
-    //         url: '{{route('save.profile.picture')}}',
-    //         success: function (response) {
-    //             if (response == 200) {
-    //                 $('#notifDiv').fadeIn();
-    //                 $('#notifDiv').css('background', 'green');
-    //                 $('#notifDiv').text('Profile Saved Successfully.');
-    //                 setTimeout(() => {
-    //                     $('#notifDiv').fadeOut();
-    //                 }, 3000);
-    //
-    //             } else if (response == 700) {
-    //                 $('#notifDiv').fadeIn();
-    //                 $('#notifDiv').css('background', 'red');
-    //                 $('#notifDiv').text('An error occured. Please try later');
-    //                 setTimeout(() => {
-    //                     $('#notifDiv').fadeOut();
-    //                 }, 3000);
-    //             }
-    //         }.bind($(this))
-    //     });
-    // }
+        if(imgtype===match[0] || imgtype===match[1] || imgtype===match[2]) {
+            var reader = new FileReader();
+            reader.onload = function (ev) {
+                console.log(ev.target.result);
+                $('#user_avatar').attr('src', ev.target.result)
+            }
+            reader.readAsDataURL(this.files[0]);
 
-});
+            var postData = new FormData();
+            postData.append('file', this.files[0]);
+
+            $.ajax({
+               headers: {'X-CSRF-Token': $('meta[name = csrf_token]').attr('content')},
+                async: true,
+                url: 'load_avatar',
+                type: 'post',
+                contentType: false,
+                data: postData,
+                processData: false,
+                success: function () {
+                    console.log('success');
+                }
+            })
+        }
+        else {
+
+        }
+    });
+
+    $('#save_user_info').on('click', function () {
+        let name = document.querySelector('input[name="name"]').value;
+        let email = document.querySelector('input[name="email"]').value;
+        let telephone = document.querySelector('input[name="telephone"]').value;
+
+        $.ajax({
+            url: 'update_user_info',
+            type: 'get',
+            data: {
+                "name": name,
+                "email": email,
+                "telephone": telephone,
+            },
+            dataType: 'json',
+            success: function () {
+            }
+        })
+    });
+
+
+
+
+    });

@@ -7,24 +7,56 @@
                 Личный кабинет
             </h1>
             @auth("web")
+                <h2>Личные данные</h2>
+                <img src="/storage/users/{{$user->avatar}}" alt=""
+                     width="150`" height="150" id="user_avatar" loading="lazy"
+                >
+                <br>
+                <label style="cursor: pointer" for="load_avatar">Изменить фото</label>
+                <input type="file" style="display: none" id="load_avatar" name="avatar">
+                <br>
+                <input name="name" type="text"
+                       class="w-full h-12 border border-gray-800 rounded px-3 @error('name') border-red-500 @enderror"
+                       placeholder="Имя"
+                       value="{{Auth::user()->name}}"
+                />
+
+                @error('name')
+                <p class="text-red-500">{{ $message }}</p>
+                @enderror
+                <br>
+                <input name="email" type="text"
+                       class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror"
+                       placeholder="e-mail"
+                       value="{{Auth::user()->email}}"
+                />
+
+                @error('email')
+                <p class="text-red-500">{{ $message }}</p>
+                @enderror
+                <br>
+                <input name="telephone" type="text"
+                       class="w-full h-12 border border-gray-800 rounded px-3 @error('telephone') border-red-500 @enderror"
+                       placeholder="Телефон"
+                       value="{{Auth::user()->telephone}}"
+                />
+
+                @error('telephone')
+                <p class="text-red-500">{{ $message }}</p>
+                @enderror
+                <br>
+                <button id="save_user_info" class="button">
+                    Сохранить изменения
+                </button>
+            <h3>
+                Ваша персональная скидка: {{$discount}} %
+            </h3>
+                <br>
                 <a href="{{route('logout')}}">
                     <button class="hero__button button">
                         Выйти
                     </button>
                 </a>
-                <h2>Личные данные</h2>
-                <p>{{$user->name}}</p>
-                <form>
-                    <img src="/storage/users/{{$user->avatar}}" alt=""
-                         width="150`" height="150" id="user_avatar" loading="lazy"
-                    >
-                    <br>
-                    <label style="cursor: pointer" for="user_img">Изменить фото</label>
-                    <input onchange="doAfterSelectImage(this)" type="file" style="display: none" id="user_img" name="avatar">
-{{--                    --}}{{--                <label for="file">Выбрать фото</label>--}}
-{{--                    <input name="image" id="load_avatar" type="file"></input>--}}
-                    {{--                <button class="button" id="load_avatar">Обновить фото</button>--}}
-                </form>
                 <h2>Мои заказы</h2>
                 @foreach($orders as $order)
                     <h3>Заказ №{{$order->id}}</h3>

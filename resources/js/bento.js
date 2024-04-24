@@ -3,17 +3,17 @@ $(document).ready(function () {
 
     inCartOrNot();
     let price = document.getElementById('price').innerText;
-    let new_price;
+    //let new_price;
 
     $("input[name='count']").change(function () {
-        var weight = $(this).val();
-
-        if(weight==='400') {
-            new_price = price*1;
-        }
-        else if (weight==='800') {
-            new_price = price*2;
-        }
+        // var weight = $(this).val();
+        //
+        // if(weight==='400') {
+        //     new_price = price*1;
+        // }
+        // else if (weight==='800') {
+        //     new_price = price*2;
+        // }
         inCartOrNot();
         //document.getElementById('price').innerText = new_price;
     });
@@ -51,10 +51,39 @@ $(document).ready(function () {
 
     });
 
+    function total_price() {
+        let weight = document.querySelector('input[name="count"]:checked').value;
+        let weight_ratio;
+        if (weight === '400') {
+            weight_ratio = 1;
+        } else if (weight === '800') {
+            weight_ratio = 2;
+        }
+        let biscuit_id = document.querySelector('input[name="biscuit"]:checked').value;
+        let fill_id = document.querySelector('input[name="fill"]:checked');
+        if (fill_id == null) {
+            fill_id = 'null';
+        } else
+            fill_id = fill_id.value;
+        console.log(fill_id);
+        $.ajax({
+            url: 'bento_total_price/' + biscuit_id + fill_id,
+            type: 'get',
+            data: {
+                "biscuit_id": biscuit_id,
+                "fill_id": fill_id
+
+            },
+            success: function (response) {
+                console.log(price * weight_ratio * response.taste_ratio);
+                let total_price = (Math.round(price * weight_ratio * response.taste_ratio*10)/10).toString();
+                document.getElementById('addToCart').innerHTML = 'Купить за &nbsp<span id="price">{{$price}}</span>&nbsp BYN';
+                document.getElementById('price').innerText = total_price;
+            }
+        })
+    }
 
     function inCartOrNot() {
-
-
         let id;
         let pieces = 1;
         let biscuit_id = null;
@@ -89,16 +118,7 @@ $(document).ready(function () {
                     document.getElementById('addToCart').innerHTML = 'Перейти в корзину&nbsp<span id="price"></span>&nbsp';
                     $('#addToCart').addClass('goToCart');
                 } else {
-                    document.getElementById('addToCart').innerHTML = 'Купить за &nbsp<span id="price">{{$price}}</span>&nbsp BYN';
-                    let new_weight = document.querySelector('input[name="count"]:checked').value;
-                    if(new_weight==='400') {
-                        new_price = price*1;
-                    }
-                    else if (new_weight==='800') {
-                        new_price = price*2;
-                    }
-                    console.log(new_price);
-                    document.getElementById('price').innerText = new_price;
+                    total_price();
                     $('#addToCart').removeClass('goToCart');
 
 
@@ -111,7 +131,6 @@ $(document).ready(function () {
     $('.selected_fill').on('click', function () {
         inCartOrNot();
     });
-
 
 
     $('#addToCart').on('click', function (e) {

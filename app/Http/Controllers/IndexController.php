@@ -15,7 +15,7 @@ class IndexController extends Controller
         $reviews = DB::table('reviews')
             ->orderBy('created_at', 'desc')
             ->join('users', 'users.id', '=', 'reviews.user_id')
-            ->select('reviews.review as review', 'reviews.created_at as created_at', 'users.name as name')
+            ->select('reviews.review as review', 'reviews.created_at as created_at', 'users.name as name', 'users.avatar as avatar')
             ->get();
 
         //dd(session()->getId());

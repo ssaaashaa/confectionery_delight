@@ -61,7 +61,11 @@
             <div class="reviews">
                 @foreach($reviews as $review)
                     <div class="review">
-                        <div>{{$review->name}}<br>
+                        <div>
+                            <img src="/storage/users/{{$review->avatar}}" alt=""
+                                 width="150`" height="150" id="user_avatar" loading="lazy"
+                            >
+                            {{$review->name}}<br>
                        {{$review->review}}<br>
                         {{date('d.m.Y', strtotime($review->created_at))}}</div>
                     </div>

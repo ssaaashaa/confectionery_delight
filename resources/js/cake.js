@@ -4,23 +4,54 @@ $(document).ready(function () {
     $('.selected_biscuit').first().prop('checked', true);
 
     let price = document.getElementById('cake_price').innerText;
+    price = parseInt(price)/2;
+    total_price();
+    inCartOrNot();
+
+    function total_price() {
+
+        let biscuit_id = document.querySelector('input[name="biscuit"]:checked').value;
+        let fill_id = document.querySelector('input[name="fill"]:checked');
+        if (fill_id == null) {
+            fill_id = 'null';
+        } else
+            fill_id = fill_id.value;
+
+        let design_id = document.querySelector('input[name="design"]:checked').value;
+        let weight = document.getElementById('cake_weight').innerText;
+
+        $.ajax({
+            url: 'total_price/'+design_id+biscuit_id+fill_id,
+            type: 'get',
+            data: {
+                "biscuit_id": biscuit_id,
+                "fill_id": fill_id,
+                "design_id": design_id
+            },
+            // dataType: 'json',
+            success: function (response) {
+                console.log(price * weight * response.taste_ratio * response.design_ratio);
+                let total_price = (Math.round(price * weight * response.taste_ratio * response.design_ratio*10)/10).toString();
+                document.getElementById('cake_price').innerText = total_price;
+            }
+        })
+    }
+
 
     $("input[name='design']").change(function () {
         inCartOrNot();
     });
 
     $("input[name='count']").change(function () {
+        let weight;
         var tiers_count = $(this).val();
         document.querySelectorAll('.tier').forEach(function (img, index) {
             if (index >= 4 - tiers_count) {
                 img.style.opacity = 1;
-                //$(this).css('display', 'none');
             } else {
                 img.style.opacity = 0.05;
             }
         });
-
-        let weight;
         if (tiers_count === '1') {
             weight = 2;
         } else if (tiers_count === '2') {
@@ -31,7 +62,7 @@ $(document).ready(function () {
             weight = 13;
         }
         document.getElementById('cake_weight').innerText = weight;
-        document.getElementById('cake_price').innerText = (parseInt(price) * weight).toString();
+        //document.getElementById('cake_price').innerText = (parseInt(price)/2 * weight).toString();
         inCartOrNot();
     });
 
@@ -120,8 +151,6 @@ $(document).ready(function () {
 
 
     function inCartOrNot() {
-
-
         let id;
         let pieces = 1;
         let biscuit_id = null;
@@ -153,6 +182,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 // alert(response);
+                total_price();
                 if (response) {
                     document.getElementById('addToCart').innerHTML = 'Перейти в корзину';
                     $('#addToCart').addClass('goToCart');

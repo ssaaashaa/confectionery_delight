@@ -25,19 +25,20 @@ Route::get('/catalog-{product_category_id}/{id}', [\App\Http\Controllers\Catalog
 Route::get('/catalog-{product_category_id}/getFills/{id}', [\App\Http\Controllers\CatalogController::class, 'getFills'])->name('fills');
 Route::get('/catalog-{product_category_id}/addToCart/{id}', [\App\Http\Controllers\CatalogController::class, 'addToCart'])->name('addToCart');
 Route::get('/catalog-{product_category_id}/inCartOrNot/{id}', [\App\Http\Controllers\CatalogController::class, 'inCartOrNot'])->name('inCartOrNot');
+Route::get('/catalog-{product_category_id}/total_price/{id}', [\App\Http\Controllers\CatalogController::class, 'total_price'])->name('total_price');
 
 Route::get('/cake', [\App\Http\Controllers\CakeController::class, 'index'])->name('cake.index');
 Route::get('/getFills/{id}', [\App\Http\Controllers\CakeController::class, 'getFills'])->name('cake-fills');
 Route::get('/getTasteImg/{id}', [\App\Http\Controllers\CakeController::class, 'getTasteImg']);
 Route::get('/addToCart/{id}', [\App\Http\Controllers\CakeController::class, 'addToCart']);
 Route::get('/inCartOrNot/{id}', [\App\Http\Controllers\CakeController::class, 'inCartOrNot']);
-Route::post('/upload', [\App\Http\Controllers\CakeController::class, 'upload']);
+Route::get('/total_price/{id}', [\App\Http\Controllers\CakeController::class, 'total_price']);
 
 Route::get('/bento-box', [\App\Http\Controllers\BentoController::class, 'index'])->name('bento.index');
 Route::get('/bentoGetFills/{id}', [\App\Http\Controllers\BentoController::class, 'getFills'])->name('bento-fills');
 Route::get('/bentoAddToCart/{id}', [\App\Http\Controllers\BentoController::class, 'addToCart']);
 Route::get('/bentoInCartOrNot/{id}', [\App\Http\Controllers\BentoController::class, 'inCartOrNot']);
-
+Route::get('/bento_total_price/{id}', [\App\Http\Controllers\BentoController::class, 'total_price']);
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::get('/cart/delete', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
@@ -46,7 +47,8 @@ Route::post('/cart/order_process', [\App\Http\Controllers\CartController::class,
 
 Route::get('/account', [\App\Http\Controllers\AccountController::class, 'index'])->name('account.index');
 Route::post('/review_process', [\App\Http\Controllers\AccountController::class, 'review'])->name('review_process');
-//Route::get('/load_avatar/{id}', [\App\Http\Controllers\AccountController::class, 'load_avatar'])->name('load_avatar');
+Route::post('/load_avatar', [\App\Http\Controllers\AccountController::class, 'load_avatar'])->name('load_avatar');
+    Route::get('/update_user_info', [\App\Http\Controllers\AccountController::class, 'update_user_info'])->name('update_user_info');
 
 Route::middleware("auth")->group(function (){
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

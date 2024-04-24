@@ -20,7 +20,7 @@
         <div>
             <div class="radio_btn">
                 <input id="radio-6" value="6" type="radio" name="count" checked class="selected_count">
-                <label class="selected_count"  for="radio-6">6
+                <label class="selected_count" for="radio-6">6
                     шт.</label>
             </div>
             <div class="radio_btn">

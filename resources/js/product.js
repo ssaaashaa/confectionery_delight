@@ -43,6 +43,32 @@ $(document).ready(function () {
 
     });
 
+    function total_price() {
+        let product_count = document.querySelector('input[name="count"]:checked').value;
+        let biscuit_id = document.querySelector('input[name="biscuit"]:checked').value;
+        let fill_id = document.querySelector('input[name="fill"]:checked');
+        if (fill_id == null) {
+            fill_id = 'null';
+        } else
+            fill_id = fill_id.value;
+        console.log(fill_id);
+        $.ajax({
+            url: 'total_price/'+biscuit_id+fill_id,
+            type: 'get',
+            data: {
+                "biscuit_id": biscuit_id,
+                "fill_id": fill_id
+
+            },
+            // dataType: 'json',
+            success: function (response) {
+                console.log(one_product_price * product_count * response.taste_ratio);
+                let total_price = (Math.round(one_product_price * product_count * response.taste_ratio*10)/10).toString();
+                document.getElementById('addToCart').innerHTML = 'Купить за &nbsp<span id="count">{{ $price*$product->ratio}}</span>&nbsp BYN';
+                document.getElementById('count').innerText = total_price;
+            }
+        })
+    }
 
     function inCartOrNot() {
 
@@ -50,8 +76,8 @@ $(document).ready(function () {
         //let one = document.getElementById('count').innerText;
         let checked = document.querySelector('input[name="count"]:checked');
         // alert(checked.value);
-        let price = one_product_price * checked.value;
-       // document.getElementById('count').innerText = price.toString();
+        //let price = one_product_price * checked.value;
+        // document.getElementById('count').innerText = price.toString();
 
         let biscuit_id = null;
         let fill_id = null;
@@ -75,7 +101,7 @@ $(document).ready(function () {
             fill_id = fill_id.value;
 
         id = pieces + biscuit_id + fill_id + design_id;
-       // alert(id);
+        // alert(id);
 
         $.ajax({
             url: 'inCartOrNot/' + id,
@@ -85,13 +111,12 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (response) {
-                 // alert(response);
+                // alert(response);
                 if (response) {
                     document.getElementById('addToCart').innerHTML = 'Перейти в корзину';
                     $('#addToCart').addClass('goToCart');
                 } else {
-                    document.getElementById('addToCart').innerHTML = 'Купить за &nbsp<span id="count">{{ $price*$product->ratio}}</span>&nbsp BYN';
-                    document.getElementById('count').innerText = price.toString();
+                    total_price();
                     $('#addToCart').removeClass('goToCart');
 
 

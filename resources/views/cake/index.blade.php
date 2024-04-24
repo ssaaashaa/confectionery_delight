@@ -84,11 +84,9 @@
                 </h2>
                 <p>
                     Выберете максимально подходящий дизайн торта, который вам
-                    понравился. Если вы не нашли ничего подходящего, вы можете прикрепить свой желаемый дизайн!
+                    понравился. Если вы хотите внести изменения - напишите об этом при оформлении заказа!
                 </p>
                 <h3>Загрузить свой дизайн</h3>
-                <form action="{{'upload'}}" method="POST" enctype="multipart/form-data">
-                    @csrf
 
                     <div class="form-group">
                         <input type="file" name="image">
@@ -103,7 +101,7 @@
                             <div class="cake_design">
                                 <img width="250" height="auto" loading="lazy" src="/storage/designs/{{$design->img}}" alt="">
                                 <div class="radio_btn">
-                                    <input id="design-{{$design->id}}" type="radio" name="design" value="{{$design->id}}">
+                                    <input id="design-{{$design->id}}" type="radio" name="design" value="{{$design->id}}" checked>
                                     <label class="selected_design" for="design-{{$design->id}}">✔</label>
                                 </div>
                                 <p>
@@ -114,8 +112,7 @@
                     </div>
                 <br>
                 <br>
-                <button id="addToCart" class="button" type="submit">Добавить в корзину</button>
-                </form>
+                <button id="addToCart" class="button" >Добавить в корзину</button>
                 <br>
                 <br>
 

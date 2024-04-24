@@ -29,30 +29,12 @@ class CatalogController extends Controller
 
     }
 
-//    public function getDesigns(Request $request)
-//    {
-//        //var_dump('get_designs');
-//
-//        $product_category_id = ProductCategory::where('name',$request->product_category_name)
-//        ->get();
-//        $product_category_price = $product_category_id[0]->price;
-//        $product_category_id = $product_category_id[0]->id;
-//        $this->index($product_category_id);
-//        $products = Design::where('design_category_id', $request->design_category_id)
-//            ->where('product_category_id', $product_category_id)
-//            ->get();
-//        dd($products);
-//        return response()->json(["products"=>$products, "price" =>$product_category_price]);
-//    }
 
     public function show($product_category_id, $id)
     {
         //сам продукт и его описание
         $category = ProductCategory::findOrFail($product_category_id);
         $product = Design::findOrFail($id);
-
-//        //а тут уже параметры (вкус, бисквит)
-//        $biscuits = Biscuit::all();
         $fills = Fill::all();
         $biscuits = $this->getBiscuits();
 
@@ -78,6 +60,25 @@ class CatalogController extends Controller
         $fills = json_decode($fills);
         //dd($fills);
         return response()->json($fills);
+    }
+
+    public function total_price(Request $request) {
+
+        if ($request->fill_id == "null") {
+            $taste = DB::table('taste_combinations')
+                ->where('biscuit_id',  $request -> biscuit_id)
+                ->whereNull('fill_id')
+                ->get();
+        } else if ($request->fill_id != "null") {
+            $taste = DB::table('taste_combinations')
+                ->where('biscuit_id', $request -> biscuit_id)
+                ->where('fill_id', $request->fill_id)
+                ->get();
+        }
+        $taste_ratio = $taste[0]->ratio;
+        return ["taste_ratio" => $taste_ratio];
+
+
     }
 
     public function inCartOrNot(Request $request)

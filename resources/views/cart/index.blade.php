@@ -6,6 +6,9 @@
             <h1>
                 Корзина
             </h1>
+            @auth('web')
+                <h3>Скидка: {{$discount}}%</h3>
+            @endauth
             @if(count($cart_products))
                 @foreach ($cart_products as $key => $product)
                     <div id="cart">
@@ -26,7 +29,7 @@
                             </div>
                         </div>
                         <p>Цена: &nbsp<span
-                                id="{{$product['id']}}-price">{{$product['price']*$product['quantity']}}</span>&nbspBYN
+                                id="{{$product['id']}}-price">{{round($product['price']*$product['quantity'], 2)}}</span>&nbspBYN
                         </p>
                         <p>Вкус: {{$product['biscuit']}}</p>
                         <p>Начинка: {{$product['fill']}}</p>
@@ -75,7 +78,16 @@
                     <p>Ваши пожелания</p>
                     <textarea name="comment" style="width: 400px"
                               placeholder="Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить. Мы все учтем. ">Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить.</textarea>
-                    <p id="cart_total" name="total_cost">Итого: <span>{{$cart_total}} BYN</span></p>
+                    <p id="cart_total" name="total_cost">Итого: <span>{{$cart_total}} BYN</span>
+                    </p>
+                    @auth('web')
+                    @if($discount!=0)
+                    <p>*с учетом персональной скидки</p>
+                    @endif
+                    @if($orders_count === 0)
+                        <p>*с учетом скидки за первый заказ</p>
+                    @endif
+                    @endauth
                     <button type="submit" class="button">Оформить заказ</button>
                     <br>
                     <br>
