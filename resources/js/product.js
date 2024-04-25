@@ -72,26 +72,16 @@ $(document).ready(function () {
 
     function inCartOrNot() {
 
-        //тут чтобы сразу полная цена отображалась
-        //let one = document.getElementById('count').innerText;
         let checked = document.querySelector('input[name="count"]:checked');
-        // alert(checked.value);
-        //let price = one_product_price * checked.value;
-        // document.getElementById('count').innerText = price.toString();
-
         let biscuit_id = null;
         let fill_id = null;
         let design_id = null;
         let pieces;
-        // let price = 0;
         let id;
         biscuit_id = document.querySelector('input[name="biscuit"]:checked');
         fill_id = document.querySelector('input[name="fill"]:checked');
-        console.log(fill_id);
         pieces = document.querySelector('input[name="count"]:checked');
         design_id = document.getElementById('addToCart').value;
-        //price = document.getElementById('count').innerText;
-
         biscuit_id = biscuit_id.value;
         pieces = pieces.value;
 
@@ -101,7 +91,6 @@ $(document).ready(function () {
             fill_id = fill_id.value;
 
         id = pieces + biscuit_id + fill_id + design_id;
-        // alert(id);
 
         $.ajax({
             url: 'inCartOrNot/' + id,

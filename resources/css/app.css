@@ -183,9 +183,10 @@ svg * {
   --border-radio-button: 1px solid var(--color-accent);
   --border-raduis-button: 10px;
   --font-family-base: "Montserrat";
+  --font-family-accent: "Leotaro";
   --container-width: 1110px;
   --container-padding-x: 20px;
-  --section-padding-y: 70px;
+  --section-padding-y: 60px;
   --input-height: 40px;
   --button-height: 47px;
   --transition-duration: 0.2s;
@@ -223,7 +224,7 @@ svg * {
 }
 
 body {
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: clamp(14px, 1.125vw, 18px);
   font-family: var(--font-family-base);
   font-weight: 400;
   line-height: 1.28;
@@ -360,6 +361,33 @@ h2 {
   height: 1px;
   background-color: var(--color-accent);
   transition-duration: inherit;
+}
+
+.section {
+  padding-block: var(--section-padding-y);
+}
+
+.hero__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  column-gap: 30px;
+}
+.hero__body {
+  max-width: 467px;
+  max-height: 453px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.hero__title {
+  margin: 30px 0 45px 0;
+}
+.hero__slogan {
+  font-size: 14px;
+  font-family: var(--font-family-accent);
+  color: var(--color-accent);
+  margin-top: 120px;
 }
 
 /*# sourceMappingURL=app.css.map */
