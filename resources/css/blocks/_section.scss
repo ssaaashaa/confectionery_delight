@@ -1,3 +1,18 @@
 .section {
     padding-block: var(--section-padding-y);
+
+    &--hidden-x {
+        overflow-x: hidden;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 70px;
+
+        @include mobile {
+            margin-bottom: 35px;
+        }
+    }
 }

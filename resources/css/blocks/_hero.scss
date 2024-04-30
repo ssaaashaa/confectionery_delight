@@ -3,7 +3,16 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        column-gap: 30px;
+
+        @include tablet {
+            margin-bottom: 75px;
+        }
+
+        @include mobile {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
     }
 
     &__body {
@@ -12,17 +21,60 @@
         display: flex;
         flex-direction: column;
         align-items: start;
+
+        @include mobile {
+            display: contents;
+        }
+    }
+
+    &__description {
+        p {
+            font-size: 18px;
+        }
+        @include mobile {
+            order: -4;
+        }
     }
 
     &__title {
         margin: 30px 0 45px 0;
+        @include mobile {
+            order: -3;
+            margin: 15px 0 40px 0;
+
+        }
+    }
+
+
+    &__button {
+        @include mobile {
+            order: -2;
+        }
     }
 
     &__slogan {
-        font-size: 14px;
+        font-size: 16px;
         font-family: var(--font-family-accent);
         color: var(--color-accent);
         margin-top: 120px;
+        @include mobile {
+            margin-top: 35px;
+        }
+    }
 
+    &__image {
+        @include tablet {
+            max-width: 55%;
+            height: auto;
+        }
+
+        @include mobile {
+            order: -1;
+            max-width: 90%;
+            align-self: flex-end;
+            margin-top: 70px;
+        }
     }
 }
+
+

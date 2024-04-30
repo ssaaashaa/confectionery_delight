@@ -1,0 +1,44 @@
+.review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    height: 100%;
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 25px;
+        height: 100%;
+    }
+
+    &__details {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__name, &__text {
+        text-align: center;
+        color: var(--color-light);
+    }
+
+    &__name {
+        font-size: 22px;
+
+        @include mobile {
+            font-size: 18px;
+        }
+    }
+
+    &__date {
+        text-align: end;
+        margin-top: 15px;
+        font-size: 15px;
+        opacity: 0.5;
+    }
+
+
+}

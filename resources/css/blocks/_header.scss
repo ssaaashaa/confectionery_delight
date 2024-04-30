@@ -1,19 +1,18 @@
 .header {
-    padding-top: 25px;
+    padding: 25px 0 40px 0;
 
     &__inner {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        column-gap: 100px;
+        column-gap: 15px;
     }
 
 
-    &__menu, &__extra {
-        margin-left: auto;
+    &__menu {
         font-size: 15px;
 
-        &-list{
+        &-list {
             display: flex;
             align-items: center;
             column-gap: 20px;
@@ -45,5 +44,34 @@
             }
         }
 
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__extra {
+        font-size: 15px;
+        &-list {
+            display: flex;
+            flex-direction: row;
+            column-gap: 55px;
+            align-items: center;
+        }
+
+        &-link {
+            position: relative;
+            height: 25px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        @include tablet {
+            margin-left: auto;
+            column-gap: 45px;
+        }
+
+        @include mobile {
+            display: none;
+        }
     }
 }

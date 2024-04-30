@@ -19,7 +19,7 @@
                  width="110" height="40" loading="lazy">
         </a>
         <nav class="header__menu">
-            <ul class="header__menu-list hidden-mobile">
+            <ul class="header__menu-list hidden-tablet">
                 <li class="header__menu-item">
                     <a href="{{route('home')}}" class="header__menu-link">Каталог</a>
                 </li>
@@ -41,25 +41,23 @@
             </ul>
         </nav>
         <div class="header__extra">
-            <ul class="header__menu-extra">
-                <li class="header__menu-item">
-                    <a href="" class="header__menu-link">
+            <ul class="header__extra-list">
+                <li class="header__extra-item">
+                    <a href="" class="header__extra-link">
                         +375 (29)132-63-72
                     </a>
                     <p>
                         с 9:00 до 21:00
                     </p>
                 </li>
-                <li class="header__menu-item">
-                    <a href="{{route('cart.index')}}" class="header__menu-link">
+                <li class="header__extra-item">
+                    <a href="{{route('cart.index')}}" class="header__extra-link">
                         <img src="/storage/img/basket.svg"
                              alt="DELIGHT"
                              class="menu-item__image"
                              width="21" height="22" loading="lazy">
                     </a>
-                </li>
-                <li class="header__menu-item">
-                    <a href="{{route('account.index')}}" class="header__menu-link">
+                    <a href="{{route('account.index')}}" class="header__extra-link">
                         <img src="/storage/img/user.svg"
                              alt="DELIGHT"
                              class="menu-item__image"
@@ -68,9 +66,9 @@
                 </li>
             </ul>
         </div>
-        <button class="button__burger-menu burger-button visible-mobile"
+        <button class="button__burger-menu burger-button visible-tablet"
                 type="button"
-                onclick="mobileOverlay.showModal()">
+                onclick="tabletOverlay.showModal()">
             <span class="visually-hidden">Open navigation menu</span>
         </button>
     </div>
@@ -82,7 +80,7 @@
 <footer class="footer">
 
 </footer>
-<dialog class="mobile-overlay visible-mobile" id="mobileOverlay">
+<dialog class="mobile-overlay visible-tablet" id="tabletOverlay">
     <form action="" class="mobile-overlay__close-button-wrapper cross-button" method="dialog">
         <button class="mobile-overlay__close-button"
                 type="submit"></button>

@@ -28,3 +28,18 @@
         display: none !important;
     }
 }
+
+.hidden-tablet {
+    @include tablet {
+        display: none !important;
+    }
+}
+
+.visible-tablet {
+    @include tablet-above {
+        display: none !important;
+    }
+}
+
+::-webkit-scrollbar { width: 0;} // чтобы скрыть полосу прокрутки
+

@@ -1,0 +1,33 @@
+.categories {
+    &__list &__item:nth-child(odd) {
+
+        padding-right: 95px;
+        justify-content: flex-end;
+
+        .category-card__title {
+            text-align: end;
+        }
+
+        @include tablet {
+            padding-right: 0px;
+        }
+    }
+
+    &__list &__item:nth-child(even) {
+        padding-left: 95px;
+
+        .category-card {
+            @include mobile {
+                flex-direction: column-reverse;
+            }
+        }
+
+        .category-card__title {
+            text-align: start;
+        }
+
+        @include tablet {
+            padding-left: 0px;
+        }
+    }
+}

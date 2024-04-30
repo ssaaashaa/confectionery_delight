@@ -17,8 +17,6 @@ class IndexController extends Controller
             ->join('users', 'users.id', '=', 'reviews.user_id')
             ->select('reviews.review as review', 'reviews.created_at as created_at', 'users.name as name', 'users.avatar as avatar')
             ->get();
-
-        //dd(session()->getId());
         return view('welcome', ['reviews' => $reviews]);
 
     }
