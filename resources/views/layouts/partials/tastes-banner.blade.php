@@ -15,7 +15,7 @@
                             Дегустация проходит по субботам и воскресеньям.
                         </span>
             </div>
-            <a href="">
+            <a href="{{route('tasting.index')}}">
                 <button class="banner__button button">
                     Записаться на дегустацию
                 </button>

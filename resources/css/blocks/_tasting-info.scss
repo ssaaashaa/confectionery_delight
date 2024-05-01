@@ -1,0 +1,50 @@
+.tasting-info {
+
+    &__description p, &__time p{
+        @include fluid-text(16,14);
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 60px;
+    text-align: center;
+    padding: 0 150px;
+    margin-bottom: 80px;
+
+    @include mobile-s {
+        margin-bottom: 70px;
+    }
+
+    @include tablet {
+        padding: 0 80px;
+    }
+
+    @include mobile {
+        padding: 0 20px;
+        row-gap: 50px;
+    }
+
+    @include  mobile-s {
+        padding: 0 0;
+    }
+
+    &__time {
+        display: flex;
+        flex-direction: row;
+        column-gap: 15px;
+        align-items: center;
+    }
+
+    &__details {
+        padding: 25px 40px;
+        border-radius: var(--border-raduis-button);
+        background-color: var(--color-bg-input);
+        width: fit-content;
+        @include fluid-text(18,15);
+
+        @include mobile {
+            padding: 15px 20px;
+        }
+    }
+}

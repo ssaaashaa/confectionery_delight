@@ -1,8 +1,40 @@
 @extends('layouts.app', ['title' => 'DELIGHT | Дегустация'])
 
 @section('content')
-    <section class="section container">
+    <div class="section container">
         <div class="section__body">
+            <div class="tasting-info">
+                <div class="tasting-info__description">
+                    <p>
+                        Для того, чтобы подобрать идеальную начинку Вашего
+                        будущего торта, мы предлагаем дегустационный сет, чтобы Вы смогли сделать уверенный выбор и заранее знали
+                        вкус Вашего торта.
+                    </p>
+                    <p>
+                        Как правило, для дегустации предоставляется определенный и каждый
+                        раз разный набор начинок. Если у Вас есть определенные пожелания -
+                        мы обязательно учтем их.
+                    </p>
+                </div>
+                <div class="tasting-info__time">
+                    <img src="/storage/img/clock.svg"
+                         alt=""
+                         width="35" height="35" loading="lazy">
+                    <p>
+                        Наш администратор работает с 10 до 18.
+                        <br>
+                        Со вторника по субботу.
+                    </p>
+                </div>
+                <span class="tasting-info__details">
+                    Дегустация осуществляется по предварительной записи и проходит по субботам-воскресееньям.
+                </span>
+            </div>
+            <header class="section__header">
+                <h2 class="section__title">
+                    Запись на дегустацию
+                </h2>
+            </header>
             <div class="tasting">
                 <form method="POST" action="{{route("tasting_process")}}" class="tasting__form">
                     @csrf
@@ -13,7 +45,7 @@
                             <input name="name" class="field__input" id="name"
                                    required autocomplete="off"
                                    @auth("web") value="{{Auth::user()->name}}" @endauth
-                            placeholder="Имя">
+                                   placeholder="Имя">
                             @error('name')
                             <p>{{ $message }}</p>
                             @enderror
@@ -35,7 +67,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </div>
 @endsection
 
 

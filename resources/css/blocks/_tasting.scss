@@ -1,17 +1,25 @@
 .tasting {
     display: flex;
     justify-content: center;
-    padding: 45px 40px  ;
     background-color: var(--color-bg-dark);
     border-radius: var(--border-raduis-form);
-    width: fit-content;
     margin: auto;
-    width: 450px;
+    padding: 25px 15px;
+
+    @include mobile-s-above {
+        width: 480px;
+        padding: 45px 40px  ;
+    }
 
     &__form {
         display: flex;
         flex-direction: column;
-        row-gap: 45px;
+        row-gap: 35px;
+
+        @include mobile-s-above {
+            row-gap: 45px;
+        }
+
         align-items: center;
         width: 100%;
     }
@@ -22,5 +30,8 @@
         flex-direction: column;
         row-gap: 25px;
 
+        @include mobile-s {
+            row-gap: 20px;
+        }
     }
 }
