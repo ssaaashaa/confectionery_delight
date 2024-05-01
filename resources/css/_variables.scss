@@ -5,14 +5,17 @@
     --color-light: #FFFFFF;
     --color-accent: #EACAA1;
     --color-bg-button: #EACAA1;
+    --color-bg-dark: #160F10;
+    --color-bg-input: rgba(217, 217, 217, 0.15);
 
     --border-button: 1px solid var(--color-light);
     --border-button-hover: 1px solid var(--color-accent);
     --border-radio-button: 1px solid var(--color-accent);
     --border: 1px solid var(--color-accent);
     --border-raduis-button: 10px;
-
+    --border-raduis-form: 10px;
     --border-radius-banner: 20px;
+    --border-radius-input: 5px;
 
     --font-family-base: 'Montserrat';
     --font-family-accent: 'Leotaro';

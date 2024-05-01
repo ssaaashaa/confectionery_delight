@@ -1,0 +1,26 @@
+.tasting {
+    display: flex;
+    justify-content: center;
+    padding: 45px 40px  ;
+    background-color: var(--color-bg-dark);
+    border-radius: var(--border-raduis-form);
+    width: fit-content;
+    margin: auto;
+    width: 450px;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 45px;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+
+    }
+}

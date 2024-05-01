@@ -14,4 +14,15 @@
         cursor: pointer;
     }
 
+    &--accent {
+        border: var(--border);
+        @include hover {
+            border: var(--border-button);
+            color: var(--color-light);
+        }
+    }
+
+
 }
+
+

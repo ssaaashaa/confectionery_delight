@@ -8,6 +8,7 @@
     <title>{{$title}}</title>
     <link rel="stylesheet" href="/css/app.css"></link>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 </head>
 <body class="page">
 <header class="header">
@@ -28,6 +29,9 @@
                 </li>
                 <li class="header__menu-item">
                     <a href="{{route('presentation.index')}}" class="header__menu-link">Презентация</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="{{route('tasting.index')}}" class="header__menu-link">Дегустация</a>
                 </li>
                 <li class="header__menu-item">
                     <a href="" class="header__menu-link">FAQ</a>

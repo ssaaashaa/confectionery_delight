@@ -178,12 +178,16 @@ svg * {
   --color-light: #FFFFFF;
   --color-accent: #EACAA1;
   --color-bg-button: #EACAA1;
+  --color-bg-dark: #160F10;
+  --color-bg-input: rgba(217, 217, 217, 0.15);
   --border-button: 1px solid var(--color-light);
   --border-button-hover: 1px solid var(--color-accent);
   --border-radio-button: 1px solid var(--color-accent);
   --border: 1px solid var(--color-accent);
   --border-raduis-button: 10px;
+  --border-raduis-form: 10px;
   --border-radius-banner: 20px;
+  --border-radius-input: 5px;
   --font-family-base: "Montserrat";
   --font-family-accent: "Leotaro";
   --container-width: 1110px;
@@ -252,7 +256,7 @@ svg * {
 }
 
 html {
-  height: max-content;
+  height: fit-content;
 }
 
 body {
@@ -299,6 +303,24 @@ p {
   font-size: clamp(14px, 0.9375vw, 15px);
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 5px;
+  font-size: clamp(14px, 1vw, 16px);
+}
+.field__input {
+  width: 100%;
+  height: var(--input-height);
+  color: var(--color-light);
+  padding-inline: 20px;
+  border: var(--border);
+  border-radius: var(--border-radius-input);
+  background-color: var(--color-bg-input);
+  font-size: clamp(12px, 0.875vw, 14px);
+}
+
 .button {
   display: inline-flex;
   justify-content: center;
@@ -321,6 +343,21 @@ p {
   .button:active {
     border: var(--border-button-hover);
     cursor: pointer;
+  }
+}
+.button--accent {
+  border: var(--border);
+}
+@media (hover: hover) {
+  .button--accent:hover {
+    border: var(--border-button);
+    color: var(--color-light);
+  }
+}
+@media (hover: none) {
+  .button--accent:active {
+    border: var(--border-button);
+    color: var(--color-light);
   }
 }
 
@@ -460,7 +497,7 @@ p {
 .header__extra-list {
   display: flex;
   flex-direction: row;
-  column-gap: 55px;
+  column-gap: 25px;
   align-items: center;
 }
 .header__extra-link {
@@ -881,6 +918,30 @@ p {
   border-right: 10px solid transparent;
   border-top: 10px solid var(--color-accent);
   rotate: var(--rotate);
+}
+
+.tasting {
+  display: flex;
+  justify-content: center;
+  padding: 45px 40px;
+  background-color: var(--color-bg-dark);
+  border-radius: var(--border-raduis-form);
+  width: fit-content;
+  margin: auto;
+  width: 450px;
+}
+.tasting__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 45px;
+  align-items: center;
+  width: 100%;
+}
+.tasting__body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
 }
 
 /*# sourceMappingURL=app.css.map */

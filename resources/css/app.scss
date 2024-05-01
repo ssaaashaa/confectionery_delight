@@ -6,7 +6,8 @@
 'utils',
 'globals';
 
-@import 'blocks/button',
+@import 'blocks/field',
+'blocks/button',
 'blocks/grid',
 'blocks/input',
 'blocks/header',
@@ -17,4 +18,5 @@
 'blocks/banner',
 'blocks/reviews',
 'blocks/review-card',
-'blocks/question-answer';
+'blocks/question-answer',
+'blocks/tasting';

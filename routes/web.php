@@ -17,6 +17,7 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('
 
 Route::get('/menu', [\App\Http\Controllers\MenuController::class, 'index'])->name('menu');
 Route::get('/presentation', [\App\Http\Controllers\PresentationController::class, 'index'])->name('presentation.index');
+Route::get('/tasting', [\App\Http\Controllers\TastingController::class, 'index'])->name('tasting.index');
 Route::post('/presentation_process', [\App\Http\Controllers\FeedbackRequestController::class, 'presentation'])->name('presentation_process');
 Route::post('/tasting_process', [\App\Http\Controllers\FeedbackRequestController::class, 'tasting'])->name('tasting_process');
 

@@ -1,0 +1,18 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 5px;
+    @include fluid-text(16, 14);
+
+    &__input {
+        width: 100%;
+        height: var(--input-height);
+        color: var(--color-light);
+        padding-inline: 20px;
+        border: var(--border);
+        border-radius: var(--border-radius-input);
+        background-color: var(--color-bg-input);
+        @include fluid-text(14, 12);
+    }
+}
