@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-    $('.selected_category').on('click', function () {
+    $('.design-categories__selected').on('click', function () {
         var design_category_id = $(this).attr('value');
 
-        $('.catalog-product').each(function () {
+        $('.items__item').each(function () {
             let product_category_id = $(this).attr('id');
             if (product_category_id === design_category_id) {
                 $(this).css('display', 'block');

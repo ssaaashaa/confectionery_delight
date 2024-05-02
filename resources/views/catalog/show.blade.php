@@ -18,17 +18,17 @@
             <div>Количество</div>
             <br>
         <div>
-            <div class="radio_btn">
+            <div class="input">
                 <input id="radio-6" value="6" type="radio" name="count" checked class="selected_count">
                 <label class="selected_count" for="radio-6">6
                     шт.</label>
             </div>
-            <div class="radio_btn">
+            <div class="input">
                 <input id="radio-9" value="9" type="radio" name="count" class="selected_count">
                 <label class="selected_count"  for="radio-9">9
                     шт.</label>
             </div>
-            <div class="radio_btn">
+            <div class="input">
                 <input id="radio-12" value="12" type="radio" name="count" class="selected_count">
                 <label class="selected_count"  for="radio-12">12
                     шт.</label>
@@ -39,7 +39,7 @@
             <br>
         <div>
             @foreach($biscuits as $biscuit)
-                <div class="radio_btn">
+                <div class="input">
                     <input id="{{$biscuit->id}}" type="radio" name="biscuit" class="selected_biscuit" value="{{$biscuit->id}}">
                     <label for="{{$biscuit->id}}">{{$biscuit->name}}</label>
                 </div>
@@ -50,7 +50,7 @@
             <br>
         <div>
             @foreach($fills as $fill)
-                <div class="radio_btn">
+                <div class="input">
                     <input id="fill-{{$fill->id}}" type="radio" name="fill" class="selected_fill" disabled value="{{$fill->id}}">
                     <label  for="fill-{{$fill->id}}">{{$fill->name}}</label>
                 </div>

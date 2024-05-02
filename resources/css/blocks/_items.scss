@@ -1,0 +1,13 @@
+.items {
+
+    &__list {
+        @include desktop {
+            --gridColumns: 3;
+        }
+
+        @include mobile {
+            --gridColumns: 2;
+            gap: 20px;
+        }
+    }
+}

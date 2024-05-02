@@ -1,17 +1,16 @@
-.radio_btn {
+.input {
     display: inline-block;
-    margin-right: 15px;
-    margin-bottom: 15px;
 }
 
-.radio_btn input[type=radio] {
+.input input[type=radio] {
     display: none;
 }
 
-.radio_btn label {
+.input label {
+    width: max-content;
     display: inline-block;
     cursor: pointer;
-    padding: 0px 30px;
+    padding: 0 30px;
     line-height: 45px;
     border: 1px solid #EACAA1;
     border-radius: 6px;
@@ -19,16 +18,14 @@
     font-size: 14px;
     font-weight: 500;
     transition: 0.2s all;
-
 }
 
-.radio_btn input[type=radio]:checked+label {
+.input input[type=radio]:checked+label {
     background: #EACAA1;
     color: rgb(0, 0, 0);
 }
 
-.radio_btn label:hover {
+.input label:hover {
     color: #eacaa1a0;
     transition: 0.2s all;
-
 }

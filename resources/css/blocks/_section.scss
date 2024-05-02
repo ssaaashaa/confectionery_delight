@@ -11,6 +11,10 @@
         justify-content: center;
         margin-bottom: 70px;
 
+        &-start {
+            justify-content: flex-start;
+        }
+
         @include mobile {
             margin-bottom: 35px;
         }
