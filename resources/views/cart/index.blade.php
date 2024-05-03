@@ -2,101 +2,140 @@
 
 @section('content')
     <section class="section container">
-        <div class="section__body">
-            <h1>
+        <header class="section__header section__header-start">
+            <h2 class="section__title">
                 Корзина
-            </h1>
-            @auth('web')
-                <h3>Скидка: {{$discount}}%</h3>
-            @endauth
+            </h2>
+        </header>
+        <div class="section__body">
             @if(count($cart_products))
-                @foreach ($cart_products as $key => $product)
-                    <div id="cart">
-                        <img src="/storage/designs/{{$product['design']}}" alt="" class="hero__image"
-                             width="200" height="200" loading="lazy"
-                        >
-                        @if(array_key_exists('weight', $product))
-                            <p>Ярусы: {{$product['pieces']}}</p>
-                            <p>Вес: {{$product['weight']}}</p>
-                        @else
-                            <p>Количество: {{$product['pieces']}}</p>
-                        @endif
-                        <div>
-                            <div id='counter'>
-                                <button class="removeQunatity" id="removeQunatity" value="{{$product['id']}}">-</button>
-                                <span id='{{$product['id']}}-quantity'>{{$product['quantity']}}</span>
-                                <button class="addQunatity" id="addQunatity" value="{{$product['id']}}">+</button>
-                            </div>
-                        </div>
-                        <p>Цена: &nbsp<span
-                                id="{{$product['id']}}-price">{{round($product['price']*$product['quantity'], 2)}}</span>&nbspBYN
-                        </p>
-                        <p>Вкус: {{$product['biscuit']}}</p>
-                        <p>Начинка: {{$product['fill']}}</p>
-                        <button class="button deleteFromCart" id="{{$product['id']}}">Удалить</button>
-                        <hr style="height: 1px; fill: #EACAA1">
+                <div class="cart">
+                    <div class="cart__items">
+                        <ul class="cart__list">
+                            @foreach ($cart_products as $key => $product)
+                                <li class="cart__item">
+                                    <div class="cart-item">
+                                        <img src="/storage/designs/{{$product['design']}}" alt="" class="cart-item__image"
+                                             width="200" height="200" loading="lazy"
+                                        >
+                                        <div class="cart-item__body">
+                                            <div class="cart-item__title">
+                                                <span>
+{{--                                                    {{$product['name']}}--}}
+                                                </span>
+                                                <div class="cart-item__price">
+                                                    <span
+                                                            id="{{$product['id']}}-price">{{round($product['price']*$product['quantity'], 2)}}</span> BYN
+
+                                                </div>
+                                            </div>
+                                            <div class="cart-item__count">
+                                                <div class="cart-item__pieces">
+                                                    @if(array_key_exists('weight', $product))
+                                                        <p>Ярусы: {{$product['pieces']}}</p>
+                                                        <p>Вес: {{$product['weight']}}</p>
+                                                    @else
+                                                        <p>Количество: {{$product['pieces']}}</p>
+                                                    @endif
+                                                </div>
+                                                <div class="cart-item__counter" id="counter">
+                                                    <button class="removeQunatity button--no-style" id="removeQunatity" value="{{$product['id']}}">-</button>
+                                                    <span id='{{$product['id']}}-quantity' class="cart-item__quantity">{{$product['quantity']}}</span>
+                                                    <button class="addQunatity button--no-style" id="addQunatity" value="{{$product['id']}}">+</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="cart-item__taste">
+                                        <span>
+                                            Вкус: {{$product['biscuit']}}
+                                        </span>
+                                                <span>
+                                            Начинка: {{$product['fill']}}
+                                        </span>
+                                            </div>
+                                        </div>
+                                        <button class="button deleteFromCart" id="{{$product['id']}}">Удалить</button>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
-                @endforeach
-                <form method="POST" action="{{route("order_process")}}">
-                    @csrf
+                    <div class="order">
+                        <form method="POST" action="{{route("order_process")}}" class="order__form">
+                            @csrf
 
-                    @if(!(Auth::user()))
-                        <input name="name" type="text"
-                               class="w-full h-12 border border-gray-800 rounded px-3 @error('name') border-red-500 @enderror"
-                               placeholder="Ваше имя"
-                        />
+                            <div class="order__body">
+                                @if(!(Auth::user()))
 
-                        @error('name')
-                        <p class="text-red-500">{{ $message }}</p>
-                        @enderror
-                        <br>
-                        <br>
-                        <input name="telephone" type="text"
-                               class="w-full h-12 border border-gray-800 rounded px-3 @error('telephone') border-red-500 @enderror"
-                               placeholder="Ваш телефон"
-                        />
-                        @error('telephone')
-                        <p class="text-red-500">{{ $message }}</p>
-                        @enderror
-                        <br>
-                        <br>
-                        <input name="email" type="text"
-                               class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror"
-                               placeholder="Ваш e-mail"/>
+                                    <div class="order__field field">
+                                        <input name="name" class="field__input" id="name"
+                                               required autocomplete="off"
+                                               @auth("web") value="{{Auth::user()->name}}" @endauth
+                                               placeholder="Имя">
+                                        @error('name')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="order__field field">
+                                        <input name="telephone" class="field__input phone-mask" id="telephone"
+                                               type="tel" required autocomplete="off"
+                                               @auth("web") value="{{Auth::user()->telephone}}" @endauth
+                                               placeholder="Номер телефона">
+                                        @error('telephone')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="order__field field">
+                                        <input name="email" class="field__input" id="email"
+                                               type="email" required autocomplete="off"
+                                               @auth("web") value="{{Auth::user()->email}}" @endauth
+                                               placeholder="Ваш e-mail">
+                                        @error('email')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                @endif
+                                <div class="order__field field">
+                                    <label class="field__label" for="date">Выберите дату, когда вам будет удобно забрать
+                                        заказ:*</label>
+                                    <input name="date" class="field__input" id="date"
+                                           type="date" required autocomplete="off">
+                                    @error('telephone')
+                                    <p>{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="order__field field">
+                                    <label class="field__label" for="comment">Ваши пожелания</label>
+                                    <textarea name="comment" class="field__input" id="comment"
+                                              placeholder="Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить. Мы все учтем. ">
+                                </textarea>
+                                    @error('telephone')
+                                    <p>{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="order__total">
+                                    <p id="cart_total" name="total_cost">Итого: <span>{{$cart_total}} BYN</span></p>
+                                    @auth('web')
+                                        @if($discount!=0)
+                                            <span>*с учетом персональной скидки</span>
+                                        @endif
+                                        @if($orders_count === 0)
+                                            <span>*с учетом скидки за первый заказ</span>
+                                        @endif
+                                    @endauth
+                                </div>
+                                <button type="submit" class="button">Оформить заказ</button>
 
-                        @error('email')
-                        <p class="text-red-500">{{ $message }}</p>
-                        @enderror
-                    @endif
-
-                    <br>
-                    <br>
-                    <p>Выберите дату, когда вам будет удобно забрать заказ: </p>
-                    <input name="date" type="date"/>
-                    <br>
-                    <br>
-                    <p>Ваши пожелания</p>
-                    <textarea name="comment" style="width: 400px"
-                              placeholder="Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить. Мы все учтем. ">Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить.</textarea>
-                    <p id="cart_total" name="total_cost">Итого: <span>{{$cart_total}} BYN</span>
-                    </p>
-                    @auth('web')
-                    @if($discount!=0)
-                    <p>*с учетом персональной скидки</p>
-                    @endif
-                    @if($orders_count === 0)
-                        <p>*с учетом скидки за первый заказ</p>
-                    @endif
-                    @endauth
-                    <button type="submit" class="button">Оформить заказ</button>
-                    <br>
-                    <br>
-                </form>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             @else
-                <p>Корзина пуста</p>
+                <p>В корзине еще нет товаров</p>
             @endif
         </div>
     </section>
+    @include("layouts.partials.discount-banner")
 
     <script src="/js/cart.js"></script>
 @endsection

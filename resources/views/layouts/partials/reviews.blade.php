@@ -29,9 +29,6 @@
                     </li>
                 @endforeach
             </ul>
-            {{--                <div id="pagination">--}}
-            {{--                    {{$reviews->links()}}--}}
-            {{--                </div>--}}
         </div>
     </div>
 </section>

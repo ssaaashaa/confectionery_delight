@@ -1,0 +1,28 @@
+.order {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 275px;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 35px;
+        justify-content: flex-start;
+
+        @include mobile-s-above {
+            row-gap: 45px;
+        }
+    }
+
+    &__body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+
+        @include mobile-s {
+            row-gap: 20px;
+        }
+    }
+}

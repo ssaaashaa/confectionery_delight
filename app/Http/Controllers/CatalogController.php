@@ -37,12 +37,19 @@ class CatalogController extends Controller
         $product = Design::findOrFail($id);
         $fills = Fill::all();
         $biscuits = $this->getBiscuits();
+        $reviews = DB::table('reviews')
+            ->orderBy('created_at', 'desc')
+            ->join('users', 'users.id', '=', 'reviews.user_id')
+            ->select('reviews.review as review', 'reviews.created_at as created_at', 'users.name as name', 'users.avatar as avatar')
+            ->get();
+
 
         return view('catalog.show', [
             "product" => $product,
             "price" => $category->price,
             "biscuits" => $biscuits,
             "fills" => $fills,
+            'reviews' => $reviews
         ]);
     }
 

@@ -33,22 +33,8 @@
                     @endforeach
                 </ul>
             </div>
-{{--            <div class="design_categories ">--}}
-{{--                <div class="radio_btn">--}}
-
-{{--                </div>--}}
-{{--                @foreach($design_categories as $design_category)--}}
-{{--                    <div class="radio_btn">--}}
-{{--                        <input id="design_category-{{$design_category->id}}" type="radio" class="selected_category"--}}
-{{--                               name="design_category" value="product-{{$design_category->id}}">--}}
-{{--                        <label for="design_category-{{$design_category->id}}">{{$design_category->name}}</label>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-
-{{--            </div>--}}
         </div>
     </section>
-    {{--    {{$category->name}}--}}
     @if ($category->name === "Капкейки")
         <section class="section container">
             <header class="section__header">

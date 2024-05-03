@@ -8,6 +8,7 @@
     background: transparent;
     border: var(--border-button);
     border-radius: var(--border-raduis-button);
+    width: fit-content;
 
     @include hover {
         border: var(--border-button-hover);
@@ -22,6 +23,20 @@
         }
     }
 
+    &--bold {
+        font-weight: 500;
+    }
+
+    &--no-style {
+        background: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--color-accent);
+        }
+    }
 
 }
 

@@ -31,6 +31,7 @@
         </div>
     </section>
     @include("layouts.partials.discount-banner")
+    @include("layouts.partials.presentation-banner")
     <section class="section container">
         <header class="section__header">
             <h2 class="section__title">

@@ -1,0 +1,59 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    row-gap: 30px;
+    justify-content: space-between;
+
+    @include mobile {
+        flex-direction: column;
+    }
+
+    @include tablet {
+        column-gap: 40px;
+    }
+
+    &__image {
+
+        @include tablet {
+            width: 300px;
+            height: 300px;
+        }
+
+        @include mobile-s {
+            width: 320px;
+            height: auto;
+        }
+
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 45px;
+
+        @include tablet {
+            row-gap: 40px;
+        }
+
+        @include mobile {
+            row-gap: 25px;
+        }
+
+        overflow-x: hidden;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+
+        @include tablet {
+            row-gap: 25px;
+        }
+
+        @include mobile {
+            row-gap: 20px;
+        }
+    }
+}

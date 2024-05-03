@@ -12,20 +12,31 @@
     cursor: pointer;
     padding: 0 30px;
     line-height: 45px;
-    border: 1px solid #EACAA1;
     border-radius: 6px;
     user-select: none;
     font-size: 14px;
     font-weight: 500;
     transition: 0.2s all;
+    background-color: var(--color-bg-input);
+
 }
 
 .input input[type=radio]:checked+label {
     background: #EACAA1;
     color: rgb(0, 0, 0);
+    border: 1px solid #EACAA1;
+
 }
 
 .input label:hover {
     color: #eacaa1a0;
     transition: 0.2s all;
+}
+
+.input input[type=radio]:disabled+label {
+    &:hover {
+        color: white;
+        cursor: not-allowed;
+    }
+    opacity: 0.4;
 }

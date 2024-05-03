@@ -173,5 +173,23 @@ $(document).ready(function () {
 
     });
 
+// // /*Плавающая кнопка*/
+//     $(window).scroll(function(){
+//         let windowTop = $(window).scrollTop();
+//         let windowHeight = $(window).height();
+//         let elementTop = $('#addToCart').offset().top;
+//         let elementHeight = $('#addToCart').outerHeight();
+//         let documentHeight = $(document).height();
+//         if (windowTop + windowHeight >= elementTop || windowHeight + windowTop == documentHeight || elementHeight + elementTop < windowHeight){
+//             console.log('Кнопка');
+//             $('#addToCart').css('position', 'inherit');
+//             $('#addToCart').css('transform', 'translate(0, 0');
+//         }
+//         else {
+//             $('#addToCart').css('position', 'fixed');
+//             $('#addToCart').css('bottom', '50px');
+//         }
+//     });
+
 
 });

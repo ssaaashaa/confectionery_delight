@@ -1,0 +1,12 @@
+.cart {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 50px;
+
+    &__items {
+        flex: 1;
+    }
+
+
+
+}
