@@ -13,11 +13,9 @@
                         увеличивается на 2.5% с каждым новым заказом!
                     </p>
                 </div>
-                <a href="{{route('account.index')}}">
-                    <button class="banner__button button">
+                    <button class="banner__button button register-button">
                         Зарегистрироваться
                     </button>
-                </a>
             </div>
             <img src="/storage/img/discount-banner.svg" alt="" class="banner__image hidden-mobile"
                  loading="lazy">

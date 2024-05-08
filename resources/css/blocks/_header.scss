@@ -1,5 +1,5 @@
 .header {
-    padding: 25px 0 40px 0;
+    padding: 25px 0 25px 0;
 
     @include mobile-s {
         padding: 20px 0 20px 0;
@@ -55,11 +55,18 @@
 
     &__extra {
         font-size: 15px;
+
         &-list {
             display: flex;
             flex-direction: row;
             column-gap: 25px;
             align-items: center;
+        }
+
+        &-item--none {
+            @include mobile {
+                display: none;
+            }
         }
 
         &-link {
@@ -74,8 +81,6 @@
             column-gap: 45px;
         }
 
-        @include mobile {
-            display: none;
-        }
+
     }
 }

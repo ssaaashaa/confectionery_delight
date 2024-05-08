@@ -1,0 +1,61 @@
+.login, .register {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 35px;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    padding: 45px 40px;
+    border-radius: var(--border-raduis-auth-form);
+    background-color: var(--color-bg-dark);
+    z-index: 150;
+
+    &__close {
+        margin-left: auto;
+    }
+
+
+    &__title {
+       h2 {
+           margin: 0;
+       }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+    }
+
+    &__forgot {
+        margin-left: auto;
+        font-size: 14px;
+
+        @include hover {
+            color: var(--color-accent);
+        }
+    }
+
+    &__button {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    &__register, &__login {
+        text-align: center;
+        @include fluid-text(16, 14);
+
+
+        span {
+            color: var(--color-accent);
+            @include fluid-text(16, 14);
+            @include hover {
+                color: var(--color-light);
+                cursor: pointer;
+            }
+        }
+    }
+}

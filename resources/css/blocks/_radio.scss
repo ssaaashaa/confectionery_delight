@@ -1,0 +1,40 @@
+.radio {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
+
+    &__input {
+        &:not(:checked) + .radio__emulator::after {
+            opacity: 0;
+        }
+    }
+
+    &__label {
+        @include fluid-text(16, 14);
+    }
+
+    &__emulator {
+        @include flex-center;
+        @include square(20px);
+
+        position: relative;
+        border: var(--border);
+        border-radius: 50%;
+
+        &::after {
+
+            @include square(35%);
+
+            content: '';
+            background-color: var(--color-accent);
+            border-radius: inherit;
+            transition-duration: var(--transition-duration);
+        }
+    }
+}

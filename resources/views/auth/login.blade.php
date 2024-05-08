@@ -1,37 +1,35 @@
-@extends('layouts.app', ['title' => 'DELIGHT | Регистрация'])
-
-@section('content')
-    <section class="section container">
-    <div class="h-screen bg-white flex flex-col space-y-10 justify-center items-center">
-        <div class="bg-white w-96 shadow-xl rounded p-5">
-            <h1 class="text-3xl font-medium">Вход</h1>
-
-            <form method="POST" action="{{ route("login_process") }}" class="space-y-5 mt-5">
-                @csrf
-
-                <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />
-
-                @error('email')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <input name="password" type="password" class="w-full h-12 border border-gray-800 rounded px-3 @error('password') border-red-500 @enderror" placeholder="Пароль" />
-
-                @error('password')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <div>
-                    <a href="{{route("forgot")}}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Забыли пароль?</a>
-                </div>
-
-                <div>
-                    <a href="{{ route("register") }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Регистрация</a>
-                </div>
-
-                <button type="submit" class="text-center w-full bg-blue-900 rounded-md text-white py-3 font-medium">Войти</button>
-            </form>
-        </div>
+<div class="login @if(!$errors->any())visually-hidden"@endif>
+    <button class="cross-button login__close auth-close">
+        <span class="visually-hidden">Закрыть</span>
+    </button>
+    <div class="login__title">
+                <h2>
+                    Вход
+                </h2>
     </div>
-    </section>
-@endsection
+    <form method="POST" action="{{ route("login_process") }}" class="login__form" >
+        @csrf
+
+        <div class="order__field field">
+            <input name="email" class="field__input" id="email"
+                   type="email" required autocomplete="off"
+                   placeholder="Ваш e-mail">
+            @error('email')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="order__field field">
+            <input name="password" class="field__input" id="password"
+                   type="password" required autocomplete="disabled"
+                   placeholder="Ваш пароль">
+            <a href="{{route("forgot")}}" class="login__forgot">Забыли пароль?</a>
+            @error('password')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <button class="button login__button" type="submit">Войти</button>
+    </form>
+    <div class="login__register">
+        Еще нет аккаунта? <a class="register-button"><span>Регистрация</span></a>
+    </div>
+</div>

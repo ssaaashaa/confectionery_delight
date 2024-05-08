@@ -175,6 +175,7 @@ svg * {
   --color-gradient: linear-gradient(#030303, #2E1D1F, #030303);
   --color-dark: #2E1D1F;
   --color-dark-transparent: rgba(5, 4, 4, 0.2);
+  --color-light-transparent: rgba(255,255,255, 0.2);
   --color-light: #FFFFFF;
   --color-accent: #EACAA1;
   --color-bg-button: #EACAA1;
@@ -186,8 +187,10 @@ svg * {
   --border: 1px solid var(--color-accent);
   --border-raduis-button: 10px;
   --border-raduis-form: 10px;
+  --border-radius-auth-form: 20px;
   --border-radius-banner: 20px;
   --border-radius-input: 5px;
+  --border-cart: 1px solid var(--color-light-transparent);
   --font-family-base: "Montserrat";
   --font-family-accent: "Leotaro";
   --container-width: 1110px;
@@ -225,6 +228,10 @@ svg * {
   clip-path: inset(100%) !important;
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
@@ -353,6 +360,7 @@ p {
   border: var(--border-button);
   border-radius: var(--border-raduis-button);
   width: fit-content;
+  outline: none;
 }
 @media (hover: hover) {
   .button:hover {
@@ -389,9 +397,46 @@ p {
   border: none;
   color: white;
   cursor: pointer;
+  outline: none;
 }
 .button--no-style:hover {
   color: var(--color-accent);
+}
+
+.cross-button {
+  outline: none;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity ease 0.5s;
+}
+@media (hover: hover) {
+  .cross-button:hover {
+    opacity: 1;
+  }
+}
+@media (hover: none) {
+  .cross-button:active {
+    opacity: 1;
+  }
+}
+.cross-button::before, .cross-button::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--color-light);
+}
+.cross-button::before {
+  transform: rotate(45deg);
+}
+.cross-button::after {
+  transform: rotate(-45deg);
 }
 
 .grid {
@@ -484,7 +529,7 @@ p {
 }
 
 .header {
-  padding: 25px 0 40px 0;
+  padding: 25px 0 25px 0;
 }
 @media (max-width: 480px) {
   .header {
@@ -546,6 +591,11 @@ p {
   column-gap: 25px;
   align-items: center;
 }
+@media (max-width: 767px) {
+  .header__extra-item--none {
+    display: none;
+  }
+}
 .header__extra-link {
   position: relative;
   height: 25px;
@@ -558,10 +608,15 @@ p {
     column-gap: 45px;
   }
 }
-@media (max-width: 767px) {
-  .header__extra {
-    display: none;
-  }
+
+.dark-bg {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 100;
+  backdrop-filter: blur(4px);
 }
 
 .section {
@@ -1250,12 +1305,16 @@ p {
 .cart__items {
   flex: 1;
 }
+.cart__item:not(:last-child) {
+  border-bottom: var(--border-cart);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+}
 
 .cart-item {
   display: flex;
   flex-direction: row;
   column-gap: 20px;
-  padding-bottom: 40px;
 }
 .cart-item__body {
   display: flex;
@@ -1292,6 +1351,11 @@ p {
   row-gap: 15px;
   font-size: 16px;
 }
+.cart-item__price p {
+  font-size: clamp(16px, 1.125vw, 18px);
+  inline-size: max-content;
+  text-align: center;
+}
 
 .order {
   display: flex;
@@ -1319,6 +1383,143 @@ p {
 @media (max-width: 480px) {
   .order__body {
     row-gap: 20px;
+  }
+}
+.order__total p {
+  font-size: clamp(16px, 1.125vw, 18px);
+  font-weight: 500;
+  text-align: end;
+  margin-bottom: 0;
+}
+.order__total span:nth-child(2) {
+  float: right;
+  font-size: clamp(14px, 1vw, 16px);
+}
+.order__button {
+  width: 100%;
+}
+.order__textarea {
+  outline: none;
+  width: 100%;
+  padding: 15px 20px;
+  height: 100px;
+  resize: none;
+}
+.order__textarea::placeholder {
+  color: var(--color-light);
+  opacity: 0.3;
+}
+
+.radios {
+  display: flex;
+  justify-content: space-around;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+  transition-duration: var(--transition-duration);
+}
+@media (hover: hover) {
+  .radio:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+}
+@media (hover: none) {
+  .radio:active {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+}
+.radio__input:not(:checked) + .radio__emulator::after {
+  opacity: 0;
+}
+.radio__label {
+  font-size: clamp(14px, 1vw, 16px);
+}
+.radio__emulator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  aspect-ratio: 1;
+  position: relative;
+  border: var(--border);
+  border-radius: 50%;
+}
+.radio__emulator::after {
+  width: 35%;
+  aspect-ratio: 1;
+  content: "";
+  background-color: var(--color-accent);
+  border-radius: inherit;
+  transition-duration: var(--transition-duration);
+}
+
+.login, .register {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  padding: 45px 40px;
+  border-radius: var(--border-raduis-auth-form);
+  background-color: var(--color-bg-dark);
+  z-index: 150;
+}
+.login__close, .register__close {
+  margin-left: auto;
+}
+.login__title h2, .register__title h2 {
+  margin: 0;
+}
+.login__form, .register__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+.login__forgot, .register__forgot {
+  margin-left: auto;
+  font-size: 14px;
+}
+@media (hover: hover) {
+  .login__forgot:hover, .register__forgot:hover {
+    color: var(--color-accent);
+  }
+}
+@media (hover: none) {
+  .login__forgot:active, .register__forgot:active {
+    color: var(--color-accent);
+  }
+}
+.login__button, .register__button {
+  margin-top: 15px;
+  width: 100%;
+}
+.login__register, .login__login, .register__register, .register__login {
+  text-align: center;
+  font-size: clamp(14px, 1vw, 16px);
+}
+.login__register span, .login__login span, .register__register span, .register__login span {
+  color: var(--color-accent);
+  font-size: clamp(14px, 1vw, 16px);
+}
+@media (hover: hover) {
+  .login__register span:hover, .login__login span:hover, .register__register span:hover, .register__login span:hover {
+    color: var(--color-light);
+    cursor: pointer;
+  }
+}
+@media (hover: none) {
+  .login__register span:active, .login__login span:active, .register__register span:active, .register__login span:active {
+    color: var(--color-light);
+    cursor: pointer;
   }
 }
 

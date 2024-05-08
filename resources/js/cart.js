@@ -39,7 +39,7 @@ $(document).ready(function () {
                 success: function (response) {
                     //console.log(response);
                     document.getElementById('cart_total').innerText = 'Итого: ' + response.cart_total +' BYN';
-                    document.getElementById(product_id+'-price').innerText = response.update_amount_of_product;
+                    document.getElementById(product_id+'-price').innerText = response.update_amount_of_product + ' BYN';
 
                 }
             })
@@ -68,11 +68,24 @@ $(document).ready(function () {
                 success: function (response) {
                     //console.log(response);
                     document.getElementById('cart_total').innerText = 'Итого: ' + response.cart_total +' BYN';
-                    document.getElementById(product_id+'-price').innerText = response.update_amount_of_product;
+                    document.getElementById(product_id+'-price').innerText = response.update_amount_of_product + ' BYN';
 
                 }
             })
         });
     }
     updateCart();
+
+    $("input[name='delivery-type']").change(function () {
+        let delivery_type = $(this).val();
+        if (delivery_type === 'Доставка') {
+            $('#delivery_field').removeClass('visually-hidden');
+            $('#delivery_address').addClass('visually-hidden');
+        }
+        else  {
+            $('#delivery_field').addClass('visually-hidden');
+            $('#delivery_address').removeClass('visually-hidden');
+
+        }
+    });
 });

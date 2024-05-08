@@ -1,52 +1,60 @@
-@extends('layouts.app', ['title' => 'DELIGHT | Регистрация'])
-
-@section('content')
-    <section class="section container">
-
-    <div class="h-screen bg-white flex flex-col space-y-10 justify-center items-center">
-        <div class="bg-white w-96 shadow-xl rounded p-5">
-            <h1 class="text-3xl font-medium">Регистрация</h1>
-
-            <form action="{{ route("register_process") }}" class="space-y-5 mt-5" method="POST">
-                @csrf
-
-                <input name="name" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('name') border-red-500 @enderror" placeholder="Имя" />
-
-                @error('name')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />
-
-                @error('email')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <input name="telephone" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Телефон" />
-
-                @error('telephone')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <input name="password" type="password" class="w-full h-12 border border-gray-800 rounded px-3 @error('password') border-red-500 @enderror" placeholder="Пароль" />
-
-                @error('password')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <input name="password_confirmation" type="password" class="w-full h-12 border border-gray-800 rounded px-3 @error('password_confirmation') border-red-500 @enderror" placeholder="Подтверждение пароля" />
-
-                @error('password_confirmation')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <div>
-                    <a href="{{ route("login") }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Есть аккаунт?</a>
-                </div>
-
-                <button type="submit" class="text-center w-full bg-blue-900 rounded-md text-white py-3 font-medium">Зарегистрироваться</button>
-            </form>
-        </div>
+<div class="register visually-hidden">
+    <button class="cross-button register__close auth-close">
+        <span class="visually-hidden">Закрыть</span>
+    </button>
+    <div class="register__title">
+        <h2>
+            Регистрация
+        </h2>
     </div>
-    </section>
-@endsection
+    <form action="{{ route("register_process") }}" class="register__form" method="POST">
+        @csrf
+
+        <div class="order__field field">
+            <input name="name" class="field__input" id="name"
+                   required autocomplete="off"
+                   readonly onfocus="this.removeAttribute('readonly');"
+                   placeholder="Имя">
+            @error('name')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="order__field field">
+            <input name="telephone" class="field__input phone-mask" id="telephone"
+                   type="tel" required autocomplete="disabled"
+                   placeholder="Номер телефона">
+            @error('telephone')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="order__field field">
+            <input name="email" class="field__input" id="email"
+                   type="email" required autocomplete="disabled"
+                   placeholder="Ваш e-mail">
+            @error('email')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="order__field field">
+            <input name="password" class="field__input" id="password"
+                   type="password" required autocomplete="disabled"
+                   placeholder="Ваш пароль">
+            @error('password')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <div class="order__field field">
+            <input name="password_confirmation" class="field__input"
+                   type="password" required autocomplete="disabled"
+                   @auth("web") value="{{Auth::user()->email}}" @endauth
+                   placeholder="Подтвердите пароль">
+            @error('password_confirmation')
+            <p>{{ $message }}</p>
+            @enderror
+        </div>
+        <button type="submit" class="button register__button">Зарегистрироваться</button>
+    </form>
+    <div class="register__login">
+        Еесть аккаунт? <a class="login-button"><span>Войти</span></a>
+    </div>
+</div>

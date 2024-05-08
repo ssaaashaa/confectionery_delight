@@ -7,6 +7,14 @@
         flex: 1;
     }
 
+    &__item {
+
+        &:not(:last-child) {
+            border-bottom: var(--border-cart);
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+        }
+    }
 
 
 }

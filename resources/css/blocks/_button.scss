@@ -9,6 +9,7 @@
     border: var(--border-button);
     border-radius: var(--border-raduis-button);
     width: fit-content;
+    outline: none;
 
     @include hover {
         border: var(--border-button-hover);
@@ -32,6 +33,7 @@
         border: none;
         color: white;
         cursor: pointer;
+        outline: none;
 
         &:hover {
             color: var(--color-accent);

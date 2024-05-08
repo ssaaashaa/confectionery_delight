@@ -32,13 +32,10 @@ class AuthController extends Controller
             $id = Auth::user()->id;
             $carts = [$id => $cart];
             request()->session()->put('carts', $carts);
-
-           // request()->session()->forget('cart');
-          //  dd(request()->session());
-//            dd($carts);
             return redirect(route("home"));
         } else
-        return redirect(route("login"))->withErrors(["password"=>'Проверьте введенные данные']);
+//        return redirect(route("login"))->withErrors(["password"=>'Проверьте введенные данные']);
+        return redirect($request->headers->get('referer', '/'))->withErrors(["password"=>'Проверьте введенные данные']);
     }
 
     public function logout()

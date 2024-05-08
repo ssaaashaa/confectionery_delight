@@ -91,11 +91,9 @@
 
             @endauth
             @guest("web")
-                <a href="{{route('login')}}">
-                    <button class="hero__button button">
+                    <button class="hero__button button login-button">
                         Войти
                     </button>
-                </a>
             @endguest
         </div>
     </section>

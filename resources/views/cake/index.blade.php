@@ -116,7 +116,6 @@
                 <br>
                 <br>
 
-        @include("tasting.index")
     </section>
     <script src="/js/cake.js"></script>
 @endsection

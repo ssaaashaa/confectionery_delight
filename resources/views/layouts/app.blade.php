@@ -10,7 +10,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 </head>
-<body class="page">
+<body class="page  @if($errors->any())overflow-hidden @endif">
 <header class="header">
     <div class="header__inner container">
         <a href="/" class="header__logo logo">
@@ -43,12 +43,14 @@
         </nav>
         <div class="header__extra">
             <ul class="header__extra-list">
-                <li class="header__extra-item">
+                <li class="header__extra-item header__extra-item--none">
                     <a href="" class="header__extra-link">
                         +375 (29) 132-63-72
                     </a>
                     <p>
                         с 9:00 до 21:00
+                        @isset($errors)
+                        {{$errors}}
                     </p>
                 </li>
                 <li class="header__extra-item">
@@ -75,6 +77,10 @@
     </div>
 </header>
 <main class="content">
+    <div class="dark-bg @if(!$errors->any())visually-hidden" @endif id="dark-bg">
+        @include("auth.login")
+        @include("auth.register")
+    </div>
 
     @yield('content')
 </main>
