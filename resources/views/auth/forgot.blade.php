@@ -1,28 +1,28 @@
-@extends('layouts.app', ['title' => 'DELIGHT | Регистрация'])
-
-@section('content')
-    <section class="section container">
-    <div class="h-screen bg-white flex flex-col space-y-10 justify-center items-center">
-        <div class="bg-white w-96 shadow-xl rounded p-5">
-            <h1 class="text-3xl font-medium">Восстановление пароля</h1>
-
-            <form class="space-y-5 mt-5" method="POST" action="{{ route("forgot_process") }}">
-                @csrf
-
-                <input name="email" type="text" class="w-full h-12 border rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />
-
-                @error('email')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <div>
-                    <a href="{{ route("login") }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Вспомнил пароль</a>
-                </div>
-
-                <button type="submit" class="text-center w-full bg-blue-900 rounded-md text-white py-3 font-medium">Восстановить</button>
-            </form>
-        </div>
+<div class="forgot
+ @error('forgot')
+     @if($message===null)visually-hidden
+@endif
+@enderror">
+    <div class="forgot__title">
+        <h2>
+            Восстановление пароля
+        </h2>
     </div>
-    </section>
-@endsection
+        <form class="forgot__form" method="POST" action="{{ route("forgot_process") }}">
+            @csrf
 
+            <div class="order__field field">
+                <input name="email" class="field__input" id="email"
+                       type="email" required autocomplete="off"
+                       placeholder="Ваш e-mail">
+                @error('forgot')
+                <p>{{ $message }}</p>
+                @enderror
+            </div>
+            <button class="button forgot__button" type="submit">Восстановить</button>
+
+        </form>
+    <div class="forgot__login">
+        <a class="login-button">Вспомнил пароль</a>
+    </div>
+</div>

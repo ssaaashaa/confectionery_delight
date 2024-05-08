@@ -1,4 +1,12 @@
-<div class="register visually-hidden">
+<div class="register
+  @error('login')
+        @if($message) visually-hidden
+@endif
+@enderror
+ @error('forgot')
+     @if($message)visually-hidden
+@endif
+@enderror">
     <button class="cross-button register__close auth-close">
         <span class="visually-hidden">Закрыть</span>
     </button>
@@ -28,7 +36,7 @@
             @enderror
         </div>
         <div class="order__field field">
-            <input name="email" class="field__input" id="email"
+            <input name="email" class="field__input"
                    type="email" required autocomplete="disabled"
                    placeholder="Ваш e-mail">
             @error('email')
@@ -36,7 +44,7 @@
             @enderror
         </div>
         <div class="order__field field">
-            <input name="password" class="field__input" id="password"
+            <input name="password" class="field__input"
                    type="password" required autocomplete="disabled"
                    placeholder="Ваш пароль">
             @error('password')
@@ -55,6 +63,6 @@
         <button type="submit" class="button register__button">Зарегистрироваться</button>
     </form>
     <div class="register__login">
-        Еесть аккаунт? <a class="login-button"><span>Войти</span></a>
+        Есть аккаунт? <a class="login-button"><span>Войти</span></a>
     </div>
 </div>

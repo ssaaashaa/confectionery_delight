@@ -27,29 +27,22 @@ class AuthController extends Controller
         );
 
         if (auth("web")->attempt($data)) {
-
-            $cart = request()->session()->get('cart');
-            $id = Auth::user()->id;
-            $carts = [$id => $cart];
-            request()->session()->put('carts', $carts);
             return redirect(route("home"));
         } else
-//        return redirect(route("login"))->withErrors(["password"=>'Проверьте введенные данные']);
-        return redirect($request->headers->get('referer', '/'))->withErrors(["password"=>'Проверьте введенные данные']);
+        return redirect($request->headers->get('referer', '/'))->withErrors(["login"=>'Неверно введенные данные']);
     }
 
     public function logout()
     {
         auth("web")->logout();
-     //   \Session::getHandler()->destroy(session()->getId());
         request()->session()->forget('cart');
         return redirect(route("home"));
     }
 
-    public function showRegisterForm()
-    {
-        return view("auth.register");
-    }
+//    public function showRegisterForm()
+//    {
+//        return view("auth.register");
+//    }
 
     public function showForgotForm()
     {
@@ -60,19 +53,27 @@ class AuthController extends Controller
     {
         $data = $request->validate(
             [
-                "email" => ["required", "email", "string", "exists:users"],
+                "email" => ["required", "email", "string"],
             ]
         );
 
         $user = User::where(["email" => $data["email"]])->first();
 
-        $password = uniqid();
-        $user->password = bcrypt($password);
-        $user->save();
+        if(!$user) {
+            return redirect($request->headers->get('referer', '/'))->withErrors(["forgot"=>'Неверно введенная почта']);
+        } else {
+            $password = uniqid();
+            $user->password = bcrypt($password);
+            $user->save();
 
-        Mail::to($user)->send(new ForgotPassword($password));
+            Mail::to($user)->send(new ForgotPassword($password));
 
-        return redirect(route("home"));
+
+
+            return redirect($request->headers->get('referer', '/'));
+
+        }
+
 
     }
 
@@ -82,7 +83,7 @@ class AuthController extends Controller
             [
                 "name" => ["required", "string"],
                 "email" => ["required", "email", "string", "unique:users,email"],
-                "telephone" => ["required", "string"],
+                "telephone" => ["required", "string", "unique:users,telephone"],
                 "password" => ["required", "confirmed"]
             ]
         );
@@ -99,6 +100,6 @@ class AuthController extends Controller
             auth("web")->login($user);
         }
 
-        return redirect(route("home"));
+        return redirect($request->headers->get('referer', '/'));
     }
 }

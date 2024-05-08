@@ -7,6 +7,7 @@ $('.login-button').on('click', function ( ) {
     $('body').addClass('overflow-hidden');
     $('.register').addClass('visually-hidden');
     $('.login').removeClass('visually-hidden');
+    $('.forgot').addClass('visually-hidden');
 })
 
 $('.register-button').on('click', function ( ) {
@@ -21,5 +22,11 @@ $('.auth-close').on ('click', function () {
     $('#dark-bg').addClass('visually-hidden');
     $('.register').addClass('visually-hidden');
     $('.login').addClass('visually-hidden');
+})
+
+$('.forgot-button').on('click', function () {
+    $('.register').addClass('visually-hidden');
+    $('.login').addClass('visually-hidden');
+    $('.forgot').removeClass('visually-hidden');
 })
 

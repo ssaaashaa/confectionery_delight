@@ -1,15 +1,23 @@
-.login, .register {
+.login, .register, .forgot {
     width: 400px;
+
     margin: auto;
     display: flex;
     flex-direction: column;
     row-gap: 35px;
+
+    @include mobile-s {
+        width: 100%;
+        row-gap: 30px;
+        padding: 25px 20px;
+
+    }
     left: 50vw;
     top: 50vh;
     transform: translate(-50%, -50%);
     position: fixed;
     padding: 45px 40px;
-    border-radius: var(--border-raduis-auth-form);
+    border-radius: var(--border-radius-auth-form);
     background-color: var(--color-bg-dark);
     z-index: 150;
 
@@ -19,15 +27,19 @@
 
 
     &__title {
-       h2 {
-           margin: 0;
-       }
+        h2 {
+            margin: 0;
+        }
     }
 
     &__form {
         display: flex;
         flex-direction: column;
         row-gap: 25px;
+
+        @include mobile-s {
+            row-gap: 20px;
+        }
     }
 
     &__forgot {
@@ -36,6 +48,7 @@
 
         @include hover {
             color: var(--color-accent);
+            cursor: pointer;
         }
     }
 
@@ -48,7 +61,6 @@
         text-align: center;
         @include fluid-text(16, 14);
 
-
         span {
             color: var(--color-accent);
             @include fluid-text(16, 14);
@@ -57,5 +69,17 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+.forgot {
+    z-index: 120;
+}
+
+.login-button {
+
+    @include hover {
+        color: var(--color-accent);
+        cursor: pointer;
     }
 }

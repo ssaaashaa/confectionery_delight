@@ -10,7 +10,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 </head>
-<body class="page  @if($errors->any())overflow-hidden @endif">
+<body class="page @if(count($errors))overflow-hidden @endif">
 <header class="header">
     <div class="header__inner container">
         <a href="/" class="header__logo logo">
@@ -49,8 +49,6 @@
                     </a>
                     <p>
                         с 9:00 до 21:00
-                        @isset($errors)
-                        {{$errors}}
                     </p>
                 </li>
                 <li class="header__extra-item">
@@ -77,9 +75,10 @@
     </div>
 </header>
 <main class="content">
-    <div class="dark-bg @if(!$errors->any())visually-hidden" @endif id="dark-bg">
+    <div class="dark-bg @if(!$errors->any())visually-hidden @endif" id="dark-bg">
         @include("auth.login")
         @include("auth.register")
+        @include("auth.forgot")
     </div>
 
     @yield('content')

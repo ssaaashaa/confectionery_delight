@@ -1458,7 +1458,7 @@ p {
   transition-duration: var(--transition-duration);
 }
 
-.login, .register {
+.login, .register, .forgot {
   width: 400px;
   margin: auto;
   display: flex;
@@ -1469,56 +1469,87 @@ p {
   transform: translate(-50%, -50%);
   position: fixed;
   padding: 45px 40px;
-  border-radius: var(--border-raduis-auth-form);
+  border-radius: var(--border-radius-auth-form);
   background-color: var(--color-bg-dark);
   z-index: 150;
 }
-.login__close, .register__close {
+@media (max-width: 480px) {
+  .login, .register, .forgot {
+    width: 100%;
+    row-gap: 30px;
+    padding: 25px 20px;
+  }
+}
+.login__close, .register__close, .forgot__close {
   margin-left: auto;
 }
-.login__title h2, .register__title h2 {
+.login__title h2, .register__title h2, .forgot__title h2 {
   margin: 0;
 }
-.login__form, .register__form {
+.login__form, .register__form, .forgot__form {
   display: flex;
   flex-direction: column;
   row-gap: 25px;
 }
-.login__forgot, .register__forgot {
+@media (max-width: 480px) {
+  .login__form, .register__form, .forgot__form {
+    row-gap: 20px;
+  }
+}
+.login__forgot, .register__forgot, .forgot__forgot {
   margin-left: auto;
   font-size: 14px;
 }
 @media (hover: hover) {
-  .login__forgot:hover, .register__forgot:hover {
+  .login__forgot:hover, .register__forgot:hover, .forgot__forgot:hover {
     color: var(--color-accent);
+    cursor: pointer;
   }
 }
 @media (hover: none) {
-  .login__forgot:active, .register__forgot:active {
+  .login__forgot:active, .register__forgot:active, .forgot__forgot:active {
     color: var(--color-accent);
+    cursor: pointer;
   }
 }
-.login__button, .register__button {
+.login__button, .register__button, .forgot__button {
   margin-top: 15px;
   width: 100%;
 }
-.login__register, .login__login, .register__register, .register__login {
+.login__register, .login__login, .register__register, .register__login, .forgot__register, .forgot__login {
   text-align: center;
   font-size: clamp(14px, 1vw, 16px);
 }
-.login__register span, .login__login span, .register__register span, .register__login span {
+.login__register span, .login__login span, .register__register span, .register__login span, .forgot__register span, .forgot__login span {
   color: var(--color-accent);
   font-size: clamp(14px, 1vw, 16px);
 }
 @media (hover: hover) {
-  .login__register span:hover, .login__login span:hover, .register__register span:hover, .register__login span:hover {
+  .login__register span:hover, .login__login span:hover, .register__register span:hover, .register__login span:hover, .forgot__register span:hover, .forgot__login span:hover {
     color: var(--color-light);
     cursor: pointer;
   }
 }
 @media (hover: none) {
-  .login__register span:active, .login__login span:active, .register__register span:active, .register__login span:active {
+  .login__register span:active, .login__login span:active, .register__register span:active, .register__login span:active, .forgot__register span:active, .forgot__login span:active {
     color: var(--color-light);
+    cursor: pointer;
+  }
+}
+
+.forgot {
+  z-index: 120;
+}
+
+@media (hover: hover) {
+  .login-button:hover {
+    color: var(--color-accent);
+    cursor: pointer;
+  }
+}
+@media (hover: none) {
+  .login-button:active {
+    color: var(--color-accent);
     cursor: pointer;
   }
 }
