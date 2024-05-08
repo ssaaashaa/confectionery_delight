@@ -22,7 +22,7 @@
         <nav class="header__menu">
             <ul class="header__menu-list hidden-tablet">
                 <li class="header__menu-item">
-                    <a href="{{route('home')}}" class="header__menu-link">Каталог</a>
+                    <a href="{{route('home')}}#catalog" class="header__menu-link">Каталог</a>
                 </li>
                 <li class="header__menu-item">
                     <a href="{{route('menu')}}" class="header__menu-link">Меню в зале</a>
@@ -95,7 +95,7 @@
             <nav class="footer__menu">
                 <ul class="footer__menu-list">
                     <li class="footer__menu-item">
-                        <a href="{{route('home')}}" class="footer__menu-link">
+                        <a href="{{route('home')}}#catalog" class="footer__menu-link">
                             Каталог
                         </a>
                     </li>
@@ -151,7 +151,7 @@
         <div class="mobile-overlay__body">
             <ul class="mobile-overlay__list">
                 <li class="mobile-overlay__item">
-                    <a href="{{route('home')}}" class="mobile-overlay__link">Каталог</a>
+                    <a href="{{route('home')}}#catalog" class="mobile-overlay__link">Каталог</a>
                 </li>
                 <li class="mobile-overlay__item">
                     <a href="{{route('menu')}}" class="mobile-overlay__link">Меню в зале</a>

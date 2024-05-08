@@ -14,9 +14,11 @@
                         <h1 class="hero__title">
                             Превращаем <br>торты в искусство
                         </h1>
-                        <button class="hero__button button">
-                            Каталог
-                        </button>
+                        <a href="#catalog">
+                            <button class="hero__button button">
+                                Каталог
+                            </button>
+                        </a>
                         <div class="hero__slogan">
                             <p>
                                 Сладости правят миром
@@ -32,7 +34,7 @@
     </section>
     @include("layouts.partials.discount-banner")
     @include("layouts.partials.presentation-banner")
-    <section class="section container">
+    <section class="section container" id="catalog">
         <header class="section__header">
             <h2 class="section__title">
                 Каталог

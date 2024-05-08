@@ -3,40 +3,42 @@
 @section('content')
     <section class="section container">
         <div class="section__body">
-            <h1>
-                Презентация
-            </h1>
-            <form method="POST" action="{{route("presentation_process")}}">
-                @csrf
+            <header class="section__header">
+                <h2 class="section__title">
+                    Запись на презентацию
+                </h2>
+            </header>
+            <div class="presentation">
+                <form method="POST" action="{{route("presentation_process")}}" class="presentation__form">
+                    @csrf
 
-                <input name="name" type="text"
-                       class="w-full h-12 border border-gray-800 rounded px-3 @error('name') border-red-500 @enderror"
-                       placeholder="Имя"
-                       @auth("web")
-                           value="{{Auth::user()->name}}"
-                    @endauth
-                />
-
-                @error('name')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <input name="telephone" type="text"
-                       class="w-full h-12 border border-gray-800 rounded px-3 @error('telephone') border-red-500 @enderror"
-                       placeholder="Телефон"
-                       @auth("web")
-                           value="{{Auth::user()->telephone}}"
-                    @endauth/>
-
-                @error('telephone')
-                <p class="text-red-500">{{ $message }}</p>
-                @enderror
-
-                <button type="submit"
-                        class="font-bold py-2 px-4 w-full bg-purple-400 text-lg text-white shadow-md rounded-lg button">
-                    Забронировать место
-                </button>
-            </form>
+                    <div class="presentation__body">
+                        <div class="tasting__field field">
+                            <label class="field__label" for="name">Имя*</label>
+                            <input name="name" class="field__input" id="name"
+                                   required autocomplete="off"
+                                   @auth("web") value="{{Auth::user()->name}}" @endauth
+                                   placeholder="Имя">
+                            @error('name')
+                            <p>{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="tasting__field field">
+                            <label class="field__label" for="telephone">Номер телефона*</label>
+                            <input name="telephone" class="field__input phone-mask" id="telephone"
+                                   type="tel" required autocomplete="off"
+                                   @auth("web") value="{{Auth::user()->telephone}}" @endauth
+                                   placeholder="Номер телефона">
+                            @error('telephone')
+                            <p>{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                    <button type="submit" class="presentation__button button button--accent">
+                        Забронировать место
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 @endsection

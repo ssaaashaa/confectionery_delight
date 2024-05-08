@@ -265,6 +265,7 @@ svg * {
 
 html {
   height: fit-content;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -1076,7 +1077,7 @@ p {
   }
 }
 
-.tasting {
+.tasting, .presentation {
   display: flex;
   justify-content: center;
   background-color: var(--color-bg-dark);
@@ -1085,12 +1086,12 @@ p {
   padding: 25px 15px;
 }
 @media (min-width: 481px) {
-  .tasting {
+  .tasting, .presentation {
     width: 480px;
     padding: 45px 40px;
   }
 }
-.tasting__form {
+.tasting__form, .presentation__form {
   display: flex;
   flex-direction: column;
   row-gap: 35px;
@@ -1098,18 +1099,18 @@ p {
   width: 100%;
 }
 @media (min-width: 481px) {
-  .tasting__form {
+  .tasting__form, .presentation__form {
     row-gap: 45px;
   }
 }
-.tasting__body {
+.tasting__body, .presentation__body {
   width: 100%;
   display: flex;
   flex-direction: column;
   row-gap: 25px;
 }
 @media (max-width: 480px) {
-  .tasting__body {
+  .tasting__body, .presentation__body {
     row-gap: 20px;
   }
 }
