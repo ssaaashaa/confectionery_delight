@@ -3,6 +3,20 @@
    @include reset-button;
     width: 24px;
     height: 24px;
+
+    @include tablet {
+        width: 20px;
+        height: 20px;
+    }
+
+    @include mobile-s {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        right: 0;
+        top: -15px;
+    }
+
     opacity: 0.5;
     cursor: pointer;
     transition: opacity ease 0.5s;
@@ -17,6 +31,17 @@
         position: absolute;
         display: block;
         width: 24px;
+
+        @include tablet {
+            width: 20px;
+            height: 2px;
+        }
+
+        @include mobile-s {
+            width: 15px;
+            height: 1.5px;
+        }
+
         height: 3px;
         background: var(--color-light);
     }

@@ -81,10 +81,13 @@
 .presentation-banner {
     .banner {
         &__description {
-            text-align: start;
+            text-align: center;
+            @include mobile-s {
+                text-align: start;
+            }
 
             span {
-                margin-left: auto;
+                margin: auto;
                 opacity: 1;
             }
         }

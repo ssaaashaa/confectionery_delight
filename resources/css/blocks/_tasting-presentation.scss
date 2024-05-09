@@ -4,7 +4,8 @@
     background-color: var(--color-bg-dark);
     border-radius: var(--border-raduis-form);
     margin: auto;
-    padding: 25px 15px;
+    padding: 25px 25px;
+    width: 100%;
 
     @include mobile-s-above {
         width: 480px;
@@ -33,5 +34,11 @@
         @include mobile-s {
             row-gap: 20px;
         }
+    }
+}
+
+.presentation {
+    @include mobile-s-above {
+        min-width: 350px;
     }
 }

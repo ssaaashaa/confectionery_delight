@@ -1,0 +1,30 @@
+.presentation-page {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+
+    @include mobile {
+        flex-direction: column;
+        row-gap: 40px;
+    }
+
+    &__description {
+        p {
+            margin-bottom: 0;
+            text-indent: 15px;
+        }
+    }
+
+    &__details {
+        display: flex;
+        margin-top: 45px;
+        flex-direction: column;
+        row-gap: 25px;
+        @include fluid-text(20, 16);
+
+        @include mobile {
+            margin-top: 25px;
+            row-gap: 15px;
+        }
+    }
+}

@@ -11,6 +11,10 @@ body {
     line-height: 1.28;
     color: var(--color-light);
     background: var(--color-gradient);
+
+    display: flex;
+    flex-direction: column;
+    //height: 100vh;
 }
 
 a,
@@ -46,4 +50,8 @@ h3 {
 
 p {
     @include fluid-text(15, 14)
+}
+
+footer {
+    width: 100%;
 }

@@ -20,54 +20,57 @@
                                              width="200" height="200" loading="lazy"
                                         >
                                         <div class="cart-item__body">
-                                            <div class="cart-item__title">
+                                            <div class="cart-item__description">
+                                                <div class="cart-item__title">
                                                 <span>
                                                     {{$product['name']}}
                                                 </span>
-                                            </div>
-                                            <div class="cart-item__count">
-                                                <div class="cart-item__pieces">
-                                                    @if(array_key_exists('weight', $product))
-                                                        <p>Ярусы: {{$product['pieces']}}</p>
-                                                        <p>Вес: {{$product['weight']}}</p>
-                                                    @else
-                                                        <p>Количество: {{$product['pieces']}}</p>
-                                                    @endif
                                                 </div>
+                                                <div class="cart-item__count">
+                                                    <div class="cart-item__pieces">
+                                                        @if(array_key_exists('weight', $product))
+                                                            <p>Ярусы: {{$product['pieces']}}</p>
+                                                            <p>Вес: {{$product['weight']}}</p>
+                                                        @else
+                                                            <p>Количество: {{$product['pieces']}}</p>
+                                                        @endif
+                                                    </div>
 
 
-                                            </div>
-                                            <div class="cart-item__taste">
+                                                </div>
+                                                <div class="cart-item__taste">
                                         <span>
                                             Вкус: {{$product['biscuit']}}
                                         </span>
-                                                <span>
+                                                    <span>
                                             Начинка: {{$product['fill']}}
                                         </span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-item__price">
+                                                <p
+                                                    id="{{$product['id']}}-price">{{round($product['price']*$product['quantity'], 2)}}
+                                                    BYN</p>
+                                                <div class="cart-item__counter" id="counter">
+                                                    <button class="removeQunatity button--no-style" id="removeQunatity"
+                                                            value="{{$product['id']}}">-
+                                                    </button>
+                                                    <span id='{{$product['id']}}-quantity'
+                                                          class="cart-item__quantity">{{$product['quantity']}}</span>
+                                                    <button class="addQunatity button--no-style" id="addQunatity"
+                                                            value="{{$product['id']}}">+
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="cart-item__price">
-                                                    <p
-                                                        id="{{$product['id']}}-price">{{round($product['price']*$product['quantity'], 2)}} BYN</p>
-                                            <div class="cart-item__counter" id="counter">
-                                                <button class="removeQunatity button--no-style" id="removeQunatity"
-                                                        value="{{$product['id']}}">-
-                                                </button>
-                                                <span id='{{$product['id']}}-quantity'
-                                                      class="cart-item__quantity">{{$product['quantity']}}</span>
-                                                <button class="addQunatity button--no-style" id="addQunatity"
-                                                        value="{{$product['id']}}">+
-                                                </button>
-                                            </div>
-                                        </div>
-
-
                                         <button class="cross-button deleteFromCart " id="{{$product['id']}}">
                                             <span class="visually-hidden">Удалить</span>
                                         </button>
                                     </div>
                                 </li>
                             @endforeach
+
+
                         </ul>
                     </div>
                     <div class="order">
@@ -136,15 +139,15 @@
                                            placeholder="Адрес доставки">
                                 </div>
                                 <div id="delivery_address" class="visually-hidden">
-                                        <p>
-                                            Адрес самовывоза: г. Минск,<br>ул. Сиреневая, д. 33
-                                        </p>
+                                    <p>
+                                        Адрес самовывоза: г. Минск,<br>ул. Сиреневая, д. 33
+                                    </p>
                                 </div>
                                 <div class="order__field field">
                                     <label class="field__label" for="date">Выберите дату получения заказа*</label>
                                     <input name="date" class="field__input" id="date"
                                            type="date" required autocomplete="off"
-                                    placeholder="Дата">
+                                           placeholder="Дата">
                                     @error('date')
                                     <p>{{ $message }}</p>
                                     @enderror

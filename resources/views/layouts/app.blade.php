@@ -34,7 +34,7 @@
                     <a href="{{route('tasting.index')}}" class="header__menu-link">Дегустация</a>
                 </li>
                 <li class="header__menu-item">
-                    <a href="" class="header__menu-link">О нас</a>
+                    <a href="{{route('about.index')}}" class="header__menu-link">О нас</a>
                 </li>
                 <li class="header__menu-item">
                     <a href="" class="header__menu-link">Контакты</a>
@@ -58,7 +58,7 @@
                              class="menu-item__image"
                              width="21" height="22" loading="lazy">
                     </a>
-                    <a href="{{route('account.index')}}" class="header__extra-link">
+                    <a @auth("web") href="{{route('account.index')}}" @endauth class="header__extra-link @guest() login-button @endguest">
                         <img src="/storage/img/user.svg"
                              alt="DELIGHT"
                              class="menu-item__image"
@@ -115,7 +115,7 @@
                         </a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="" class="footer__menu-link">
+                        <a href="{{route('about.index')}}" class="footer__menu-link">
                             О нас
                         </a>
                     </li>
@@ -163,7 +163,7 @@
                     <a href="{{route('tasting.index')}}" class="mobile-overlay__link">Дегустация</a>
                 </li>
                 <li class="mobile-overlay__item">
-                    <a href="" class="mobile-overlay__link">О нас</a>
+                    <a href="{{route('about.index')}}" class="mobile-overlay__link">О нас</a>
                 </li>
                 <li class="mobile-overlay__item">
                     <a href="" class="mobile-overlay__link">Контакты</a>

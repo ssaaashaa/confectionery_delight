@@ -4,11 +4,11 @@
             <div class="banner__inner">
                 <div class="banner__body">
                     <h3 class="banner__title">
-                        Презентация тортов
+                        Презентация новых начинок
                     </h3>
                     <div class="banner__description">
                         <p>
-                            Презентация-дегустация тортов, которая пройдет в DELIGHT в дружественной и уютной атмосфере,
+                            Презентация-дегустация начинок, которая пройдет в DELIGHT в дружественной и уютной атмосфере,
                             подарит
                             разнообразие и палитру вкусов.
                         </p>
@@ -19,7 +19,7 @@
                     Входной билет - 60 BYN
                 </span>
                     </div>
-                    <a href="">
+                    <a href="{{route('presentation.index')}}">
                         <button class="banner__button button">
                             Забронировать место
                         </button>

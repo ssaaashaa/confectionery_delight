@@ -1,0 +1,21 @@
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-direction: column;
+
+    &__image {
+        @include mobile-s {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    &__body {
+        p {
+            @include fluid-text(16, 14);
+            text-align: start;
+
+        }
+    }
+}
