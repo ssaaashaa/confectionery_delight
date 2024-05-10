@@ -33,6 +33,7 @@
         border: none;
         color: white;
         outline: none;
+        padding: 0;
 
         &:hover {
             cursor: pointer;
@@ -63,9 +64,9 @@
     &--focused {
         border-bottom: var(--border-button);
         background: transparent;
-        cursor: none;
         @include hover {
             border-bottom: var(--border-button);
+            cursor: auto;
         }
     }
 

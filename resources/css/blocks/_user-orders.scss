@@ -1,0 +1,126 @@
+.user-orders {
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+
+
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+    }
+
+    &__accordion {
+        --opacity: 0.7;
+        --rotate: 0deg;
+        outline: none;
+
+        &[open] {
+            --opacity: 1;
+
+            .user-orders__accordion-indicator {
+                --rotate: 180deg;
+            }
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            row-gap: 25px;
+
+            span {
+                @include fluid-text(16, 14);
+            }
+        }
+
+        &-indicator {
+            height: 0;
+            width: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--color-accent);
+            rotate: var(--rotate);
+        }
+
+        &-header {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            outline: none;
+        }
+
+        &-image {
+            width: 100%;
+            height: auto;
+        }
+
+        &-title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 20px 20px 20px;
+            border-bottom: var(--border-button-hover);
+            align-items: center;
+            column-gap: 20px;
+
+            & span:nth-child(2) {
+                margin-left: auto;
+            }
+
+            @include mobile-s {
+                padding: 0 0 15px 0;
+            }
+        }
+
+        &-details {
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+
+            @include mobile {
+                row-gap: 10px;
+            }
+
+            button {
+                color: var(--color-accent);
+                font-size: 16px;
+
+                @include hover {
+                    color: var(--color-light);
+                }
+            }
+
+            span {
+                @include fluid-text(16, 14);
+            }
+        }
+
+        &-body {
+            margin-top: 30px;
+
+            @include mobile {
+                margin-top: 15px;
+            }
+        }
+
+        &-list {
+            @include mobile {
+                scroll-snap-type: x mandatory;
+                overflow-x: scroll;
+                column-gap: 20px;
+            }
+        }
+
+        &-item {
+            @include mobile {
+                min-width: 150px;
+                scroll-snap-align: start;
+            }
+        }
+    }
+
+}

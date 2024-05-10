@@ -59,4 +59,37 @@ $(document).ready(function () {
     }
 
     update_user_info();
+
+    $('#personal-data').on('click', function () {
+        $('.account__orders').addClass('visually-hidden');
+        $('.account__data').removeClass('visually-hidden');
+        $(this).addClass('button-account--focused');
+        $('#user-orders').removeClass('button-account--focused');
+    });
+
+    $('#user-orders').on('click', function () {
+        $('.account__data').addClass('visually-hidden');
+        $('.account__orders').removeClass('visually-hidden');
+        $(this).addClass('button-account--focused');
+        $('#personal-data').removeClass('button-account--focused');
+    });
+
+    $('.user-orders__accordion-button').on('click', function () {
+        let order = $(this).val();
+        $('#dark-bg').removeClass('visually-hidden');
+        $('#review-form-'+order).removeClass('visually-hidden');
+        $('.register').addClass('visually-hidden');
+        $('.login').addClass('visually-hidden');
+        $('.forgot').addClass('visually-hidden');
+    });
+
+    $('.review__close').on('click', function () {
+        $('.review').addClass('visually-hidden');
+        $('#dark-bg').addClass('visually-hidden');
+    });
+
+
+
+
+
 });

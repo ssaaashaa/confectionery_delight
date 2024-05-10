@@ -84,6 +84,7 @@ p:where(:not([class]):not(:last-child)) {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 /**
@@ -408,6 +409,7 @@ footer {
   border: none;
   color: white;
   outline: none;
+  padding: 0;
 }
 .button--no-style:hover {
   cursor: pointer;
@@ -447,16 +449,17 @@ footer {
 .button-account--focused {
   border-bottom: var(--border-button);
   background: transparent;
-  cursor: none;
 }
 @media (hover: hover) {
   .button-account--focused:hover {
     border-bottom: var(--border-button);
+    cursor: auto;
   }
 }
 @media (hover: none) {
   .button-account--focused:active {
     border-bottom: var(--border-button);
+    cursor: auto;
   }
 }
 
@@ -1907,7 +1910,12 @@ footer {
 .account {
   display: flex;
   flex-direction: column;
-  row-gap: 45px;
+  row-gap: 70px;
+}
+@media (max-width: 767px) {
+  .account {
+    row-gap: 50px;
+  }
 }
 .account__buttons {
   display: flex;
@@ -1916,6 +1924,7 @@ footer {
 }
 .account__exit-button {
   margin-left: auto;
+  margin-top: auto;
 }
 .account__exit-button button {
   padding-inline: 0;
@@ -1951,6 +1960,156 @@ footer {
   flex-direction: column;
   align-items: center;
   row-gap: 15px;
+}
+
+.user-orders__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+.user-orders__item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+.user-orders__accordion {
+  --opacity: 0.7;
+  --rotate: 0deg;
+  outline: none;
+}
+.user-orders__accordion[open] {
+  --opacity: 1;
+}
+.user-orders__accordion[open] .user-orders__accordion-indicator {
+  --rotate: 180deg;
+}
+.user-orders__accordion-item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+.user-orders__accordion-item span {
+  font-size: clamp(14px, 1vw, 16px);
+}
+.user-orders__accordion-indicator {
+  height: 0;
+  width: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--color-accent);
+  rotate: var(--rotate);
+}
+.user-orders__accordion-header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  outline: none;
+}
+.user-orders__accordion-image {
+  width: 100%;
+  height: auto;
+}
+.user-orders__accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px 20px 20px;
+  border-bottom: var(--border-button-hover);
+  align-items: center;
+  column-gap: 20px;
+}
+.user-orders__accordion-title span:nth-child(2) {
+  margin-left: auto;
+}
+@media (max-width: 480px) {
+  .user-orders__accordion-title {
+    padding: 0 0 15px 0;
+  }
+}
+.user-orders__accordion-details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+@media (max-width: 767px) {
+  .user-orders__accordion-details {
+    row-gap: 10px;
+  }
+}
+.user-orders__accordion-details button {
+  color: var(--color-accent);
+  font-size: 16px;
+}
+@media (hover: hover) {
+  .user-orders__accordion-details button:hover {
+    color: var(--color-light);
+  }
+}
+@media (hover: none) {
+  .user-orders__accordion-details button:active {
+    color: var(--color-light);
+  }
+}
+.user-orders__accordion-details span {
+  font-size: clamp(14px, 1vw, 16px);
+}
+.user-orders__accordion-body {
+  margin-top: 30px;
+}
+@media (max-width: 767px) {
+  .user-orders__accordion-body {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .user-orders__accordion-list {
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    column-gap: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .user-orders__accordion-item {
+    min-width: 150px;
+    scroll-snap-align: start;
+  }
+}
+
+.review {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  padding: 45px 40px;
+  border-radius: var(--border-radius-auth-form);
+  background-color: var(--color-bg-dark);
+  z-index: 160;
+}
+.review__title {
+  text-align: center;
+}
+.review__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 45px;
+}
+.review__form-field {
+  width: 100%;
+}
+.review textarea {
+  outline: none;
+  width: 100%;
+  padding: 15px 20px;
+  height: 100px;
+  resize: none;
+}
+.review__close {
+  margin-left: auto;
 }
 
 .footer__inner {

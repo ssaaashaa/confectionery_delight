@@ -1,7 +1,11 @@
 .account {
     display: flex;
     flex-direction: column;
-    row-gap: 45px;
+    row-gap: 70px;
+
+    @include mobile {
+        row-gap: 50px;
+    }
 
     &__buttons {
         display: flex;
@@ -11,6 +15,7 @@
 
     &__exit-button {
         margin-left: auto;
+        margin-top: auto;
 
         button {
             padding-inline: 0;
