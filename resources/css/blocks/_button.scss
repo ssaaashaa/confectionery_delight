@@ -32,11 +32,40 @@
         background: transparent;
         border: none;
         color: white;
-        cursor: pointer;
         outline: none;
 
         &:hover {
-            color: var(--color-accent);
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+    }
+}
+
+.button-account {
+    @include flex-center(true);
+    @include reset-button;
+
+    height: var(--button-height);
+    padding-inline: 40px;
+    font-size: 15px;
+    background: var(--color-bg-input);
+    color: var(--color-light);
+    width: fit-content;
+    outline: none;
+    border-bottom: none;
+
+    @include hover {
+        background: transparent;
+        cursor: pointer;
+    }
+
+    &--focused {
+        border-bottom: var(--border-button);
+        background: transparent;
+        cursor: none;
+        @include hover {
+            border-bottom: var(--border-button);
         }
     }
 

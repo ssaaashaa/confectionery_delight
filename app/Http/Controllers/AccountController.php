@@ -24,7 +24,10 @@ class AccountController extends Controller
             $orders = Order::where('user_id', $user_id)
                 ->orderBy('id', 'desc')
                 ->get();
-            $orders_count = count($orders);
+            $completed_orders = Order::where('user_id', $user_id)
+                ->where ('status', 'Выполнен')
+                ->get();
+            $orders_count = count($completed_orders);
             $order_discount = Discount::where('name', 'Скидка за 1 заказ, (%)')
                 ->firstOrFail();
             $max_discount = Discount::where('name', 'Максимально возможная скидка, (%)')
@@ -114,7 +117,9 @@ class AccountController extends Controller
             'telephone' => $request['telephone']
         ]);
         return response()->json([
-            'success' => 'done',
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'telephone' => $request['telephone']
         ]);
 
 

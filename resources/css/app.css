@@ -113,7 +113,7 @@ body {
     Пригодится в большинстве ситуаций
     (когда, например, нужно будет "прижать" футер к низу сайта)
    */
-  min-height: 100%;
+  min-height: 100vh;
   /**
     Унифицированный интерлиньяж
    */
@@ -185,7 +185,7 @@ svg * {
   --border-button-hover: 1px solid var(--color-accent);
   --border-radio-button: 1px solid var(--color-accent);
   --border: 1px solid var(--color-accent);
-  --border-raduis-button: 10px;
+  --border-raduis-button: 5px;
   --border-raduis-form: 10px;
   --border-radius-auth-form: 20px;
   --border-radius-banner: 20px;
@@ -407,11 +407,57 @@ footer {
   background: transparent;
   border: none;
   color: white;
-  cursor: pointer;
   outline: none;
 }
 .button--no-style:hover {
-  color: var(--color-accent);
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+.button-account {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  height: var(--button-height);
+  padding-inline: 40px;
+  font-size: 15px;
+  background: var(--color-bg-input);
+  color: var(--color-light);
+  width: fit-content;
+  outline: none;
+  border-bottom: none;
+}
+@media (hover: hover) {
+  .button-account:hover {
+    background: transparent;
+    cursor: pointer;
+  }
+}
+@media (hover: none) {
+  .button-account:active {
+    background: transparent;
+    cursor: pointer;
+  }
+}
+.button-account--focused {
+  border-bottom: var(--border-button);
+  background: transparent;
+  cursor: none;
+}
+@media (hover: hover) {
+  .button-account--focused:hover {
+    border-bottom: var(--border-button);
+  }
+}
+@media (hover: none) {
+  .button-account--focused:active {
+    border-bottom: var(--border-button);
+  }
 }
 
 .cross-button {
@@ -539,7 +585,7 @@ footer {
   cursor: pointer;
   padding: 0 30px;
   line-height: 45px;
-  border-radius: 6px;
+  border-radius: 5px;
   user-select: none;
   font-size: 14px;
   font-weight: 500;
@@ -1856,6 +1902,55 @@ footer {
 .about-card__body p {
   font-size: clamp(14px, 1vw, 16px);
   text-align: start;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  row-gap: 45px;
+}
+.account__buttons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+.account__exit-button {
+  margin-left: auto;
+}
+.account__exit-button button {
+  padding-inline: 0;
+  align-items: end;
+  font-size: 16px;
+}
+.account__data {
+  display: flex;
+  flex-direction: row;
+  column-gap: 45px;
+  padding: 0 20px;
+}
+.account__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+.account__fields {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+.account__discount {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.account__discount span {
+  font-size: clamp(16px, 1.25vw, 20px);
+}
+.account__image-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
 }
 
 .footer__inner {

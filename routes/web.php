@@ -50,7 +50,7 @@ Route::post('/cart/order_process', [\App\Http\Controllers\CartController::class,
 Route::get('/account', [\App\Http\Controllers\AccountController::class, 'index'])->name('account.index');
 Route::post('/review_process', [\App\Http\Controllers\AccountController::class, 'review'])->name('review_process');
 Route::post('/load_avatar', [\App\Http\Controllers\AccountController::class, 'load_avatar'])->name('load_avatar');
-    Route::get('/update_user_info', [\App\Http\Controllers\AccountController::class, 'update_user_info'])->name('update_user_info');
+Route::get('/account/update_user_info', [\App\Http\Controllers\AccountController::class, 'update_user_info'])->name('update_user_info');
 
 Route::middleware("auth")->group(function (){
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

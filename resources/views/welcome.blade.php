@@ -16,7 +16,7 @@
                         </h1>
                         <a href="#catalog">
                             <button class="hero__button button">
-                                Каталог
+                                В каталог
                             </button>
                         </a>
                         <div class="hero__slogan">
