@@ -27,11 +27,18 @@ class BentoController extends Controller
 //        dd($image);
         $image = $image[0];
 
+        $reviews = DB::table('reviews')
+            ->orderBy('created_at', 'desc')
+            ->join('users', 'users.id', '=', 'reviews.user_id')
+            ->select('reviews.review as review', 'reviews.created_at as created_at', 'users.name as name', 'users.avatar as avatar')
+            ->get();
+
         return view('bento.index', [
             "biscuits" => $biscuits,
             "fills" => $fills,
             "price" => $price,
             "image" => $image,
+            "reviews" => $reviews,
             ]);
 
     }

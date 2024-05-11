@@ -1,0 +1,53 @@
+.bento {
+    display: flex;
+    flex-direction: column;
+    row-gap: 55px;
+
+    &__description {
+        @include fluid-text(22, 18);
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 45px;
+
+        @include mobile {
+            row-gap: 25px;
+        }
+
+        span {
+            @include fluid-text(20, 18);
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        column-gap: 30px;
+        justify-content: center;
+
+        @include mobile {
+            scroll-snap-type: x mandatory;
+            overflow-x: scroll;
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-direction: column;
+
+        span {
+            @include fluid-text(18, 16);
+            text-align: center;
+        }
+
+        @include mobile {
+            min-width: 150px;
+            scroll-snap-align: start;
+        }
+    }
+}
