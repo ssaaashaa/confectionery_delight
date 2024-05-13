@@ -37,7 +37,7 @@
                     <a href="{{route('about.index')}}" class="header__menu-link">О нас</a>
                 </li>
                 <li class="header__menu-item">
-                    <a href="" class="header__menu-link">Контакты</a>
+                    <a href="{{route('contacts.index')}}" class="header__menu-link">Контакты</a>
                 </li>
             </ul>
         </nav>
@@ -120,7 +120,7 @@
                         </a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="" class="footer__menu-link">
+                        <a href="{{route('contacts.index')}}" class="footer__menu-link">
                             Контакты
                         </a>
                     </li>
@@ -166,7 +166,7 @@
                     <a href="{{route('about.index')}}" class="mobile-overlay__link">О нас</a>
                 </li>
                 <li class="mobile-overlay__item">
-                    <a href="" class="mobile-overlay__link">Контакты</a>
+                    <a href="{{route('contacts.index')}}" class="mobile-overlay__link">Контакты</a>
                 </li>
             </ul>
         </div>

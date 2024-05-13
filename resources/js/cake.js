@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     //ставим первый вкус - checked
     $('.selected_biscuit').first().prop('checked', true);
+    $('.selected_design').first().prop('checked', true);
 
     let price = document.getElementById('cake_price').innerText;
     price = parseInt(price)/2;

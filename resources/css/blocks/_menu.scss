@@ -1,0 +1,14 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+
+    &__categories {
+        &-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            column-gap: 20px;
+        }
+    }
+}

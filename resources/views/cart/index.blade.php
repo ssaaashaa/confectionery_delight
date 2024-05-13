@@ -49,7 +49,11 @@
                                             </div>
                                             <div class="cart-item__price">
                                                 <p
-                                                    id="{{$product['id']}}-price">{{round($product['price']*$product['quantity'], 2)}}
+                                                    id="{{$product['id']}}-price">
+                                                    @if($product['design'] === 'design.png')
+                                                        ~
+                                                    @endif
+                                                    {{round($product['price']*$product['quantity'], 2)}}
                                                     BYN</p>
                                                 <div class="cart-item__counter" id="counter">
                                                     <button class="removeQunatity button--no-style" id="removeQunatity"

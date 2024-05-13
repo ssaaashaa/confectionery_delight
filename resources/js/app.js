@@ -1,5 +1,5 @@
 // import './bootstrap';
-// import './taste.js';
+// import './menu.js';
 $(".phone-mask").mask("+375 (99) 999-99-99");
 
 $('.login-button').on('click', function ( ) {

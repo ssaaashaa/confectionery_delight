@@ -1,0 +1,30 @@
+.radio-btn {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    & input[type=radio] {
+
+        &:checked+label {
+            background: #EACAA1;
+            color: rgb(0, 0, 0);
+        }
+        display: none;
+    }
+
+    label {
+        margin-top: 25px;
+        border-radius: 0;
+        padding: 0 6px;
+        line-height: 25px;
+        color: transparent;
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid #EACAA1;
+        user-select: none;
+
+        @include mobile {
+            line-height: 25px;
+        }
+    }
+}

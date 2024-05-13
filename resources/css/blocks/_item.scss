@@ -3,7 +3,6 @@
     flex-direction: row;
     column-gap: 50px;
     row-gap: 30px;
-    justify-content: space-between;
 
     @include mobile {
         flex-direction: column;

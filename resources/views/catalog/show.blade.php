@@ -95,38 +95,6 @@
     </section>
     @include("layouts.partials.discount-banner")
     @include("layouts.partials.reviews")
-{{--    <dialog id="biscuitsInfo" class="biscuitsInfo section container">--}}
-{{--        <form action="" method="dialog">--}}
-{{--            <button type="submit"></button>--}}
-{{--            <span class="visually-hidden">Close navigation menu</span>--}}
-{{--            <div class="biscuitsInfo__body">--}}
-{{--                <ul class="question-biscuitsInfo__list">--}}
-{{--                    @foreach($biscuits as $biscuit)--}}
-{{--                    <li class="question-biscuitsInfo__item">--}}
-{{--                        <details class="question-biscuitsInfo__accordion" open>--}}
-{{--                            <summary class="question-biscuitsInfo__accordion-header">--}}
-{{--                                <h3 class="question-biscuitsInfo__accordion-title">--}}
-{{--                                    {{$biscuit->name}}--}}
-{{--                                </h3>--}}
-{{--                                <span class="question-biscuitsInfo__accordion-indicator">--}}
-{{--                                </span>--}}
-{{--                            </summary>--}}
-{{--                            <div class="question-biscuitsInfo__accordion-body">--}}
-{{--                                <p>--}}
-{{--                                    {{$biscuit->calories}}--}}
-{{--                                </p>--}}
-{{--                                <p>--}}
-{{--                                    Состав: {{$biscuit->ingredients}}--}}
-{{--                                </p>--}}
-{{--                            </div>--}}
-{{--                        </details>--}}
-{{--                    </li>--}}
-{{--                    @endforeach--}}
-{{--                </ul>--}}
-
-{{--            </div>--}}
-{{--        </form>--}}
-{{--    </dialog>--}}
     <script src="/js/product.js"></script>
 @endsection
 
