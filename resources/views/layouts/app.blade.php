@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf_token" content="{{csrf_token()}}">
+    <link rel="icon" href="/storage/img/icon.svg" style="width: max-content">
     <title>{{$title}}</title>
-    <link rel="stylesheet" href="/css/app.css"></link>
+    <link rel="stylesheet" href="/css/app.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 </head>
@@ -79,6 +80,24 @@
         @include("auth.login")
         @include("auth.register")
         @include("auth.forgot")
+        <div class="forgot">
+            <div class="forgot__title">
+                <h2>
+                    Спасибо за заявку!
+                </h2>
+            </div>
+            <form class="forgot__form" method="POST" action="{{ route("forgot_process") }}">
+                @csrf
+
+                <div class="order__field field">
+                   <p>
+                       В скором времени наш администратор свяжется с вами для уточнения деталей!
+                   </p>
+                </div>
+                <button class="button forgot__button" type="submit">На главную</button>
+
+            </form>
+        </div>
     </div>
 
     @yield('content')

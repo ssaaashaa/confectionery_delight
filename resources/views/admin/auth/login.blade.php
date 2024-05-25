@@ -2,11 +2,11 @@
 
 @section('content')
     <section class="section container">
-    <div class="h-screen bg-white flex flex-col space-y-10 justify-center items-center">
-        <div class="bg-white w-96 shadow-xl rounded p-5">
-            <h1 class="text-3xl font-medium">Вход</h1>
+    <div>
+        <div>
+            <h1>Вход</h1>
 
-            <form method="POST" action="{{ route("admin.login_process") }}" class="space-y-5 mt-5">
+            <form method="POST" action="{{ route("admin.login_process") }}">
                 @csrf
 
                 <input name="email" type="text" class="w-full h-12 border border-gray-800 rounded px-3 @error('email') border-red-500 @enderror" placeholder="Email" />

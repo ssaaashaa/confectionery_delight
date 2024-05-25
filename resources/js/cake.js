@@ -120,8 +120,6 @@ $(document).ready(function () {
                 inCartOrNot();
             }
         })
-
-
     });
 
     $('.selected_fill').on('click', function () {

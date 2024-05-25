@@ -115,7 +115,6 @@ class CatalogController extends Controller
         $price = $request->price;
 
         $id = $pieces . $biscuit_id . $fill_id . $design_id;
-//        \Session::getHandler()->destroy(session()->getId());
 
         $cart = $request->session()->get('cart', []);
         $cart[$id] = [
@@ -129,7 +128,6 @@ class CatalogController extends Controller
         ];
 
         $request->session()->put('cart', $cart);
-//        dd($cart);
 
         return response()->json(["biscuit_id" => $biscuit_id, "design_id" => $design]);
 

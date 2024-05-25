@@ -3,6 +3,7 @@
      @if($message===null)visually-hidden
 @endif
 @enderror">
+
     <div class="forgot__title">
         <h2>
             Восстановление пароля

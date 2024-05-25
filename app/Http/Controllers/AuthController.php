@@ -67,14 +67,8 @@ class AuthController extends Controller
             $user->save();
 
             Mail::to($user)->send(new ForgotPassword($password));
-
-
-
             return redirect($request->headers->get('referer', '/'));
-
         }
-
-
     }
 
     public function register(Request $request)

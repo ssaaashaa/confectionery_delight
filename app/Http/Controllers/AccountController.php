@@ -24,6 +24,7 @@ class AccountController extends Controller
             $orders = Order::where('user_id', $user_id)
                 ->orderBy('id', 'desc')
                 ->get();
+
             $completed_orders = Order::where('user_id', $user_id)
                 ->where ('status', 'Выполнен')
                 ->get();
@@ -47,7 +48,6 @@ class AccountController extends Controller
             foreach ($orders as $order) {
                 $review = Review::where('order_id', $order->id)
                     ->get();
-//                dd(var_dump($review));
                 $products = DB::table('order_details')
                     ->join('products', 'order_details.product_id', '=', 'products.id')
                     ->join('designs', 'products.design_id', '=', 'designs.id')
@@ -85,7 +85,6 @@ class AccountController extends Controller
         ]);
 
         return redirect(route("home"));
-
     }
 
     public function load_avatar(Request $request)
@@ -96,7 +95,6 @@ class AccountController extends Controller
             $filename = 'user-' . Auth::id() . '.' . $extension;
             $path = storage_path('app/public/users');
             $data->move($path, $filename);
-
             $update_img = User::where('id', Auth::id())
                 ->firstOrFail();
             $update_img->avatar = $filename;
@@ -105,7 +103,6 @@ class AccountController extends Controller
             return response()->json([
                 'success' => 'done',
             ]);
-
         }
     }
 

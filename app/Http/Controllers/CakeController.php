@@ -59,7 +59,6 @@ class CakeController extends Controller
                 ->where('fill_id', $request->fill_id)
                 ->get('img');
         return response($taste[0]->img);
-
     }
 
     public function total_price(Request $request)

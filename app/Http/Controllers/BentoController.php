@@ -103,7 +103,6 @@ class BentoController extends Controller
         $price = $request->price;
 
         $id = $pieces . $biscuit_id . $fill_id . $design_id.'bento';
-//        \Session::getHandler()->destroy(session()->getId());
 
         $cart = $request->session()->get('cart', []);
         $cart[$id] = [
