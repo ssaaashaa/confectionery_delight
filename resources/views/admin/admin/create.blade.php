@@ -21,22 +21,33 @@
                 <div class="col-lg-8">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Коментарий к записи</h3>
+                            <h3 class="card-title">Добавить администратора</h3>
                         </div>
                         <!-- form start -->
-                        <form action="{{route('admin.feedback-requests.update', $feedbackRequest['id'])}}" method="POST">
+                        <form action="{{route('admin.admin.store')}}" method="POST">
                             @csrf
-                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Комментарий</label>
-                                    <textarea style="height: 200px; resize: none" type="text" name="admin_comment" class="form-control" id="exampleInputPassword1"  required placeholder="Комментарий">{{$feedbackRequest['admin_comment']}}</textarea>
+                                    <label for="exampleInputEmail1">Имя</label>
+                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Имя" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Адрес электронной почты</label>
+                                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" required placeholder="Адрес электронной почты">
+                                </div>
+                                @error('email')
+                                <p>{{ $message }}</p>
+                                @enderror
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Пароль</label>
+                                    <input type="text" name="password" class="form-control" id="exampleInputPassword1"  required placeholder="Пароль">
                                 </div>
                             </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn-primary">Сохранить изменения</button>
+                                <button type="submit" class="btn-primary">Добавить</button>
                             </div>
                         </form>
                     </div>

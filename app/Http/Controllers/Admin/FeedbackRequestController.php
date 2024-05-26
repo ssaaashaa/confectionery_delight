@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
+use App\Models\EventRecord;
 use App\Models\FeedbackRequest;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,19 @@ class FeedbackRequestController extends Controller
      */
     public function index()
     {
-        $requests = FeedbackRequest::all();
+        $taste_requests = FeedbackRequest::where('request_type', 'ДЕГУСТАЦИЯ')
+        ->get();
+        $presentation_requests = FeedbackRequest::where('request_type', 'ПРЕЗЕНТАЦИЯ')
+            ->get();
+        $presentation = Event::where('event_type', 'ПРЕЗЕНТАЦИЯ')
+            ->firstOrFail();
+        $presentation_records = EventRecord::where('event_id', $presentation->id)
+            ->get();
+        $count = $presentation->event_count-count($presentation_records);
         return view("admin.feedback-requests.index", [
-            "requests" => $requests,
+            "taste_requests" => $taste_requests,
+            "presentation_requests" => $presentation_requests,
+            "count" => $count
         ]);
     }
 
@@ -24,7 +36,6 @@ class FeedbackRequestController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -40,7 +51,20 @@ class FeedbackRequestController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $request = FeedbackRequest::where("id", $id)
+            ->firstOrFail();
+
+//        return redirect(route("admin.presentation.index", ["request"=>$request]));
+        $presentation = Event::where('event_type', 'ПРЕЗЕНТАЦИЯ')
+            ->firstOrFail();
+        $presentation_records = EventRecord::where('event_id', $presentation->id)
+            ->get();
+
+        return view("admin.presentation.index", [
+            "presentation" => $presentation,
+            "presentation_records" => $presentation_records,
+            "request" => $request
+        ]);
     }
 
     /**
@@ -62,7 +86,7 @@ class FeedbackRequestController extends Controller
     {
         $feedbackRequest = FeedbackRequest::findOrFail($id);
         $feedbackRequest->update(['admin_comment' => $request['admin_comment']]);
-        return redirect(route("admin.feedback-requests.index"));
+        return redirect(route("admin.feedback-requests.index"))->withSuccess('Информация успешно изменена');;
 
     }
 
