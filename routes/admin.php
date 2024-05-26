@@ -14,6 +14,11 @@ Route::middleware("auth:admin")->group(function () {
     Route::resource('presentation', \App\Http\Controllers\Admin\PresentationController::class);
     Route::resource('event-records', \App\Http\Controllers\Admin\EventRecordsController::class);
     Route::resource('tasting', \App\Http\Controllers\Admin\TastingController::class);
+    Route::resource('orders', \App\Http\Controllers\Admin\OrderController::class);
+    Route::resource('taste-combinations', \App\Http\Controllers\Admin\TasteCombinationsController::class);
+    Route::resource('biscuit', \App\Http\Controllers\Admin\BiscuitController::class);
+    Route::resource('fill', \App\Http\Controllers\Admin\FillsController::class);
+
     Route::get('logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
 });
 

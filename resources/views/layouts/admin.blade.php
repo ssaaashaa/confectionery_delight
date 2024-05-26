@@ -57,8 +57,21 @@
                         <a href="#" class="nav-link">
                             <p>
                                 Заказы
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('admin.orders.index')}}" class="nav-link">
+                                    <p>Все заказы</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('admin.orders.create')}}" class="nav-link">
+                                    <p>Оформить заказ</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -104,6 +117,13 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{route('admin.taste-combinations.index')}}" class="nav-link">
+                            <p>
+                                Вкусовые сочетания
+                            </p>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">

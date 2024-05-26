@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label for="date">Дата</label>
                                     {{--                                    <input type="date"  name="date" value="{{date('d.m.Y', strtotime($event['date']))}}"  min="{{date('d.m.Y')}}" max="2024-12-31" class="form-control" id="date"  required placeholder="Дата">--}}
-                                    <input type="text" name="date" class="form-control" id="date"  required placeholder="Дата" name="trip-start" "/>
+                                    <input type="text" name="date" class="form-control" id="date"  required placeholder="Дата" name="trip-start"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="time">Время</label>

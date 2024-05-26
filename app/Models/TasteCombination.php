@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TasteCombination extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "biscuit_id",
+        "fill_id",
+    ];
 }
