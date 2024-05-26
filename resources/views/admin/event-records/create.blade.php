@@ -31,7 +31,7 @@
                                 <h3 class="card-title">Запись на презентацию</h3>
                             </div>
                             <!-- form start -->
-                            <form action="{{route('admin.event-records.store')}}" method="POST">
+                            <form action="{{route('admin.event-records.store', ["event_id"=>"1"])}}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -50,6 +50,7 @@
                                                value="{{request('telephone')}}"
                                                id="exampleInputPassword1" required placeholder="Телефон">
                                     </div>
+                                    <input name="event_id" value="1" style="display: none">
                                     <input name="id" value="{{request('id')}}" style="display: none">
                                 </div>
                                 <!-- /.card-body -->
@@ -90,11 +91,11 @@
                                     <div class="form-group" data-select2-id="40">
                                         <label>Время</label>
                                         <select class="form-control select2 select2-hidden-accessible"
-                                                style="width: 100%;" data-select2-id="9" tabindex="-1"
+                                                style="width: 100%;" name="event_id" data-select2-id="9" tabindex="-1"
                                                 aria-hidden="true">
                                             @foreach($tasting_dates as $tasting_date)
                                                 @if(($tasting_date["event_count"]-$tasting_date["records"])!=0)
-                                                    <option value="{{$tasting_date["id"]}}">{{date('d.m.Y', strtotime($tasting_date["date"]))}} в {{$tasting_date["time"]}}
+                                                    <option  value="{{$tasting_date["id"]}}">{{date('d.m.Y', strtotime($tasting_date["date"]))}} в {{$tasting_date["time"]}}
                                                         Осталось мест : {{$tasting_date["event_count"]-$tasting_date["records"]}} </option>
                                                 @endif
                                             @endforeach

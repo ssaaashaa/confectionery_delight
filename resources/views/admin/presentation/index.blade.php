@@ -84,12 +84,12 @@
                 </form>
             </div>
             <div class="row">
-                <div class=" col-lg-12 card collapsed-card">
+                <div class=" col-lg-12 card">
                     <div class="card-header">
                         <h3 class="card-title">Участники({{count($presentation_records)}})</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-plus"></i>
+                                <i class="fas fa-minus"></i>
                             </button>
                         </div>
                     </div>

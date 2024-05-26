@@ -41,20 +41,22 @@
             <img src="/storage/img/logo.svg" width="120" height="auto" alt="logo"
                  class="brand-image" style="opacity: .8">
         </a>
-        <div class="sidebar">
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+        <div class="sidebar height">
+            <nav class="mt-2 height">
+                <ul class="nav nav-pills nav-sidebar flex-column height" data-widget="treeview" role="menu"
                     data-accordion="false">
-                    <li class="nav-item" style="color: white; margin: auto">
-                        <p>
-                            {{Auth::user()->name}}
-                        </p>
-                    </li>
-                    <li class="nav-item">
+
+                    <li class="nav-item ">
                         <a href="{{route('admin.feedback-requests.index')}}" class="nav-link">
-                            <i class="nav-icon far fa-newspaper"></i>
                             <p>
                                 Заявки
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <p>
+                                Заказы
                             </p>
                         </a>
                     </li>
@@ -105,7 +107,6 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Администраторы
                                 <i class="right fas fa-angle-left"></i>
@@ -124,7 +125,16 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item" style="color: white;  margin: auto auto 30px auto">
+                        <a href="{{route('logout')}}" class="account__exit-button">
+                            <i class="nav-icon fas fa-user"></i>
+                            {{Auth::user()->name}}
 
+                            <button class="btn btn-danger btn-sm">
+                                Выйти
+                            </button>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
