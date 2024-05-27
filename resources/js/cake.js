@@ -68,6 +68,8 @@ $(document).ready(function () {
     });
 
 
+
+
     //тут определяем, какие вкусовые сочетания доступны
     $('.selected_biscuit').on('click', function () {
         var biscuit_id = $(this).attr('id');

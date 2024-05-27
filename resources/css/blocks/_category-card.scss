@@ -21,6 +21,14 @@
         border-bottom: var(--color-accent) solid 1px;
         width: 100%;
 
+        transform: translate(0px, -120%);
+        opacity: 0;
+        transition: all 2s ease 0s;
+
+        &._active{
+            transform: translate(0px, 0px);
+            opacity: 1;
+        }
 
         &-hidden {
             @include tablet {

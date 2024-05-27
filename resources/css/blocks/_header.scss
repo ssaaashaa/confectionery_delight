@@ -10,6 +10,10 @@
         justify-content: space-between;
         align-items: center;
         column-gap: 15px;
+
+        @include mobile-s {
+            column-gap: 5px;
+        }
     }
 
 
@@ -27,6 +31,11 @@
             height: 25px;
             display: inline-flex;
             align-items: center;
+            font-size: 16px;
+
+            @include mobile {
+                font-size: 15px;
+            }
 
             @include hover {
                 &::after {
@@ -81,6 +90,52 @@
             column-gap: 45px;
         }
 
-
     }
 }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+    &-content {
+        left: -80%;
+        margin-top: 2px;
+        display: none;
+        position: absolute;
+        background-color: black;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        transition: 0.2s all;
+
+        a {
+            text-align: center;
+            color: var(--color-light);
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            transition: 0.2s all;
+
+            @include hover {
+                background: var(--color-bg-dark);
+                transition: 0.2s all;
+            }
+        }
+    }
+
+    @include hover {
+
+        .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    }
+}
+
+
+
+

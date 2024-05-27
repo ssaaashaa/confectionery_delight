@@ -1,8 +1,10 @@
 <li class="items__item" id="product-{{$product->design_category_id}}">
     <div class="item-card">
-        <img src="/storage/designs/{{$product->img}}" alt="" class="item-card__image"
-             width="100%" height="auto" loading="lazy"
-        >
+        <a href="{{route('catalog.show', [$product->product_category_id, $product->id])}}">
+            <img src="/storage/designs/{{$product->img}}" alt="" class="item-card__image"
+                 width="100%" height="auto" loading="lazy"
+            >
+        </a>
         <div class="item-card__body">
             <div class="item-card__title">
                     <span>

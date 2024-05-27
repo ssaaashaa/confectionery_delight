@@ -10,8 +10,10 @@
                 @foreach($reviews as $review)
                     <li class="reviews__item">
                         <article class="review-card">
-                            <img src="/storage/users/{{$review->avatar}}" alt="" class="review-card__image"
-                                 width="150px" height="150px" loading="lazy">
+                            <div class="review-card__image">
+                                <img src="/storage/users/{{$review->avatar}}" alt=""
+                                    loading="lazy">
+                            </div>
                             <div class="review-card__body">
                                 <h3 class="review-card__name">
                                     {{$review->name}}

@@ -44,6 +44,7 @@ class CatalogController extends Controller
             ->get();
 
 
+
         return view('catalog.show', [
             "product" => $product,
             "price" => $category->price,

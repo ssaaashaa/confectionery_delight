@@ -14,64 +14,70 @@
                 </div>
                 @auth("web")
                     <div class="account__data">
-                        <div class="account__image-data">
-                            <img src="/storage/users/{{$user->avatar}}" alt=""
-                                 class="account__image"
-                                 width="150`" height="150" id="user_avatar" loading="lazy"
-                            >
-                            <div class="account__change-image-button">
-                                <label style="cursor: pointer" for="load_avatar">Изменить фото</label>
-                                <input type="file" style="display: none" id="load_avatar" name="avatar">
+                        <div class="account__user-data">
+                            <div class="account__image-data">
+                                <div class="account__image">
+                                    <img src="/storage/users/{{$user->avatar}}" alt=""
+                                         id="user_avatar" loading="lazy"
+                                    >
+                                </div>
+                                <div class="account__change-image-button">
+                                    <label style="cursor: pointer" for="load_avatar">Изменить фото</label>
+                                    <input type="file" style="display: none" id="load_avatar" name="avatar">
+                                </div>
                             </div>
+                            <form action="{{route('update_user_info')}}" class="account__form" method="POST">
+                                @csrf
+                                <div class="account__fields">
+                                    <div class="account__field field">
+                                        <input name="new_name" class="field__input"
+                                               required autocomplete="off"
+                                               readonly onfocus="this.removeAttribute('readonly');"
+                                               @auth("web") value="{{Auth::user()->name}}" @endauth
+                                               placeholder="Имя">
+                                        @error('name')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="account__field field">
+                                        <input name="new_telephone" class="field__input phone-mask"
+                                               type="tel" required autocomplete="disabled"
+                                               @auth("web") value="{{Auth::user()->telephone}}" @endauth
+                                               placeholder="Номер телефона">
+                                        @error('telephone')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="account__field field">
+                                        <input name="new_email" class="field__input"
+                                               type="email" required autocomplete="disabled"
+                                               @auth("web") value="{{Auth::user()->email}}" @endauth
+                                               placeholder="Ваш e-mail">
+                                        @error('email')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <button id="save_user_info" class="button">
+                                    Сохранить изменения
+                                </button>
+                            </form>
                         </div>
-                        <form action="" class="account__form">
-                            <div class="account__fields">
-                                <div class="account__field field">
-                                    <input name="new_name" class="field__input"
-                                           required autocomplete="off"
-                                           readonly onfocus="this.removeAttribute('readonly');"
-                                           @auth("web") value="{{Auth::user()->name}}" @endauth
-                                           placeholder="Имя">
-                                    @error('name')
-                                    <p>{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="account__field field">
-                                    <input name="new_telephone" class="field__input phone-mask"
-                                           type="tel" required autocomplete="disabled"
-                                           @auth("web") value="{{Auth::user()->telephone}}" @endauth
-                                           placeholder="Номер телефона">
-                                    @error('telephone')
-                                    <p>{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="account__field field">
-                                    <input name="new_email" class="field__input"
-                                           type="email" required autocomplete="disabled"
-                                           @auth("web") value="{{Auth::user()->email}}" @endauth
-                                           placeholder="Ваш e-mail">
-                                    @error('email')
-                                    <p>{{ $message }}</p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <button id="save_user_info" class="button">
-                                Сохранить изменения
-                            </button>
-                        </form>
-                        <div class="account__discount">
+                        <div>
+                            <div class="account__discount">
                             <span>
                                 Ваша персональная скидка: {{$discount}} %
                             </span>
-                            <p>
-                                *скидка зависит от количества выполненных заказов
-                            </p>
+                                <p>
+                                    *скидка зависит от количества выполненных заказов
+                                </p>
+                            </div>
+                            <a href="{{route('logout')}}" class="account__exit-button">
+                                <button class="button button--no-style">
+                                    Выйти
+                                </button>
+                            </a>
                         </div>
-                        <a href="{{route('logout')}}" class="account__exit-button">
-                            <button class="button button--no-style">
-                                Выйти
-                            </button>
-                        </a>
                     </div>
                 @endauth
                 @auth("web")
@@ -91,8 +97,8 @@
                                             </div>
 
                                             <div class="user-orders__accordion-details">
-                                                <span>Дата заказа: {{date('d.m.Y', strtotime($order->created_at))}}</span>
                                                 <span>Статус: {{$order->status}}  </span>
+                                                <span>Дата готовности заказа: {{date('d.m.Y', strtotime($order->created_at))}}</span>
                                                 @if($order->status === 'Выполнен' && $order->count_review===0)
                                                 <button class="button button--no-style user-orders__accordion-button" value="{{$order->id}}">Оставить отзыв</button>
                                                 @endif

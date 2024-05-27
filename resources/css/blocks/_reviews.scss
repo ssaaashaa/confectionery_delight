@@ -1,7 +1,8 @@
 .reviews {
     &__list {
-        gap: 55px;
-
+        gap: 5px;
+        display: flex;
+        flex-direction: row;
         //@include mobile {
         //    --gridColumns: 2;
         //}
@@ -9,19 +10,12 @@
         //@include mobile-s {
         //    gap: 35px;
         //}
-
-        @include mobile {
-            scroll-snap-type: x mandatory;
-            overflow-x: scroll;
-            width: 100vw;
-            column-gap: 20px;
-        }
+        scroll-snap-type: x mandatory;
+        overflow-x: scroll;
     }
 
     &__item {
-        @include mobile {
             min-width: 300px;
             scroll-snap-align: start;
-        }
     }
 }

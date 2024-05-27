@@ -96,6 +96,9 @@
 
             span {
                 @include fluid-text(16, 14);
+                &:nth-child(1) {
+                    font-weight: 500;
+                }
             }
         }
 

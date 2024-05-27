@@ -45,13 +45,13 @@
                 <ul class="categories__list grid grid--1">
                     <li class="categories__item">
                         <article class="category-card">
-                            <h3 class="category-card__title category-card__title-hidden">
+                            <h3 class="category-card__title category-card__title-hidden  _anim-title hidden">
                                 Капкейки
                             </h3>
                             <img src="/storage/img/category-1.svg" alt="" class="category-card__image"
                                  width="226px" height="242px" loading="lazy">
                             <div class="category-card__body">
-                                <h3 class="category-card__title category-card__title-visible">
+                                <h3 class="category-card__title category-card__title-visible _anim-title hidden">
                                     Капкейки
                                 </h3>
                                 <div class="category-card__details">
@@ -74,7 +74,7 @@
                     <li class="categories__item">
                         <article class="category-card">
                             <div class="category-card__body">
-                                <h3 class="category-card__title category-card__title-visible">
+                                <h3 class="category-card__title category-card__title-visible  _anim-title hidden">
                                     Трайфлы
                                 </h3>
                                 <div class="category-card__details">
@@ -94,7 +94,7 @@
                             </div>
                             <img src="/storage/img/category-2.svg" alt="" class="category-card__image"
                                  width="226px" height="242px" loading="lazy">
-                            <h3 class="category-card__title category-card__title-hidden">
+                            <h3 class="category-card__title category-card__title-hidden _anim-title hidden">
                                 Трайфлы
                             </h3>
                         </article>
@@ -102,13 +102,13 @@
                     </li>
                     <li class="categories__item">
                         <article class="category-card">
-                            <h3 class="category-card__title category-card__title-hidden">
+                            <h3 class="category-card__title category-card__title-hidden  _anim-title hidden">
                                 Торт на заказ
                             </h3>
                             <img src="/storage/img/category-3.svg" alt="" class="category-card__image"
                                  width="226px" height="242px" loading="lazy">
                             <div class="category-card__body">
-                                <h3 class="category-card__title category-card__title-visible">
+                                <h3 class="category-card__title category-card__title-visible _anim-title hidden">
                                     Торт на заказ
                                 </h3>
                                 <div class="category-card__details">
@@ -131,7 +131,7 @@
                     <li class="categories__item">
                         <article class="category-card">
                             <div class="category-card__body">
-                                <h3 class="category-card__title category-card__title-visible">
+                                <h3 class="category-card__title category-card__title-visible _anim-title hidden">
                                     Подарочный бокс
                                     <br>
                                     “Собери бенто сам”
@@ -153,7 +153,7 @@
                             </div>
                             <img src="/storage/img/category-4.svg" alt="" class="category-card__image"
                                  width="267px" height="242px" loading="lazy">
-                            <h3 class="category-card__title category-card__title-hidden">
+                            <h3 class="category-card__title category-card__title-hidden _anim-title hidden">
                                 Подарочный бокс
                                 <br>
                                 “Собери бенто сам”

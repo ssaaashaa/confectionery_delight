@@ -4,6 +4,10 @@
     row-gap: 70px;
 
     @include mobile {
+        align-items: center;
+    }
+
+    @include mobile {
         row-gap: 50px;
     }
 
@@ -17,6 +21,10 @@
         margin-left: auto;
         margin-top: auto;
 
+        @include mobile {
+            float: right;
+        }
+
         button {
             padding-inline: 0;
             align-items: end;
@@ -29,18 +37,37 @@
         flex-direction: row;
         column-gap: 45px;
         padding: 0 20px;
+        @include tablet {
+            flex-direction: column;
+            row-gap: 45px;
+        }
+
+        @include mobile {
+            padding: 0;
+        }
     }
 
+    &__orders {
+        width: 100%;
+    }
     &__form {
         display: flex;
         flex-direction: column;
         row-gap: 50px;
+
+        @include mobile {
+            row-gap: 30px;
+        }
     }
 
     &__fields {
         display: flex;
         flex-direction: column;
         row-gap: 25px;
+
+        @include mobile {
+            row-gap: 15px;
+        }
     }
 
     &__discount {
@@ -53,11 +80,61 @@
         }
     }
 
+
+    &__image {
+        width: 150px;
+        min-height: 150px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        border-radius: 50%;
+        @include mobile {
+            width: 130px;
+            height: 130px;
+            min-height: 130px;
+        }
+
+        @include mobile-s {
+            width: 110px;
+            height: 110px;
+            min-height: 110px;
+
+        }
+
+        img {
+            height: 150px;
+            width: 150px;
+            object-fit: cover;
+
+            @include mobile {
+                width: 130px;
+                height: 130px;
+            }
+
+            @include mobile-s {
+                width: 110px;
+                height: 110px;
+            }
+        }
+    }
+
     &__image-data {
         display: flex;
         flex-direction: column;
         align-items: center;
         row-gap: 15px;
+    }
+
+    &__user-data {
+        display: flex;
+        flex-direction: row;
+        column-gap: 45px;
+
+        @include mobile-s {
+            column-gap: 25px;
+        }
     }
 
 

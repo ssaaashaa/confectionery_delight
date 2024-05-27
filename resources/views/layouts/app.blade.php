@@ -22,8 +22,14 @@
         </a>
         <nav class="header__menu">
             <ul class="header__menu-list hidden-tablet">
-                <li class="header__menu-item">
+                <li class="header__menu-item dropdown">
                     <a href="{{route('home')}}#catalog" class="header__menu-link">Каталог</a>
+                    <div class="dropdown-content">
+                        <a href="{{route('catalog.index',1)}}">Капкейки</a>
+                        <a href="{{route('catalog.index',2)}}">Трайфлы</a>
+                        <a href="{{route('cake.index')}}">Торт на заказ</a>
+                        <a href="{{route('bento.index')}}">Подарочный бокс</a>
+                    </div>
                 </li>
                 <li class="header__menu-item">
                     <a href="{{route('menu')}}" class="header__menu-link">Меню в зале</a>
@@ -59,7 +65,8 @@
                              class="menu-item__image"
                              width="21" height="22" loading="lazy">
                     </a>
-                    <a @auth("web") href="{{route('account.index')}}" @endauth class="header__extra-link @guest() login-button @endguest">
+                    <a @auth("web") href="{{route('account.index')}}"
+                       @endauth class="header__extra-link @guest() login-button @endguest">
                         <img src="/storage/img/user.svg"
                              alt="DELIGHT"
                              class="menu-item__image"
@@ -80,24 +87,24 @@
         @include("auth.login")
         @include("auth.register")
         @include("auth.forgot")
-        <div class="forgot">
-            <div class="forgot__title">
-                <h2>
-                    Спасибо за заявку!
-                </h2>
-            </div>
-            <form class="forgot__form" method="POST" action="{{ route("forgot_process") }}">
-                @csrf
+{{--        <div class="forgot">--}}
+{{--            <div class="forgot__title">--}}
+{{--                <h2>--}}
+{{--                    Спасибо за заявку!--}}
+{{--                </h2>--}}
+{{--            </div>--}}
+{{--            <form class="forgot__form" method="POST" action="{{ route("forgot_process") }}">--}}
+{{--                @csrf--}}
 
-                <div class="order__field field">
-                   <p>
-                       В скором времени наш администратор свяжется с вами для уточнения деталей!
-                   </p>
-                </div>
-                <button class="button forgot__button" type="submit">На главную</button>
+{{--                <div class="order__field field">--}}
+{{--                    <p>--}}
+{{--                        В скором времени наш администратор свяжется с вами для уточнения деталей!--}}
+{{--                    </p>--}}
+{{--                </div>--}}
+{{--                <button class="button forgot__button" type="submit">На главную</button>--}}
 
-            </form>
-        </div>
+{{--            </form>--}}
+{{--        </div>--}}
     </div>
 
     @yield('content')
@@ -156,40 +163,42 @@
             </div>
             <div class="footer__extra">
                 <p class="footer__copyright">
-                    © <time datetime="2024">2024</time> DELIGHT. Все права защищены.
+                    ©
+                    <time datetime="2024">2024</time>
+                    DELIGHT. Все права защищены.
                 </p>
             </div>
         </div>
     </div>
 </footer>
 <dialog class="mobile-overlay visible-tablet" id="tabletOverlay">
-    <form action="" class="mobile-overlay__close-button-wrapper cross-button" method="dialog">
-        <button class="mobile-overlay__close-button"
+    <form action="" class="mobile-overlay__close-button-wrapper" method="dialog">
+        <button class="mobile-overlay__close-button cross-dialog-button"
                 type="submit"></button>
         <span class="visually-hidden">Close navigation menu</span>
-        <div class="mobile-overlay__body">
-            <ul class="mobile-overlay__list">
-                <li class="mobile-overlay__item">
-                    <a href="{{route('home')}}#catalog" class="mobile-overlay__link">Каталог</a>
-                </li>
-                <li class="mobile-overlay__item">
-                    <a href="{{route('menu')}}" class="mobile-overlay__link">Меню в зале</a>
-                </li>
-                <li class="mobile-overlay__item">
-                    <a href="{{route('presentation.index')}}" class="mobile-overlay__link">Презентация</a>
-                </li>
-                <li class="mobile-overlay__item">
-                    <a href="{{route('tasting.index')}}" class="mobile-overlay__link">Дегустация</a>
-                </li>
-                <li class="mobile-overlay__item">
-                    <a href="{{route('about.index')}}" class="mobile-overlay__link">О нас</a>
-                </li>
-                <li class="mobile-overlay__item">
-                    <a href="{{route('contacts.index')}}" class="mobile-overlay__link">Контакты</a>
-                </li>
-            </ul>
-        </div>
     </form>
+    <div class="mobile-overlay__body">
+        <ul class="mobile-overlay__list">
+            <li class="mobile-overlay__item">
+                <a href="{{route('home')}}#catalog" class="mobile-overlay__link">Каталог</a>
+            </li>
+            <li class="mobile-overlay__item">
+                <a href="{{route('menu')}}" class="mobile-overlay__link">Меню в зале</a>
+            </li>
+            <li class="mobile-overlay__item">
+                <a href="{{route('presentation.index')}}" class="mobile-overlay__link">Презентация</a>
+            </li>
+            <li class="mobile-overlay__item">
+                <a href="{{route('tasting.index')}}" class="mobile-overlay__link">Дегустация</a>
+            </li>
+            <li class="mobile-overlay__item">
+                <a href="{{route('about.index')}}" class="mobile-overlay__link">О нас</a>
+            </li>
+            <li class="mobile-overlay__item">
+                <a href="{{route('contacts.index')}}" class="mobile-overlay__link">Контакты</a>
+            </li>
+        </ul>
+    </div>
 </dialog>
 <script src="/js/app.js"></script>
 </body>

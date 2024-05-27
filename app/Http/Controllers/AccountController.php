@@ -26,20 +26,19 @@ class AccountController extends Controller
                 ->get();
 
             $completed_orders = Order::where('user_id', $user_id)
-                ->where ('status', 'Выполнен')
+                ->where('status', 'Выполнен')
                 ->get();
             $orders_count = count($completed_orders);
             $order_discount = Discount::where('name', 'Скидка за 1 заказ, (%)')
                 ->firstOrFail();
             $max_discount = Discount::where('name', 'Максимально возможная скидка, (%)')
                 ->firstOrFail();
-            $max_discount = number_format($max_discount -> size, 0);
+            $max_discount = number_format($max_discount->size, 0);
             $personal_discount = $orders_count * floatval($order_discount->size);
 
-            if($orders_count % 2 === 0) {
+            if ($orders_count % 2 === 0) {
                 $personal_discount = number_format($personal_discount, 0);
-            }
-            else $personal_discount = number_format($personal_discount, 1);
+            } else $personal_discount = number_format($personal_discount, 1);
 
             if ($personal_discount >= $max_discount) {
                 $personal_discount = $max_discount;
@@ -109,16 +108,11 @@ class AccountController extends Controller
     public function update_user_info(Request $request)
     {
         $user = User::findOrFail(Auth::id());
-        $user->update(['name' => $request['name'],
-            'email' => $request['email'],
-            'telephone' => $request['telephone']
+        $user->update(['name' => $request['new_name'],
+            'email' => $request['new_email'],
+            'telephone' => $request['new_telephone']
         ]);
-        return response()->json([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'telephone' => $request['telephone']
-        ]);
-
-
+        $user->save();
+        return redirect()->back();
     }
 }

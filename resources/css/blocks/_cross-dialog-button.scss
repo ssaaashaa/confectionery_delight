@@ -1,0 +1,32 @@
+.cross-dialog-button {
+
+    @include reset-button;
+    width: 24px;
+    height: 24px;
+
+    cursor: pointer;
+    transition: opacity ease 0.5s;
+
+    @include hover{
+        opacity: 1;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 24px;
+
+        height: 1.8px;
+        background: var(--color-light);
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+}

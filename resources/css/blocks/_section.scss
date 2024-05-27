@@ -24,3 +24,11 @@
         text-align: center;
     }
 }
+
+#catalog {
+    padding: 0;
+    @include mobile {
+        padding-block: var(--section-padding-y);
+        padding-inline: var(--container-padding-x);
+    }
+}
