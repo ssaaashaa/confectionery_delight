@@ -146,10 +146,9 @@
                         </ul>
                     </li>
                     <li class="nav-item" style="color: white;  margin: auto auto 30px auto">
-                        <a href="{{route('logout')}}" class="account__exit-button">
+                        <a href="{{route('admin.logout')}}" class="account__exit-button">
                             <i class="nav-icon fas fa-user"></i>
-                            {{Auth::user()->name}}
-
+                            {{Auth::guard('admin')->user()->name}}
                             <button class="btn btn-danger btn-sm">
                                 Выйти
                             </button>

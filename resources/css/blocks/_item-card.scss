@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: flex-start;
     row-gap: 25px;
+    height: 100%;
 
     @include mobile {
         height: 100%;
@@ -13,6 +14,8 @@
         flex-direction: column;
         column-gap: 20px;
         row-gap: 25px;
+        height: 100%;
+        justify-content: space-between;
 
         @include mobile {
             height: 100%;
@@ -31,7 +34,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
-        column-gap: 20px;
+        column-gap: 5px;
 
         @include mobile-s {
             flex-direction: column;

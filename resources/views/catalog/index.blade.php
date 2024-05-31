@@ -12,13 +12,15 @@
             <div class="design-categories">
                 <ul class="design-categories__list grid grid--{{count($design_categories)+1}}">
                     <li class="design-categories__item input">
-                        <input id="design_category-0" type="radio" class="design-categories__selected" name="design_category"
+                        <input id="design_category-0" type="radio" class="design-categories__selected"
+                               name="design_category"
                                value="0" checked>
                         <label for="design_category-0">Все</label>
                     </li>
                     @foreach($design_categories as $design_category)
                         <li class="design-categories__item input">
-                            <input id="design_category-{{$design_category->id}}" type="radio" class="design-categories__selected"
+                            <input id="design_category-{{$design_category->id}}" type="radio"
+                                   class="design-categories__selected"
                                    name="design_category" value="product-{{$design_category->id}}">
                             <label for="design_category-{{$design_category->id}}">{{$design_category->name}}</label>
                         </li>
@@ -29,7 +31,7 @@
             <div class="items">
                 <ul class="items__list grid grid--4">
                     @foreach($products as $product)
-                            @include("catalog.partials.product", ["product"=>$product, "category"=>$category])
+                        @include("catalog.partials.product", ["product"=>$product, "category"=>$category])
                     @endforeach
                 </ul>
             </div>
@@ -105,6 +107,73 @@
             </div>
         </section>
     @endif
+    @if ($category->name === "Трайфлы")
+        <section class="section container">
+            <header class="section__header">
+                <h2 class="section__title">
+                    Самые интересующие вопросы
+                </h2>
+            </header>
+            <div class="section__body">
+                <div class="question-answer">
+                    <ul class="question-answer__list">
+                        <li class="question-answer__item">
+                            <details class="question-answer__accordion" open>
+                                <summary class="question-answer__accordion-header">
+                                    <h3 class="question-answer__accordion-title">
+                                        Что такое трайфл?
+                                    </h3>
+                                    <span class="question-answer__accordion-indicator">
+                                </span>
+                                </summary>
+                                <div class="question-answer__accordion-body">
+                                    <p>
+                                        Трайфл - это порционный десерт, который часто с
+                                        использованием крема, фруктов и бисквита. Традиционно трайфл подается
+                                        в прозрачных стаканчиках, чтобы можно было видеть все слои.
+                                    </p>
+                                </div>
+                            </details>
+                        </li>
+                        <li class="question-answer__item">
+                            <details class="question-answer__accordion">
+                                <summary class="question-answer__accordion-header">
+                                    <h3 class="question-answer__accordion-title">
+                                        Какой срок годности у трайфлов?
+                                    </h3>
+                                    <span class="question-answer__accordion-indicator">
+
+                                </span>
+                                </summary>
+                                <div class="question-answer__accordion-body">
+                                    <p>
+                                        Срок годности трайфлов 72 часа. Хранить в герметичной или закрытой коробке и
+                                        только в холодильнике.</p>
+                                </div>
+                            </details>
+                        </li>
+                        <li class="question-answer__item">
+                            <details class="question-answer__accordion">
+                                <summary class="question-answer__accordion-header">
+                                    <h3 class="question-answer__accordion-title">
+                                        Какой самое популярное вкусовое сочетание трайфлов? </h3>
+                                    <span class="question-answer__accordion-indicator">
+
+                                </span>
+                                </summary>
+                                <div class="question-answer__accordion-body">
+                                    <p>
+                                        Самые популярные вкусы: Красный бархат с ягодной начинкой, Гиннесс-малина,
+                                        Сникерс. </p>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    @endif
+
 @endsection
 
 

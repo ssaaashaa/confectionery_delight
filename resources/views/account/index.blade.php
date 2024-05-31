@@ -98,7 +98,7 @@
 
                                             <div class="user-orders__accordion-details">
                                                 <span>Статус: {{$order->status}}  </span>
-                                                <span>Дата готовности заказа: {{date('d.m.Y', strtotime($order->created_at))}}</span>
+                                                <span>Дата готовности заказа: {{date('d.m.Y', strtotime($order->date))}}</span>
                                                 @if($order->status === 'Выполнен' && $order->count_review===0)
                                                 <button class="button button--no-style user-orders__accordion-button" value="{{$order->id}}">Оставить отзыв</button>
                                                 @endif

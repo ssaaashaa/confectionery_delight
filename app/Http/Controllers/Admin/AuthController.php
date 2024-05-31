@@ -24,8 +24,7 @@ class AuthController extends Controller
         if (auth("admin")->attempt($data)) {
             return redirect(route("admin.feedback-requests.index"));
         }
-
-        return redirect(route("admin.login"))->withErrors(["email"=>'Проверьте введенные данные']);
+        else return redirect(route("admin.login"))->withErrors(["email"=>'Неверно введенные данные']);
     }
 
     public function logout()

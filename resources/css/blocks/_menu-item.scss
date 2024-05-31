@@ -5,6 +5,8 @@
     text-align: center;
     height: 100%;
 
+
+
     &__body {
         display: flex;
         flex-direction: column;
@@ -23,5 +25,9 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+
+        @include mobile {
+            font-size: 15px;
+        }
     }
 }

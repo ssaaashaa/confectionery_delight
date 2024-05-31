@@ -85,7 +85,7 @@
                                 @if(!(Auth::user()))
 
                                     <div class="order__field field">
-                                        <input name="name" class="field__input" id="name"
+                                        <input name="order_name" class="field__input" id="order_name"
                                                required autocomplete="off"
                                                readonly onfocus="this.removeAttribute('readonly');"
                                                @auth("web") value="{{Auth::user()->name}}" @endauth
@@ -95,7 +95,8 @@
                                         @enderror
                                     </div>
                                     <div class="order__field field">
-                                        <input name="telephone" class="field__input phone-mask" id="telephone"
+                                        <input name="order_telephone" class="field__input phone-mask"
+                                               id="order_telephone"
                                                type="tel" required autocomplete="disabled"
                                                @auth("web") value="{{Auth::user()->telephone}}" @endauth
                                                placeholder="Номер телефона">
@@ -104,7 +105,7 @@
                                         @enderror
                                     </div>
                                     <div class="order__field field">
-                                        <input name="email" class="field__input" id="email"
+                                        <input name="order_email" class="field__input" id="order_email"
                                                type="email" required autocomplete="disabled"
                                                @auth("web") value="{{Auth::user()->email}}" @endauth
                                                placeholder="Ваш e-mail">
@@ -138,8 +139,9 @@
                                     </label>
                                 </fieldset>
                                 <div class="order__field field" id="delivery_field">
-                                    <input name="address" class="field__input"
+                                    <input name="order_address" class="field__input"
                                            required autocomplete="disabled"
+                                           id="order_address"
                                            placeholder="Адрес доставки">
                                 </div>
                                 <div id="delivery_address" class="visually-hidden">
@@ -148,8 +150,8 @@
                                     </p>
                                 </div>
                                 <div class="order__field field">
-                                    <label class="field__label" for="date">Выберите дату получения заказа*</label>
-                                    <input name="date" class="field__input" id="date"
+                                    <label class="field__label" for="order_date">Выберите дату получения заказа*</label>
+                                    <input name="order_date" class="field__input" id="order_date"
                                            type="date" required autocomplete="off"
                                            placeholder="Дата">
                                     @error('date')
@@ -157,8 +159,9 @@
                                     @enderror
                                 </div>
                                 <div class="order__field field">
-                                    <label class="field__label" for="comment">Ваши пожелания</label>
-                                    <textarea name="comment" class="field__input order__textarea" id="comment"
+                                    <label class="field__label" for="order_comment">Ваши пожелания</label>
+                                    <textarea name="order_comment" class="field__input order__textarea"
+                                              id="order_comment"
                                               placeholder="Напишите свои пожелания к заказу. Например, вы что-то не едите или хотите добавить. Мы все учтем. "></textarea>
                                 </div>
                                 <div class="order__total">
@@ -167,7 +170,7 @@
                                         @if($discount!=0)
                                             <span>*с учетом персональной скидки</span>
                                         @endif
-                                        @if($orders_count === 0)
+                                        @if($first_order === 0)
                                             <span>*с учетом скидки за первый заказ</span>
                                         @endif
                                     @endauth

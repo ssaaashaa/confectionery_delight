@@ -1,8 +1,17 @@
 <div class="login
-        @error('login')
+        @error('login_email')
         @if($message===null)visually-hidden
     @endif
     @enderror
+     @error('login_password')
+        @if($message===null)visually-hidden
+    @endif
+    @enderror
+
+{{--            @if (!session('nologin'))--}}
+{{--            visually-hidden--}}
+{{--            @endif--}}
+
      @error('forgot')
      @if($message)visually-hidden
 @endif
@@ -19,22 +28,22 @@
         @csrf
 
         <div class="order__field field">
-            <input name="email" class="field__input"
+            <input name="login_email" class="field__input"
                    type="email" required autocomplete="off"
                    placeholder="Ваш e-mail">
-            @error('email')
-            <p>{{ $message }}</p>
+            @error('login_email')
+            <p class="error">{{ $message }}</p>
             @enderror
         </div>
         <div class="order__field field">
-            <input name="password" class="field__input" id="password"
+            <input name="login_password" class="field__input"
                    type="password" required autocomplete="disabled"
                    placeholder="Ваш пароль">
-            <a class="login__forgot forgot-button">Забыли пароль?</a>
-            @error('login')
-            <p>{{ $message }}</p>
+            @error('login_password')
+            <p class="error"> {{ $message }}</p>
             @enderror
-        </div>
+            <a class="login__forgot forgot-button">Забыли пароль?</a>
+                    </div>
         <button class="button login__button" type="submit">Войти</button>
     </form>
     <div class="login__register">

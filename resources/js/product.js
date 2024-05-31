@@ -1,5 +1,16 @@
 
 $(document).ready(function () {
+    /* if my var reload isn't set locally.. in the first time it will be true */
+    // if (!localStorage.getItem("reload")) {
+    //     localStorage.setItem("reload", "true");
+    //     location.reload();
+    // }
+    // /* after reload clear the localStorage */
+    // else {
+    //     localStorage.removeItem("reload");
+    //     // localStorage.clear(); // an option
+    // }
+
 
     //ставим первый вкус - checked
     $('.selected_biscuit').first().prop('checked', true);

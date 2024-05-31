@@ -49,5 +49,9 @@
     }
 }
 
+.admin {
+    background: var(--color-bg-dark);
+}
+
 ::-webkit-scrollbar { width: 0; height: 0} // чтобы скрыть полосу прокрутки
 

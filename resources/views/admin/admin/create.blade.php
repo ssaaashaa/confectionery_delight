@@ -39,10 +39,6 @@
                                 @error('email')
                                 <p>{{ $message }}</p>
                                 @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Пароль</label>
-                                    <input type="text" name="password" class="form-control" id="exampleInputPassword1"  required placeholder="Пароль">
-                                </div>
                             </div>
                             <!-- /.card-body -->
 

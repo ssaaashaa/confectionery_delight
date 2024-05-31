@@ -29,7 +29,7 @@ class ForgotPassword extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your Password',
+            subject: 'Пароль',
         );
     }
 

@@ -13,7 +13,7 @@
             @csrf
 
             <div class="order__field field">
-                <input name="email" class="field__input" id="email"
+                <input name="forgot_email" class="field__input"
                        type="email" required autocomplete="off"
                        placeholder="Ваш e-mail">
                 @error('forgot')
@@ -24,6 +24,6 @@
 
         </form>
     <div class="forgot__login">
-        <a class="login-button">Вспомнил пароль</a>
+        <a class="login-button">Вернуться назад</a>
     </div>
 </div>

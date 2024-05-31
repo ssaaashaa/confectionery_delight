@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'DELIGHT | Каталог '])
 
 @section('content')
-    <section class="section section--hidden-x container">
+    <section class="section container">
         <header class="section__header">
             <h2 class="section__title">
                 <span>Торт на заказ</span>
@@ -124,18 +124,21 @@
                             понравился. Если вы хотите внести изменения - напишите об этом при оформлении заказа!
                         </p>
                         <p>
-                            *первый вариант дизайна - дизайн обсуждается лично с заказчиком (при наличии конкретных пожеланий)
+                            *итоговая стоимость торта со своим дизайном обсуждается лично с заказчиком
                         </p>
                     </div>
                     <div class="cake__examples grid grid--4">
                         @foreach($designs as $design)
                             <div class="cake__example">
-                                <img width="250" height="auto" loading="lazy" src="/storage/designs/{{$design->img}}"
+                                <img width="100%" height="auto" loading="lazy" src="/storage/designs/{{$design->img}}"
                                      alt="">
                                 <div class="radio-btn">
                                     <input id="design-{{$design->id}}" type="radio" name="design" value="{{$design->id}}"
                                            checked class="selected_design">
                                     <label  for="design-{{$design->id}}">✔</label>
+                                    <span class="cake__example-name">
+                                        {{$design->name}}
+                                    </span>
                                 </div>
                             </div>
                         @endforeach

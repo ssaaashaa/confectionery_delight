@@ -1,5 +1,9 @@
 <div class="register
-  @error('login')
+  @error('login_email')
+        @if($message) visually-hidden
+@endif
+@enderror
+  @error('login_password')
         @if($message) visually-hidden
 @endif
 @enderror
@@ -20,8 +24,7 @@
 
         <div class="order__field field">
             <input name="name" class="field__input" id="name"
-                   required autocomplete="off"
-                   readonly onfocus="this.removeAttribute('readonly');"
+                   autocomplete="off" type="text" required
                    placeholder="Имя">
             @error('name')
             <p>{{ $message }}</p>

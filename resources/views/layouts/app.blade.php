@@ -12,6 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 </head>
 <body class="page @if(count($errors))overflow-hidden @endif">
+{{--@if (session('success'))--}}
+{{--    <script>--}}
+{{--        alert({{session('success')}})--}}
+{{--    </script>--}}
+{{--@endif--}}
 <header class="header">
     <div class="header__inner container">
         <a href="/" class="header__logo logo">

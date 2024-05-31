@@ -26,5 +26,10 @@
         @include mobile {
             line-height: 25px;
         }
+
+        @include mobile-s {
+            line-height: 15px;
+            padding: 0 1px;
+        }
     }
 }

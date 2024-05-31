@@ -11,8 +11,7 @@ class MenuController extends Controller
     public function index() {
 
         $categories = MenuCategory::all();
-        $products = MenuProduct::where('menu_category_id', '1')
-        ->get();
+        $products = MenuProduct::all();
         return view('menu', [
             "products" => $products,
             "categories" => $categories

@@ -262,6 +262,10 @@ svg * {
   }
 }
 
+.admin {
+  background: var(--color-bg-dark);
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -628,6 +632,11 @@ footer {
   font-weight: 500;
   transition: 0.2s all;
   background-color: var(--color-bg-input);
+}
+@media (max-width: 480px) {
+  .input label {
+    line-height: 40px;
+  }
 }
 
 .input input[type=radio]:checked + label {
@@ -1154,16 +1163,41 @@ footer {
 .cake__description p:nth-child(2) {
   opacity: 0.7;
 }
-.cake__examples {
-  scroll-snap-type: x mandatory;
-  overflow-x: scroll;
+@media (max-width: 1110px) {
+  .cake__examples {
+    --gridColumns: 3;
+    gap: 20px;
+  }
+}
+@media (max-width: 625px) {
+  .cake__examples {
+    --gridColumns: 2;
+    gap: 10px;
+  }
 }
 .cake__example {
   display: flex;
-  min-width: 200px;
-  scroll-snap-align: start;
-  width: 100%;
+  min-width: 130px;
   flex-direction: column;
+}
+.cake__example .radio-btn {
+  margin-right: 0;
+  margin-bottom: 15px;
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  margin-top: 25px;
+}
+@media (max-width: 480px) {
+  .cake__example .radio-btn {
+    margin-top: 15px;
+  }
+}
+.cake__example .radio-btn label {
+  margin-top: 0;
+}
+.cake__example-name {
+  font-size: 15px;
 }
 .cake__button {
   margin: auto;
@@ -1195,6 +1229,12 @@ footer {
 @media (max-width: 767px) {
   .radio-btn label {
     line-height: 25px;
+  }
+}
+@media (max-width: 480px) {
+  .radio-btn label {
+    line-height: 15px;
+    padding: 0 1px;
   }
 }
 
@@ -1574,12 +1614,13 @@ footer {
 @media (max-width: 1110px) {
   .items__list {
     --gridColumns: 3;
+    gap: 20px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 625px) {
   .items__list {
     --gridColumns: 2;
-    gap: 20px;
+    gap: 10px;
   }
 }
 
@@ -1598,6 +1639,7 @@ footer {
   scroll-snap-type: x mandatory;
   overflow-x: scroll;
   justify-content: flex-start;
+  display: flex;
 }
 @media (min-width: 768px) {
   .design-categories__list {
@@ -1614,6 +1656,7 @@ footer {
   flex-direction: column;
   justify-content: flex-start;
   row-gap: 25px;
+  height: 100%;
 }
 @media (max-width: 767px) {
   .item-card {
@@ -1625,6 +1668,8 @@ footer {
   flex-direction: column;
   column-gap: 20px;
   row-gap: 25px;
+  height: 100%;
+  justify-content: space-between;
 }
 @media (max-width: 767px) {
   .item-card__body {
@@ -1643,7 +1688,7 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  column-gap: 20px;
+  column-gap: 5px;
 }
 @media (max-width: 480px) {
   .item-card__buy {
@@ -2147,7 +2192,7 @@ footer {
   margin-left: auto;
 }
 .login__title h2, .register__title h2, .forgot__title h2 {
-  margin: 0;
+  margin: -35px 0 0 0;
 }
 .login__form, .register__form, .forgot__form {
   display: flex;
@@ -2202,6 +2247,9 @@ footer {
 
 .forgot {
   z-index: 120;
+}
+.forgot__title h2 {
+  margin: 0;
 }
 
 @media (hover: hover) {
@@ -2619,11 +2667,28 @@ footer {
   flex-direction: column;
   row-gap: 60px;
 }
+@media (max-width: 1110px) {
+  .menu__items-list {
+    --gridColumns: 3;
+  }
+}
+@media (max-width: 767px) {
+  .menu__items-list {
+    --gridColumns: 2;
+    gap: 20px;
+  }
+}
+.menu__categories {
+  display: flex;
+  justify-content: center;
+}
 .menu__categories-list {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   column-gap: 20px;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  justify-content: flex-start;
 }
 
 .menu-item {
@@ -2649,6 +2714,11 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+@media (max-width: 767px) {
+  .menu-item__price {
+    font-size: 15px;
+  }
 }
 
 .footer__inner {

@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'DELIGHT | Меню в зале'])
 
 @section('content')
-    <section class="section container">
+    <section class="section section--hidden-x container">
         <header class="section__header">
             <h2 class="section__title">
                 <span>Меню в зале</span>
@@ -25,10 +25,10 @@
                 <div class="menu__items">
                     <ul class="menu__items-list grid grid--4">
                         @foreach($products as $product)
-                            <li class="menu__items-item">
+                            <li class="menu__items-item" id="category-{{$product->menu_category_id}}">
                                 <div class="menu-item">
                                     <img src="/storage/menu/{{$product->img}}" alt="" class="menu-item__image"
-                                         width="250px" height="250px" loading="lazy"
+                                         width="100%" height="auto" loading="lazy"
                                     >
                                     <div class="menu-item__body">
                                         <div class="menu-item__title">

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 
 class AuthController extends Controller
@@ -21,15 +22,27 @@ class AuthController extends Controller
     {
         $data = $request->validate(
             [
-                "email" => ["required", "email", "string"],
-                "password" => ["required"]
+                "login_email" => ["required", "email", "string"],
+                "login_password" => ["required"]
             ]
         );
 
-        if (auth("web")->attempt($data)) {
-            return redirect(route("home"));
-        } else
-        return redirect($request->headers->get('referer', '/'))->withErrors(["login"=>'Неверно введенные данные']);
+        $data = [
+            'email' => $request->login_email,
+            'password' => $request->login_password,
+        ];
+
+        $user = User::where('email', $data['email'])
+            ->get();
+        if(count($user)===0) {
+            return redirect($request->headers->get('referer', '/'))->withErrors(['login_email' => 'Неправильная почта']);
+        }
+        else {
+            if (auth("web")->attempt($data)) {
+                return redirect(route("home"));
+            } else
+                return redirect($request->headers->get('referer', '/'))->withErrors(['login_password' => 'Неправильный пароль']);
+        }
     }
 
     public function logout()
@@ -53,14 +66,14 @@ class AuthController extends Controller
     {
         $data = $request->validate(
             [
-                "email" => ["required", "email", "string"],
+                "forgot_email" => ["required", "email", "string"],
             ]
         );
 
-        $user = User::where(["email" => $data["email"]])->first();
+        $user = User::where(["email" => $data["forgot_email"]])->first();
 
         if(!$user) {
-            return redirect($request->headers->get('referer', '/'))->withErrors(["forgot"=>'Неверно введенная почта']);
+            return redirect($request->headers->get('referer', '/'))->withErrors(["forgot"=>'Пользователь с таким e-mail не найден']);
         } else {
             $password = uniqid();
             $user->password = bcrypt($password);
@@ -78,7 +91,12 @@ class AuthController extends Controller
                 "name" => ["required", "string"],
                 "email" => ["required", "email", "string", "unique:users,email"],
                 "telephone" => ["required", "string", "unique:users,telephone"],
-                "password" => ["required", "confirmed"]
+                "password_confirmation" => ["required", "confirmed"]
+            ],
+            [
+                "telephone.unique" => "Пользователь с таким номером телефона уже существует",
+                "email.unique" => "Пользователь с таким e-mail уже существует",
+                "password_confirmation.confirmed" => "Пароли не совпадают"
             ]
         );
 

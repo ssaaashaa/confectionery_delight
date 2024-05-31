@@ -79,10 +79,12 @@ $(document).ready(function () {
     $("input[name='delivery-type']").change(function () {
         let delivery_type = $(this).val();
         if (delivery_type === 'Доставка') {
+            document.getElementById('order_address').required = true;
             $('#delivery_field').removeClass('visually-hidden');
             $('#delivery_address').addClass('visually-hidden');
         }
         else  {
+            document.getElementById('order_address').required = false;
             $('#delivery_field').addClass('visually-hidden');
             $('#delivery_address').removeClass('visually-hidden');
 

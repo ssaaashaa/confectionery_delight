@@ -19,6 +19,10 @@
     transition: 0.2s all;
     background-color: var(--color-bg-input);
 
+    @include mobile-s {
+        line-height: 40px;
+    }
+
 }
 
 .input input[type=radio]:checked+label {

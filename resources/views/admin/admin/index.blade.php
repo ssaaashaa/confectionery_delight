@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-           <!-- /.row -->
+            <!-- /.row -->
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -38,7 +38,7 @@
                             <th>
                                 Пароль
                             </th>
-                            <th style="width: 30%">
+                            <th style="width: 35%">
                             </th>
                         </tr>
                         </thead>
@@ -57,22 +57,26 @@
                                 <td>
                                     Недоступен
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.admin.edit', $admin['id']) }}">
-                                      Изменить пароль
-                                    </a>
+                                <td class="project-actions text-right" style="display: flex; column-gap: 10px; justify-content: flex-end">
+                                    <form action="{{route('admin.admin.update', $admin['id'])}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="btn btn-primary btn-sm">
+                                            Отправить новый пароль
+                                        </button>
+                                    </form>
                                     <form action="{{ route('admin.admin.destroy', $admin['id']) }}" method="POST"
                                           style="display: inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm delete-btn"
-                                        @if(Auth::user()->id==$admin['id'])
-                                            disabled
+                                                @if(Auth::user()->id==$admin['id'])
+                                                    disabled
                                             @endif
                                         >
-                                                <i class="fas fa-trash">
-                                                </i>
-                                            </button>
+                                            <i class="fas fa-trash">
+                                            </i>
+                                        </button>
 
                                     </form>
                                 </td>

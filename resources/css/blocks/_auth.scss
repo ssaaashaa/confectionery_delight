@@ -28,7 +28,7 @@
 
     &__title {
         h2 {
-            margin: 0;
+            margin: -35px 0 0 0;
         }
     }
 
@@ -74,6 +74,13 @@
 
 .forgot {
     z-index: 120;
+
+    &__title {
+        h2 {
+            margin: 0;
+        }
+    }
+
 }
 
 .login-button {
