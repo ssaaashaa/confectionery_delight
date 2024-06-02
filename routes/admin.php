@@ -18,6 +18,7 @@ Route::middleware("auth:admin")->group(function () {
     Route::resource('taste-combinations', \App\Http\Controllers\Admin\TasteCombinationsController::class);
     Route::resource('biscuit', \App\Http\Controllers\Admin\BiscuitController::class);
     Route::resource('fill', \App\Http\Controllers\Admin\FillsController::class);
+    //Route::post('/load_taste_img',  [\App\Http\Controllers\Admin\LoadImageController::class, 'load_taste_img'])->name('load_taste_img');
 
     Route::get('logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
 });

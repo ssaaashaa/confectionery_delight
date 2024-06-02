@@ -20,6 +20,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/account.js', 'public/js')
     .js('resources/js/main.js', 'public/js')
     .js('resources/js/menu.js', 'public/js')
+    .js('resources/js/taste.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css')
     .postCss('resources/css/admin.css', 'public/css')
 

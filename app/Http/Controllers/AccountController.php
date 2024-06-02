@@ -83,7 +83,7 @@ class AccountController extends Controller
             "review" => $data["review"],
         ]);
 
-        return redirect(route("home"));
+        return redirect(route("home").'#reviews');
     }
 
     public function load_avatar(Request $request)

@@ -12,5 +12,7 @@ class TasteCombination extends Model
     protected $fillable = [
         "biscuit_id",
         "fill_id",
+        "ratio",
+        "img"
     ];
 }

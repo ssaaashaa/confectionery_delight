@@ -3,6 +3,14 @@
         @if($message) visually-hidden
 @endif
 @enderror
+  @error('order_email')
+        @if($message) visually-hidden
+@endif
+@enderror
+  @error('order_telephone')
+        @if($message) visually-hidden
+@endif
+@enderror
   @error('login_password')
         @if($message) visually-hidden
 @endif

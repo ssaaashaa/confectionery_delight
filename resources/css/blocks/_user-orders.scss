@@ -1,9 +1,13 @@
 .user-orders {
 
+    details:first-of-type {
+        open: open;
+    }
+
     &__list {
         display: flex;
         flex-direction: column;
-        row-gap: 40px;
+        row-gap: 60px;
 
 
     }
@@ -12,6 +16,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 25px;
+        min-width: 170px;
     }
 
     &__accordion {
@@ -81,6 +86,22 @@
             flex-direction: column;
             row-gap: 15px;
 
+            &--order {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                column-gap: 20px;
+
+                span:nth-child(1) {
+                    text-align: end;
+                    padding-right: 20px;
+
+                    @include mobile-s {
+                        padding-right: 10px;
+                    }
+                }
+            }
+
             @include mobile {
                 row-gap: 10px;
             }
@@ -96,6 +117,7 @@
 
             span {
                 @include fluid-text(16, 14);
+
                 &:nth-child(1) {
                     font-weight: 500;
                 }

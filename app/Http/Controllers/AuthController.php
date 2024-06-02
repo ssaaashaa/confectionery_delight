@@ -79,7 +79,12 @@ class AuthController extends Controller
             $user->password = bcrypt($password);
             $user->save();
 
-            Mail::to($user)->send(new ForgotPassword($password));
+            try {
+                Mail::to($user)->send(new ForgotPassword($password));
+            }
+            catch (\Exception $e) {
+
+            }
             return redirect($request->headers->get('referer', '/'));
         }
     }

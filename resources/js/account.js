@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     $('.user-orders__accordion-button').on('click', function () {
         let order = $(this).val();
-        $('#dark-bg').removeClass('visually-hidden');
+        $('.dark-bg').removeClass('visually-hidden');
         $('#review-form-'+order).removeClass('visually-hidden');
         $('.register').addClass('visually-hidden');
         $('.login').addClass('visually-hidden');
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
     $('.review__close').on('click', function () {
         $('.review').addClass('visually-hidden');
-        $('#dark-bg').addClass('visually-hidden');
+        $('.dark-bg').addClass('visually-hidden');
     });
 
 

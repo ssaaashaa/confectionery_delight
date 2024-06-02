@@ -4,7 +4,7 @@ import './bootstrap.js';
 $(".phone-mask").mask("+375 (99) 999-99-99");
 
 $('.login-button').on('click', function ( ) {
-    $('#dark-bg').removeClass('visually-hidden');
+    $('.dark-bg').removeClass('visually-hidden');
     $('body').addClass('overflow-hidden');
     $('.register').addClass('visually-hidden');
     $('.register__form p').remove();
@@ -16,7 +16,7 @@ $('.login-button').on('click', function ( ) {
 })
 
 $('.register-button').on('click', function ( ) {
-    $('#dark-bg').removeClass('visually-hidden');
+    $('.dark-bg').removeClass('visually-hidden');
     $('body').addClass('overflow-hidden');
     $('.register').removeClass('visually-hidden');
     $('.login').addClass('visually-hidden');
@@ -26,7 +26,7 @@ $('.register-button').on('click', function ( ) {
 
 $('.auth-close').on ('click', function () {
     $('body').removeClass('overflow-hidden');
-    $('#dark-bg').addClass('visually-hidden');
+    $('.dark-bg').addClass('visually-hidden');
     $('.register').addClass('visually-hidden');
     $('.register__form p').remove();
     $('.register__form')[0].reset();
@@ -44,4 +44,11 @@ $('.forgot-button').on('click', function () {
     $('.login__form')[0].reset();
     $('.forgot').removeClass('visually-hidden');
 })
+
+$('.modal__close').on ('click', function () {
+    $('.dark-bg').addClass('visually-hidden');
+    $('.modal').addClass('visually-hidden');
+})
+
+
 

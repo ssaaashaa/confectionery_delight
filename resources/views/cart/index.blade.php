@@ -100,7 +100,7 @@
                                                type="tel" required autocomplete="disabled"
                                                @auth("web") value="{{Auth::user()->telephone}}" @endauth
                                                placeholder="Номер телефона">
-                                        @error('telephone')
+                                        @error('order_telephone')
                                         <p>{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -109,7 +109,7 @@
                                                type="email" required autocomplete="disabled"
                                                @auth("web") value="{{Auth::user()->email}}" @endauth
                                                placeholder="Ваш e-mail">
-                                        @error('email')
+                                        @error('order_email')
                                         <p>{{ $message }}</p>
                                         @enderror
                                     </div>

@@ -41,8 +41,8 @@
 
                     <div class="tasting__body">
                         <div class="tasting__field field">
-                            <label class="field__label" for="name">Имя*</label>
-                            <input name="name" class="field__input" id="name"
+                            <label class="field__label" for="tasting_name">Имя*</label>
+                            <input name="tasting_name" class="field__input" id="tasting_name"
                                    required autocomplete="off"
                                    @auth("web") value="{{Auth::user()->name}}" @endauth
                                    placeholder="Имя">
@@ -51,8 +51,8 @@
                             @enderror
                         </div>
                         <div class="tasting__field field">
-                            <label class="field__label" for="telephone">Номер телефона*</label>
-                            <input name="telephone" class="field__input phone-mask" id="telephone"
+                            <label class="field__label" for="tasting_telephone">Номер телефона*</label>
+                            <input name="tasting_telephone" class="field__input phone-mask" id="tasting_telephone"
                                    type="tel" required autocomplete="off"
                                    @auth("web") value="{{Auth::user()->telephone}}" @endauth
                                    placeholder="Номер телефона">

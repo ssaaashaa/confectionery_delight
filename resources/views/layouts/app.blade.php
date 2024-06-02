@@ -88,28 +88,24 @@
     </div>
 </header>
 <main class="content">
-    <div class="dark-bg @if(!$errors->any())visually-hidden @endif" id="dark-bg">
+
+    <div class="dark-bg @if(!$errors->any())visually-hidden @endif   @error('order_email')
+        @if($message) visually-hidden
+@endif
+@enderror
+  @error('order_telephone')
+        @if($message) visually-hidden
+@endif
+@enderror" id="dark-bg">
         @include("auth.login")
         @include("auth.register")
         @include("auth.forgot")
-{{--        <div class="forgot">--}}
-{{--            <div class="forgot__title">--}}
-{{--                <h2>--}}
-{{--                    Спасибо за заявку!--}}
-{{--                </h2>--}}
-{{--            </div>--}}
-{{--            <form class="forgot__form" method="POST" action="{{ route("forgot_process") }}">--}}
-{{--                @csrf--}}
-
-{{--                <div class="order__field field">--}}
-{{--                    <p>--}}
-{{--                        В скором времени наш администратор свяжется с вами для уточнения деталей!--}}
-{{--                    </p>--}}
-{{--                </div>--}}
-{{--                <button class="button forgot__button" type="submit">На главную</button>--}}
-
-{{--            </form>--}}
-{{--        </div>--}}
+    </div>
+    <div class="dark-bg @if(!session('success'))visually-hidden @endif">
+        @include("layouts.partials.modals")
+    </div>
+    <div class="dark-bg @if(!session('nosuccess'))visually-hidden @endif">
+        @include("layouts.partials.modals")
     </div>
 
     @yield('content')

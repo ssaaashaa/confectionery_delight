@@ -1,4 +1,4 @@
-<section class="section section--hidden-x container">
+<section class="section section--hidden-x container" id="reviews">
     <header class="section__header">
         <h2 class="section__title">
             Отзывы о нас

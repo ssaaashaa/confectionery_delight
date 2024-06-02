@@ -5,15 +5,15 @@
         <div class="section__body">
             <div class="account">
                 <div class="account__buttons">
-                    <button class="account__button button-account button-account--focused" id="personal-data">
-                        Личные данные
-                    </button>
-                    <button class="account__button button-account" id="user-orders">
+                    <button class="account__button button-account button-account--focused" id="user-orders">
                         Мои заказы
+                    </button>
+                    <button class="account__button button-account" id="personal-data">
+                        Личные данные
                     </button>
                 </div>
                 @auth("web")
-                    <div class="account__data">
+                    <div class="account__data visually-hidden">
                         <div class="account__user-data">
                             <div class="account__image-data">
                                 <div class="account__image">
@@ -63,11 +63,16 @@
                                 </button>
                             </form>
                         </div>
-                        <div>
+                        <div class="account__user-discount">
                             <div class="account__discount">
-                            <span>
-                                Ваша персональная скидка: {{$discount}} %
-                            </span>
+                                <div class="account__discount-text">
+                                      <span>
+                                Ваша персональная скидка:
+                                      </span>
+                                    <span class="account__discount-size">
+                                        {{$discount}} %
+                                    </span>
+                                </div>
                                 <p>
                                     *скидка зависит от количества выполненных заказов
                                 </p>
@@ -81,7 +86,7 @@
                     </div>
                 @endauth
                 @auth("web")
-                    <div class="account__orders user-orders visually-hidden">
+                    <div class="account__orders user-orders">
                         <ul class="user-orders__list">
                             @foreach($orders as $order)
                                 <li class="user-orders__item">
@@ -96,11 +101,14 @@
 
                                             </div>
 
-                                            <div class="user-orders__accordion-details">
+                                            <div class="user-orders__accordion-details--order">
                                                 <span>Статус: {{$order->status}}  </span>
                                                 <span>Дата готовности заказа: {{date('d.m.Y', strtotime($order->date))}}</span>
                                                 @if($order->status === 'Выполнен' && $order->count_review===0)
-                                                <button class="button button--no-style user-orders__accordion-button" value="{{$order->id}}">Оставить отзыв</button>
+                                                    <button
+                                                        class="button button--no-style user-orders__accordion-button"
+                                                        value="{{$order->id}}">Оставить отзыв
+                                                    </button>
                                                 @endif
                                             </div>
                                         </summary>
@@ -133,16 +141,18 @@
                                                     Как вам заказ?
                                                 </h2>
                                             </div>
-                                            <form action="{{route("review_process")}}" method="POST" class="review__form">
+                                            <form action="{{route("review_process")}}" method="POST"
+                                                  class="review__form">
                                                 @csrf
                                                 <div class="review__form-field field">
-                                                  <textarea name="review" class="field__input"
+                                                  <textarea name="review" class="field__input" required
                                                             placeholder="Оставьте отзыв на заказ"></textarea>
                                                 </div>
                                                 @error('review')
                                                 <p class="text-red-500">{{ $message }}</p>
                                                 @enderror
-                                                <button type="submit" value="{{$order->id}}" name="order_id" class="button">
+                                                <button type="submit" value="{{$order->id}}" name="order_id"
+                                                        class="button">
                                                     Отправить
                                                 </button>
                                             </form>
