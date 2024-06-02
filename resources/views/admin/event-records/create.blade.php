@@ -35,8 +35,8 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Имя</label>
-                                        <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                                        <label for="field_name">Имя</label>
+                                        <input type="text" name="name" class="form-control" id="field_name"
                                                {{--                                           @isset(request()->route('name'))--}}
 
                                                value="{{request('name')}}"
@@ -73,8 +73,8 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Имя</label>
-                                        <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                                        <label for="field_name">Имя</label>
+                                        <input type="text" name="name" class="form-control" id="field_name"
                                                {{--                                           @isset(request()->route('name'))--}}
 
                                                value="{{request('name')}}"
@@ -120,5 +120,6 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
+    <script src="/js/field_name.js"></script>
     <!-- /.content -->
 @endsection

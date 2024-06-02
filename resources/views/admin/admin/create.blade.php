@@ -10,6 +10,12 @@
                     <h6><i class="icon fa fa-check"></i>{{ session('success') }}</h6>
                 </div>
             @endif
+                @if (session('nosuccess'))
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h6>{{ session('nosuccess') }}</h6>
+                    </div>
+                @endif
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -28,8 +34,8 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Имя</label>
-                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                                    <label for="admin">Имя</label>
+                                    <input type="text" name="name" class="form-control" id="admin"
                                            placeholder="Имя" required>
                                 </div>
                                 <div class="form-group">
@@ -52,4 +58,24 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <script>
+        var admin = document.getElementById("admin");
+
+        // Добавляем обработчик события ввода
+        admin.addEventListener("input", function (e) {
+            // При вводе текста запускаем функцию толькоLettersSpacesDashes
+            admin.value = onlyLettersSpacesDashes(admin.value);
+        });
+
+        function onlyLettersSpacesDashes(e) {
+            // Допускаются только буквы, пробелы и тире
+            var regex = /[^a-zA-Zа-яА-Я-]/g;
+
+            // Заменяем все недопустимые символы на пустую строку
+            var result = e.replace(regex, "");
+
+            // Возвращаем замененный результат
+            return result;
+        }
+    </script>
 @endsection

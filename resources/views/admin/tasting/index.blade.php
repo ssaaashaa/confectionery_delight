@@ -25,7 +25,7 @@
                             <div>
                                 <h3 class="card-title"><b>{{date('d.m.Y', strtotime($tasting_event["date"]))}} в {{$tasting_event["time"]}}</b></h3>
                                 <br>
-                                Цена: {{$tasting_event["price"]}}
+                                Цена: {{$tasting_event["price"]}} BYN
                                 <br>Осталось мест: {{$tasting_event["event_count"]-count($tasting_event["records"])}}
                             </div>
                             <div class="card-tools flex-card">
@@ -33,9 +33,11 @@
                                     <i class="fas fa-plus"></i>
                                 </button>
 <div>
-    <a class="btn btn-primary btn-sm" href="{{route("admin.tasting.edit", $tasting_event['id'])}}">
-        Изменить
-    </a>
+    @if(strtotime($tasting_event["date"])>time())
+        <a class="btn btn-primary btn-sm" href="{{route("admin.tasting.edit", $tasting_event['id'])}}">
+            Изменить
+        </a>
+    @endif
     <form action="{{route("admin.tasting.destroy", $tasting_event['id'])}}" method="POST"
           style="display: inline-block">
         @csrf

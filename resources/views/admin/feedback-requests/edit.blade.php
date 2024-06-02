@@ -30,7 +30,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Комментарий</label>
-                                    <textarea style="height: 200px; resize: none" type="text" name="admin_comment" class="form-control" id="exampleInputPassword1"  required placeholder="Комментарий">{{$feedbackRequest['admin_comment']}}</textarea>
+                                    <textarea style="height: 200px; resize: none" type="text" name="admin_comment" class="form-control" id="exampleInputPassword1"  minlength="5" maxlength="255" required placeholder="Комментарий">{{$feedbackRequest['admin_comment']}}</textarea>
                                 </div>
                             </div>
                             <!-- /.card-body -->

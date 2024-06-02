@@ -5,15 +5,15 @@
         <div class="section__body">
             <div class="account">
                 <div class="account__buttons">
-                    <button class="account__button button-account button-account--focused" id="user-orders">
+                    <button class="account__button button-account @if(!session('phone'))button-account--focused @endif" id="user-orders">
                         Мои заказы
                     </button>
-                    <button class="account__button button-account" id="personal-data">
+                    <button class="account__button button-account @if(session('phone'))button-account--focused @endif" id="personal-data">
                         Личные данные
                     </button>
                 </div>
                 @auth("web")
-                    <div class="account__data visually-hidden">
+                    <div class="account__data @if(!session('phone')) visually-hidden @endif">
                         <div class="account__user-data">
                             <div class="account__image-data">
                                 <div class="account__image">
@@ -41,21 +41,17 @@
                                     </div>
                                     <div class="account__field field">
                                         <input name="new_telephone" class="field__input phone-mask"
-                                               type="tel" required autocomplete="disabled"
+                                               type="tel" required autocomplete="disabled" title="+375 (25|29|33|44) xxx-xx-xx"
                                                @auth("web") value="{{Auth::user()->telephone}}" @endauth
                                                placeholder="Номер телефона">
-                                        @error('telephone')
-                                        <p>{{ $message }}</p>
-                                        @enderror
+                                        <p>{{session('phone')}}</p>
                                     </div>
                                     <div class="account__field field">
                                         <input name="new_email" class="field__input"
                                                type="email" required autocomplete="disabled"
                                                @auth("web") value="{{Auth::user()->email}}" @endauth
                                                placeholder="Ваш e-mail">
-                                        @error('email')
-                                        <p>{{ $message }}</p>
-                                        @enderror
+                                        <p>{{session('email')}}</p>
                                     </div>
                                 </div>
                                 <button id="save_user_info" class="button">
@@ -86,7 +82,7 @@
                     </div>
                 @endauth
                 @auth("web")
-                    <div class="account__orders user-orders">
+                    <div class="account__orders user-orders @if(session('phone')) visually-hidden @endif">
                         <ul class="user-orders__list">
                             @foreach($orders as $order)
                                 <li class="user-orders__item">

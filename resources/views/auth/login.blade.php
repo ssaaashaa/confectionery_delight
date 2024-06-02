@@ -29,7 +29,7 @@
 
         <div class="order__field field">
             <input name="login_email" class="field__input"
-                   type="email" required autocomplete="off"
+                   type="email" required autocomplete="off" title="some@some.some"
                    placeholder="Ваш e-mail">
             @error('login_email')
             <p class="error">{{ $message }}</p>

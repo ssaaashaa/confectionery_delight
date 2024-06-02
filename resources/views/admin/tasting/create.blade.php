@@ -36,19 +36,23 @@
                                 <div class="form-group">
                                     <label for="date">Дата</label>
                                     {{--                                    <input type="date"  name="date" value="{{date('d.m.Y', strtotime($event['date']))}}"  min="{{date('d.m.Y')}}" max="2024-12-31" class="form-control" id="date"  required placeholder="Дата">--}}
-                                    <input type="text" name="date" class="form-control" id="date"  required placeholder="Дата" name="trip-start"/>
+                                    <input type="date" name="date"  min="{{date('Y-m-d', strtotime(today().'+ 1 days'))}}" class="form-control" id="date"  required placeholder="Дата" />
+
                                 </div>
                                 <div class="form-group">
                                     <label for="time">Время</label>
-                                    <input type="text"  name="time" class="form-control" id="time"  required placeholder="Время">
+                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="time" data-select2-id="9" tabindex="-1" aria-hidden="true">
+                                        <option value="12:00">12:00</option>
+                                        <option value="16:00">16:00</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="price">Цена, BYN</label>
-                                    <input type="text"  name="price" class="form-control" id="price"  required placeholder="Цена">
+                                    <input type="number" min="0"  name="price" class="form-control" id="price"  required placeholder="Цена">
                                 </div>
                                 <div class="form-group">
                                     <label for="count">Количество мест</label>
-                                    <input type="text"  name="count" class="form-control" id="count"  required placeholder="Количество мест">
+                                    <input type="number" min="0"  name="count" class="form-control" id="count"  required placeholder="Количество мест">
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -63,4 +67,15 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <script>
+        const picker = document.getElementById('date');
+        picker.addEventListener('input', function(e) {
+            const dayOfWeek = new Date(this.value).getUTCDay();
+            if ([1, 2, 3, 4, 5].includes(dayOfWeek)) {
+                e.preventDefault();
+                this.value = '';
+                alert('Разрешен выбор только выходных дней!');
+            }
+        });
+    </script>
 @endsection

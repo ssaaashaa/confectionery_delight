@@ -94,14 +94,16 @@ class AuthController extends Controller
         $data = $request->validate(
             [
                 "name" => ["required", "string"],
-                "email" => ["required", "email", "string", "unique:users,email"],
-                "telephone" => ["required", "string", "unique:users,telephone"],
-                "password_confirmation" => ["required", "confirmed"]
+                "email" => ["required", "email", "string", "unique:users,email", "regex: /^\\S+@\\S+\\.\\S+$/"],
+                "telephone" => ["required", "string", "unique:users,telephone", "regex: /^\+375\s\((25|29|33|44)\)\s\d{3}-\d{2}-\d{2}$/"],
+                "password" => ["required", "confirmed"]
             ],
             [
                 "telephone.unique" => "Пользователь с таким номером телефона уже существует",
                 "email.unique" => "Пользователь с таким e-mail уже существует",
-                "password_confirmation.confirmed" => "Пароли не совпадают"
+                "password.confirmed" => "Пароли не совпадают",
+                "telephone.regex" => "Допустимый код: 25 | 29 | 33 | 44",
+                "email.regex" => "Некорректный e-mail"
             ]
         );
 

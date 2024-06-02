@@ -85,9 +85,8 @@
                                 @if(!(Auth::user()))
 
                                     <div class="order__field field">
-                                        <input name="order_name" class="field__input" id="order_name"
-                                               required autocomplete="off"
-                                               readonly onfocus="this.removeAttribute('readonly');"
+                                        <input name="order_name" class="field__input" id="field_name"
+                                               required autocomplete="off" type="text" maxlength="25" pattern=".{3,25}" title="Длина имени от 3 до 25 символов"
                                                @auth("web") value="{{Auth::user()->name}}" @endauth
                                                placeholder="Имя">
                                         @error('name')
@@ -99,19 +98,15 @@
                                                id="order_telephone"
                                                type="tel" required autocomplete="disabled"
                                                @auth("web") value="{{Auth::user()->telephone}}" @endauth
-                                               placeholder="Номер телефона">
-                                        @error('order_telephone')
-                                        <p>{{ $message }}</p>
-                                        @enderror
+                                               placeholder="Номер телефона" title="+375 (25|29|33|44) xxx-xx-xx">
+                                        <p>{{session('phone')}}</p>
                                     </div>
                                     <div class="order__field field">
                                         <input name="order_email" class="field__input" id="order_email"
-                                               type="email" required autocomplete="disabled"
+                                               type="email" required autocomplete="disabled" title="some@some.some"
                                                @auth("web") value="{{Auth::user()->email}}" @endauth
                                                placeholder="Ваш e-mail">
-                                        @error('order_email')
-                                        <p>{{ $message }}</p>
-                                        @enderror
+                                        <p>{{session('email')}}</p>
                                     </div>
                                 @endif
                                 <fieldset class="order__delivery-types radios">
@@ -141,7 +136,7 @@
                                 <div class="order__field field" id="delivery_field">
                                     <input name="order_address" class="field__input"
                                            required autocomplete="disabled"
-                                           id="order_address"
+                                           id="order_address" maxlength="50"
                                            placeholder="Адрес доставки">
                                 </div>
                                 <div id="delivery_address" class="visually-hidden">
@@ -153,6 +148,9 @@
                                     <label class="field__label" for="order_date">Выберите дату получения заказа*</label>
                                     <input name="order_date" class="field__input" id="order_date"
                                            type="date" required autocomplete="off"
+                                           value = "{{date('Y-m-d', strtotime(today().'+ 3 days'))}}"
+                                           min="{{date('Y-m-d', strtotime(today().'+ 3 days'))}}"
+                                           max="{{date('Y-m-d', strtotime(today().'+ 60 days'))}}"
                                            placeholder="Дата">
                                     @error('date')
                                     <p>{{ $message }}</p>
@@ -190,4 +188,5 @@
     @include("layouts.partials.discount-banner")
 
     <script src="/js/cart.js"></script>
+    <script src="/js/field_name.js"></script>
 @endsection

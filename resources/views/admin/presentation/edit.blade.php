@@ -39,19 +39,19 @@
                                 <div class="form-group">
                                     <label for="date">Дата</label>
 {{--                                    <input type="date"  name="date" value="{{date('d.m.Y', strtotime($event['date']))}}"  min="{{date('d.m.Y')}}" max="2024-12-31" class="form-control" id="date"  required placeholder="Дата">--}}
-                                    <input type="text" name="date" class="form-control" id="date"  required placeholder="Дата" name="trip-start" value="{{$event['date']}}"/>
+                                    <input type="date" min="{{date('Y-m-d', strtotime(today().'+ 1 days'))}}"  name="date" class="form-control" id="date"  required placeholder="Дата" name="trip-start" value="{{$event['date']}}"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="time">Время</label>
-                                    <input type="text"  name="time" value="{{$event['time']}}" class="form-control" id="time"  required placeholder="Время">
+                                    <input type="time" step="1800"  min="12:00" max="20:00" name="time" value="{{$event['time']}}" class="form-control" id="time"  required placeholder="Время">
                                 </div>
                                 <div class="form-group">
-                                    <label for="price">Входной билет</label>
-                                    <input type="text"  name="price" value="{{$event['price']}}" class="form-control" id="price"  required placeholder="Входной билет">
+                                    <label for="price">Входной билет, BYN</label>
+                                    <input type="number"  min="0" name="price" value="{{$event['price']}}" class="form-control" id="price"  required placeholder="Входной билет">
                                 </div>
                                 <div class="form-group">
                                     <label for="count">Количество мест</label>
-                                    <input type="text"  name="count" value="{{$event['event_count']}}" class="form-control" id="count"  required placeholder="Количество мест">
+                                    <input type="number" min="0" name="count" value="{{$event['event_count']}}" class="form-control" id="count"  required placeholder="Количество мест">
                                 </div>
                             </div>
                             <!-- /.card-body -->

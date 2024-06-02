@@ -28,8 +28,12 @@
 <div class="modal modal--no-success @if (!session('nosuccess'))visually-hidden @endif">
     <div class="modal__form">
         <div class="order__field field field--no-style">
-            <p>
+            <p style="text-align: center">
+                @if(session('phone'))
+                    Некорректный номер телефона!
+                @else
                 Вы уже оставляли заявку!
+                @endif
             </p>
         </div>
         <button class="button modal__close modal__button">Закрыть</button>

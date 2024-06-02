@@ -58,9 +58,9 @@
 
                         <div class="presentation__body">
                             <div class="tasting__field field">
-                                <label class="field__label" for="presentation_name">Имя*</label>
-                                <input name="presentation_name" class="field__input" id="presentation_name"
-                                       required autocomplete="off"
+                                <label class="field__label" for="field_name">Имя*</label>
+                                <input name="presentation_name" class="field__input"  id="field_name"
+                                       required autocomplete="off" type="text" maxlength="25" pattern=".{3,25}" title="Длина имени от 3 до 25 символов"
                                        @auth("web") value="{{Auth::user()->name}}" @endauth
                                        placeholder="Имя">
                                 @error('name')
@@ -70,14 +70,11 @@
                             <div class="tasting__field field">
                                 <label class="field__label" for="presentation_telephone">Номер телефона*</label>
                                 <input name="presentation_telephone" class="field__input phone-mask" id="presentation_telephone"
-                                       type="tel" required autocomplete="off"
+                                       type="tel" required autocomplete="off" title="+375 (25|29|33|44) xxx-xx-xx"
                                        @auth("web") value="{{Auth::user()->telephone}}" @endauth
                                        placeholder="Номер телефона">
-                                @error('telephone')
-                                <p>{{ $message }}</p>
-                                @enderror
+                                <p>{{session('phone')}}</p>
                             </div>
-                        </div>
                         <button type="submit" class="presentation__button button button--accent">
                             Забронировать место
                         </button>
@@ -87,4 +84,5 @@
 
         </div>
     </section>
+    <script src="/js/field_name.js"></script>
 @endsection

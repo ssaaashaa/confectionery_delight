@@ -14,7 +14,7 @@
 
             <div class="order__field field">
                 <input name="forgot_email" class="field__input"
-                       type="email" required autocomplete="off"
+                       type="email" required autocomplete="off" title="some@some.some"
                        placeholder="Ваш e-mail">
                 @error('forgot')
                 <p>{{ $message }}</p>

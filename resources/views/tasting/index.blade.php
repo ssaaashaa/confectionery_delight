@@ -7,7 +7,8 @@
                 <div class="tasting-info__description">
                     <p>
                         Для того, чтобы подобрать идеальную начинку Вашего
-                        будущего торта, мы предлагаем дегустационный сет, чтобы Вы смогли сделать уверенный выбор и заранее знали
+                        будущего торта, мы предлагаем дегустационный сет, чтобы Вы смогли сделать уверенный выбор и
+                        заранее знали
                         вкус Вашего торта.
                     </p>
                     <p>
@@ -41,9 +42,10 @@
 
                     <div class="tasting__body">
                         <div class="tasting__field field">
-                            <label class="field__label" for="tasting_name">Имя*</label>
-                            <input name="tasting_name" class="field__input" id="tasting_name"
-                                   required autocomplete="off"
+                            <label class="field__label" for="field_name">Имя*</label>
+                            <input name="tasting_name" class="field__input" id="field_name"
+                                   required autocomplete="off" type="text" maxlength="25" pattern=".{3,25}"
+                                   title="Длина имени от 3 до 25 символов"
                                    @auth("web") value="{{Auth::user()->name}}" @endauth
                                    placeholder="Имя">
                             @error('name')
@@ -52,13 +54,11 @@
                         </div>
                         <div class="tasting__field field">
                             <label class="field__label" for="tasting_telephone">Номер телефона*</label>
-                            <input name="tasting_telephone" class="field__input phone-mask" id="tasting_telephone"
+                            <input name="tasting_telephone" title="+375 (25|29|33|44) xxx-xx-xx" class="field__input phone-mask" id="tasting_telephone"
                                    type="tel" required autocomplete="off"
                                    @auth("web") value="{{Auth::user()->telephone}}" @endauth
                                    placeholder="Номер телефона">
-                            @error('telephone')
-                            <p>{{ $message }}</p>
-                            @enderror
+                            <p>{{session('phone')}}</p>
                         </div>
                     </div>
                     <button type="submit" class="tasting__button button button--accent">
@@ -68,6 +68,7 @@
             </div>
         </div>
     </div>
+    <script src="/js/field_name.js"></script>
 @endsection
 
 

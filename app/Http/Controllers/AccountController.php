@@ -108,6 +108,22 @@ class AccountController extends Controller
     public function update_user_info(Request $request)
     {
         $user = User::findOrFail(Auth::id());
+
+
+
+        $tel_pattern = '/^\+375\s\((25|29|33|44)\)\s\d{3}-\d{2}-\d{2}$/';
+        $email_pattern = '/^\\S+@\\S+\\.\\S+$/';
+
+        if(!preg_match($tel_pattern, $request['new_telephone']) && !preg_match($email_pattern, $request['new_email']) ) {
+            return redirect()->back()->withPhone("Допустимый код: 25 | 29 | 33 | 44")->withEmail("Некорректный e-mail");
+        }
+        else if(!preg_match($tel_pattern, $request['new_telephone'])) {
+            return redirect()->back()->withPhone("Допустимый код: 25 | 29 | 33 | 44");
+        }
+        else if(!preg_match($email_pattern, $request['new_email'])) {
+            return redirect()->back()->withEmail("Некорректный e-mail");
+        }
+
         $user->update(['name' => $request['new_name'],
             'email' => $request['new_email'],
             'telephone' => $request['new_telephone']

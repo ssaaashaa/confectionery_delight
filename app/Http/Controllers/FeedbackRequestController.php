@@ -16,6 +16,12 @@ class FeedbackRequestController extends Controller
             ]
         );
 
+        $pattern = '/^\+375\s\((25|29|33|44)\)\s\d{3}-\d{2}-\d{2}$/';
+
+        if(!preg_match($pattern, $data["presentation_telephone"])) {
+            return redirect()->back()->withPhone("Допустимый код: 25 | 29 | 33 | 44")->withNosuccess("nosuccess");
+        }
+
         $search = FeedbackRequest::where('name', $data["presentation_name"])
             ->where('request_type', 'ПРЕЗЕНТАЦИЯ')
             ->where('telephone', $data["presentation_telephone"])
@@ -44,6 +50,12 @@ class FeedbackRequestController extends Controller
                 "tasting_telephone" => ["required", "string"],
             ]
         );
+
+        $pattern = '/^\+375\s\((25|29|33|44)\)\s\d{3}-\d{2}-\d{2}$/';
+
+        if(!preg_match($pattern, $data["tasting_telephone"])) {
+            return redirect()->back()->withPhone("Допустимый код: 25 | 29 | 33 | 44")->withNosuccess("nosuccess");
+        }
 
         $search = FeedbackRequest::where('name', $data["tasting_name"])
             ->where('request_type', 'ДЕГУСТАЦИЯ')
