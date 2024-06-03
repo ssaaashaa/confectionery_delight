@@ -1,0 +1,20 @@
+.not_found {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    row-gap: 45px;
+
+    @include mobile-s {
+        row-gap: 35px;
+    }
+    text-align: center;
+
+    h1 {
+        @include fluid-text(148, 96);
+    }
+
+    h1, h3 {
+        margin: 0;
+    }
+}

@@ -4,7 +4,7 @@
             <div class="banner__inner">
                 <div class="banner__body">
                     <h3 class="banner__title">
-                        Презентация новых начинок
+                        {{$presentation->title}}
                     </h3>
                     <div class="banner__description">
                         <p>
@@ -13,10 +13,10 @@
                             разнообразие и палитру вкусов.
                         </p>
                         <span>
-                            21.07 в 17:00
+                           {{date('d.m', strtotime($presentation->date))}} в {{$presentation->time}}
                 </span>
                         <span>
-                    Входной билет - 60 BYN
+                    Входной билет - {{$presentation->price}} BYN
                 </span>
                     </div>
                     <a href="{{route('presentation.index')}}">

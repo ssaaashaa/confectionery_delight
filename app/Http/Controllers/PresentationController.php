@@ -11,7 +11,7 @@ class PresentationController extends Controller
     public function index()
     {
         $presentation = Event::where('event_type', 'ПРЕЗЕНТАЦИЯ')
-            ->firstOrFail();
+            ->first();
         return view('presentation.index', [
                 "presentation" => $presentation
             ]

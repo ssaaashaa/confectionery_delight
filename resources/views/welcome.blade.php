@@ -79,7 +79,7 @@
                                 </h3>
                                 <div class="category-card__details">
                                     <span class="category-card__price">
-                                        от 32 BYN
+                                        от 57.6 BYN
                                     </span>
                                     <p class="category-card__description">
                                         Трайфлы получаются такими вкусными, потому что мы используем только натуральные
@@ -138,7 +138,7 @@
                                 </h3>
                                 <div class="category-card__details">
                                     <span class="category-card__price">
-                                        от 32 BYN
+                                        от 70 BYN
                                     </span>
                                     <p class="category-card__description">
                                         Необычный и вкусный подарочный бокс для взрослых и детей на день рождения или

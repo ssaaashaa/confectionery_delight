@@ -19,7 +19,7 @@
                         Дата: {{date('d.m.Y', strtotime($presentation->date))}}
                     </span>
                         <span>
-                        Стоимость входного билета: {{$presentation->price}}
+                        Стоимость входного билета: {{$presentation->price}} BYN
                     </span>
                     </div>
                     <div class="presentation-page__info">

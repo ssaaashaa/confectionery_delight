@@ -84,10 +84,11 @@
                 </form>
             </div>
             <div class="row">
-                <div class=" col-lg-12 card">
+                <div class=" col-lg-12 card" style="padding: 0">
                     <div class="card-header">
                         <h3 class="card-title">Участники({{count($presentation_records)}})</h3>
                         <div class="card-tools">
+
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -136,6 +137,19 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
+                    @if(count($presentation_records) > 0)
+                        <div class="card-footer">
+                            <form action="{{route("admin.presentation.destroy", $presentation['id'])}}" method="POST"
+                                  style="display: inline-block; float: right">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm delete-btn"
+                                >
+                                    Удалить всех участников
+                                </button>
+                            </form>
+                        </div>
+                    @endif
                 </div>
 
             </div>

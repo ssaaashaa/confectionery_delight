@@ -32,6 +32,10 @@
                                     <label for="exampleInputPassword1">Комментарий</label>
                                     <textarea style="height: 200px; resize: none" type="text" name="comment" class="form-control" id="exampleInputPassword1"  required placeholder="Комментарий">{{$order['comment']}}</textarea>
                                 </div>
+                                <div class="form-group">
+                                    <label for="price">Итого, руб.</label>
+                                    <input   type="text" name="price" class="form-control" id="price"  required placeholder="Цена" value="{{$order['total_cost']}}">
+                                </div>
                                 <div class="form-group" data-select2-id="40">
                                     <label>Статус</label>
                                     <select class="form-control select2 select2-hidden-accessible"
@@ -66,5 +70,26 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
+    <script>
+        // Получаем элемент текстового поля
+        var price = document.getElementById("price");
+
+        // Добавляем обработчик события ввода
+        price.addEventListener("input", function (e) {
+            // При вводе текста запускаем функцию толькоLettersSpacesDashes
+            price.value = onlyLettersSpacesDashes(price.value);
+        });
+
+        function onlyLettersSpacesDashes(e) {
+            // Допускаются только буквы, пробелы и тире
+            var regex = /[^0-9.]/g;
+
+            // Заменяем все недопустимые символы на пустую строку
+            var result = e.replace(regex, "");
+
+            // Возвращаем замененный результат
+            return result;
+        }
+    </script>
     <!-- /.content -->
 @endsection

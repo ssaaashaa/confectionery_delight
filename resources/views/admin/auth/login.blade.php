@@ -53,7 +53,7 @@
                 </h2>
             </div>
 
-            <form method="POST" action="{{ route("admin.login_process") }}" class="login__form">
+            <form method="POST" action="{{ route("admin.login_process") }}" class="login__form" >
                 @csrf
 
                 <div class="order__field field">
@@ -64,7 +64,7 @@
                 </div>
                 <div class="order__field field">
                     <input name="password" class="field__input" id="admin_password"
-                           type="password" required autocomplete="disabled"
+                           type="password" required autocomplete="new-password"
                            placeholder="Ваш пароль">
                     @error('email')
                     <p>{{ $message }}</p>

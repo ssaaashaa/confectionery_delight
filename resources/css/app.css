@@ -2973,4 +2973,24 @@ footer {
   }
 }
 
+.not_found {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  row-gap: 45px;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .not_found {
+    row-gap: 35px;
+  }
+}
+.not_found h1 {
+  font-size: clamp(96px, 9.25vw, 148px);
+}
+.not_found h1, .not_found h3 {
+  margin: 0;
+}
+
 /*# sourceMappingURL=app.css.map */
