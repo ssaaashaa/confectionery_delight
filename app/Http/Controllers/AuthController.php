@@ -26,12 +26,10 @@ class AuthController extends Controller
                 "login_password" => ["required"]
             ]
         );
-
         $data = [
             'email' => $request->login_email,
             'password' => $request->login_password,
         ];
-
         $user = User::where('email', $data['email'])
             ->get();
         if(count($user)===0) {

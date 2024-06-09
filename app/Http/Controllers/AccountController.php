@@ -15,16 +15,12 @@ class AccountController extends Controller
 {
     public function index()
     {
-
-
         $user_id = Auth::id();
         if ($user_id != 0) {
-            // dd($user_id);
             $user = User::findOrFail($user_id);
             $orders = Order::where('user_id', $user_id)
                 ->orderBy('id', 'desc')
                 ->get();
-
             $completed_orders = Order::where('user_id', $user_id)
                 ->where('status', 'Выполнен')
                 ->get();
@@ -35,15 +31,12 @@ class AccountController extends Controller
                 ->firstOrFail();
             $max_discount = number_format($max_discount->size, 0);
             $personal_discount = $orders_count * floatval($order_discount->size);
-
             if ($orders_count % 2 === 0) {
                 $personal_discount = number_format($personal_discount, 0);
             } else $personal_discount = number_format($personal_discount, 1);
-
             if ($personal_discount >= $max_discount) {
                 $personal_discount = $max_discount;
             }
-
             foreach ($orders as $order) {
                 $review = Review::where('order_id', $order->id)
                     ->get();
@@ -59,14 +52,10 @@ class AccountController extends Controller
                 $order->products = $products;
                 $count_review = count($review);
                 $order->count_review = $count_review;
-
-//                dd($orders);
-
             }
             return view('account.index', ["user" => $user, "orders" => $orders, "discount" => $personal_discount]);
         } else
             return view('account.index');
-
     }
 
     public function review(Request $request)
@@ -108,12 +97,8 @@ class AccountController extends Controller
     public function update_user_info(Request $request)
     {
         $user = User::findOrFail(Auth::id());
-
-
-
         $tel_pattern = '/^\+375\s\((25|29|33|44)\)\s\d{3}-\d{2}-\d{2}$/';
         $email_pattern = '/^\\S+@\\S+\\.\\S+$/';
-
         if(!preg_match($tel_pattern, $request['new_telephone']) && !preg_match($email_pattern, $request['new_email']) ) {
             return redirect()->back()->withPhone("Допустимый код: 25 | 29 | 33 | 44")->withEmail("Некорректный e-mail");
         }
@@ -123,7 +108,6 @@ class AccountController extends Controller
         else if(!preg_match($email_pattern, $request['new_email'])) {
             return redirect()->back()->withEmail("Некорректный e-mail");
         }
-
         $user->update(['name' => $request['new_name'],
             'email' => $request['new_email'],
             'telephone' => $request['new_telephone']

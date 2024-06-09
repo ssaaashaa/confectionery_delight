@@ -38,7 +38,9 @@
                                         </div>
                                         <div class="menu-item__description">
                                             <p>
-                                                {{$product->description}}
+                                                @if($product->description!='')
+                                                    {{$product->description}}
+                                                @endif
                                             </p>
                                         </div>
                                         <div class="menu-item__price">

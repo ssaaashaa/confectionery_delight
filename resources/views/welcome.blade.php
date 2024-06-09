@@ -48,7 +48,7 @@
                             <h3 class="category-card__title category-card__title-hidden  _anim-title hidden">
                                 Капкейки
                             </h3>
-                            <img src="/storage/img/category-1.svg" alt="" class="category-card__image"
+                            <img src="/storage/img/category-1.svg" alt="Капкейки на заказ" title="Капкейк" class="category-card__image"
                                  width="226px" height="242px" loading="lazy">
                             <div class="category-card__body">
                                 <h3 class="category-card__title category-card__title-visible _anim-title hidden">
